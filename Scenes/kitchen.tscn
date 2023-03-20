@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg5pdgh4w3mao"]
+
+[ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
+[ext_resource type="Texture2D" uid="uid://c0xc7n7boh6q" path="res://Assets/player.png" id="2_ptg0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yye5o"]
+size = Vector2(128, 48)
+
+[node name="kitchen_main" type="Node2D"]
+texture_filter = 1
+
+[node name="round_timer" type="Timer" parent="."]
+
+[node name="background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="texture" type="TextureRect" parent="background"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -683.0
+offset_top = -384.0
+offset_right = 683.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7se1p")
+
+[node name="player_spawn" type="Marker2D" parent="."]
+
+[node name="collision_boundaries" type="StaticBody2D" parent="."]
+
+[node name="boundaries" type="CollisionPolygon2D" parent="collision_boundaries"]
+polygon = PackedVector2Array(440, 224, 64, 224, 64, 424, 160, 424, 160, 608, 128, 608, 128, 672, 1304, 672, 1304, 608, 1208, 608, 1208, 336, 1304, 336, 1304, 224, 888, 224, 888, 192, 440, 192)
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(680, 432)
+metadata/_edit_group_ = true
+
+[node name="boundaries" type="CollisionShape2D" parent="player"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_yye5o")
+
+[node name="sprite" type="Sprite2D" parent="player"]
+texture = ExtResource("2_ptg0c")
+centered = false
+offset = Vector2(-64, -128)

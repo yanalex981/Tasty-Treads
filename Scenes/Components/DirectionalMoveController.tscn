@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c04aat1tfor06"]
+
+[ext_resource type="Script" path="res://Scripts/Components/DirectionalMoveController.gd" id="1_3fl3t"]
+
+[node name="DirectionalMoveController" type="Node"]
+script = ExtResource("1_3fl3t")

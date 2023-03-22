@@ -83,17 +83,17 @@ anchor_right = 1.0
 offset_bottom = 53.0
 grow_horizontal = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info_ui/panel"]
+[node name="padding" type="MarginContainer" parent="info_ui/panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="Label" type="Label" parent="info_ui/panel/MarginContainer"]
+[node name="time_label" type="Label" parent="info_ui/panel/padding"]
 layout_mode = 2
 text = "Time Remaining: 0s"
 label_settings = SubResource("LabelSettings_hlyr4")
 
-[node name="Label2" type="Label" parent="info_ui/panel/MarginContainer"]
+[node name="earnings_label" type="Label" parent="info_ui/panel/padding"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Earnings: $0.00"

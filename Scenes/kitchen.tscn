@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqn5rbiqkg3ai"]
+[gd_scene load_steps=7 format=3 uid="uid://dqn5rbiqkg3ai"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Texture2D" uid="uid://c0xc7n7boh6q" path="res://Assets/player.png" id="2_ptg0c"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yye5o"]
 size = Vector2(128, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_83scp"]
+font_size = 36
 
 [node name="kitchen_main" type="Node2D"]
 texture_filter = 1
@@ -32,6 +38,7 @@ texture = ExtResource("1_7se1p")
 [node name="player_spawn" type="Marker2D" parent="."]
 
 [node name="wall_boundaries" type="StaticBody2D" parent="."]
+visible = false
 collision_mask = 0
 
 [node name="boundaries" type="CollisionPolygon2D" parent="wall_boundaries"]
@@ -55,13 +62,33 @@ offset = Vector2(-64, -128)
 [node name="DirectionalMoveController" parent="player" instance=ExtResource("3_q7l5r")]
 
 [node name="left_counter_boundaries" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="boundaries" type="CollisionPolygon2D" parent="left_counter_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(352, 520, 352, 608, 632, 608, 632, 520)
 
 [node name="right_counter_boundaries" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="boundaries" type="CollisionPolygon2D" parent="right_counter_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(736, 520, 736, 608, 1016, 608, 1016, 520)
+
+[node name="info_ui" type="CanvasLayer" parent="."]
+
+[node name="panel" type="PanelContainer" parent="info_ui"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="info_ui/panel"]
+layout_mode = 2
+text = "Time Remaining: 0s"
+label_settings = SubResource("LabelSettings_hlyr4")
+
+[node name="Label2" type="Label" parent="info_ui/panel"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Earnings: $0.00"
+label_settings = SubResource("LabelSettings_83scp")

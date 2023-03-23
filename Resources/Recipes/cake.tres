@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://bwnq5okk2taen"]
+
+[ext_resource type="Script" path="res://Scripts/Recipe.gd" id="1_kpcvk"]
+
+[resource]
+script = ExtResource("1_kpcvk")
+name = "Cake"
+spawn_weighting = 2000
+price = 20.0
+recipe_steps = Array[int]([0, 1, 2, 4, 5, 6, 7])

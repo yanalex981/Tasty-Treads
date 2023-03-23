@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://ddwwrgj7afykp"]
+
+[ext_resource type="Script" path="res://Scripts/Recipe.gd" id="1_exnx7"]
+
+[resource]
+script = ExtResource("1_exnx7")
+name = "Croissant"
+spawn_weighting = 500
+price = 5.0
+recipe_steps = Array[int]([0, 1, 1, 1, 4, 5])

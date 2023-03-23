@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://c202jsm8sgybc"]
+
+[ext_resource type="Script" path="res://Scripts/Recipe.gd" id="1_3o50d"]
+
+[resource]
+script = ExtResource("1_3o50d")
+name = "Cookies"
+spawn_weighting = 1000
+price = 4.0
+recipe_steps = Array[int]([0, 1, 2, 3, 4, 5])

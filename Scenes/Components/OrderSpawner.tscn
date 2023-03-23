@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqn6ib017kytg"]
+
+[ext_resource type="Script" path="res://Scripts/OrderSpawner.gd" id="1_hcg43"]
+
+[node name="order_spawner" type="Node"]
+script = ExtResource("1_hcg43")

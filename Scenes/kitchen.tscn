@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqn5rbiqkg3ai"]
+[gd_scene load_steps=11 format=3 uid="uid://dqn5rbiqkg3ai"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Texture2D" uid="uid://c0xc7n7boh6q" path="res://Assets/player.png" id="2_ptg0c"]
 [ext_resource type="PackedScene" uid="uid://c04aat1tfor06" path="res://Scenes/Components/DirectionalMoveController.tscn" id="3_q7l5r"]
+[ext_resource type="PackedScene" uid="uid://dqn6ib017kytg" path="res://Scenes/Components/OrderSpawner.tscn" id="4_sqh5n"]
+[ext_resource type="Resource" uid="uid://c202jsm8sgybc" path="res://Resources/Recipes/cookies.tres" id="5_cluty"]
+[ext_resource type="Resource" uid="uid://bwnq5okk2taen" path="res://Resources/Recipes/cake.tres" id="6_15k22"]
+[ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yye5o"]
 size = Vector2(128, 48)
@@ -98,3 +102,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "Earnings: $0.00"
 label_settings = SubResource("LabelSettings_83scp")
+
+[node name="order_spawner" parent="." instance=ExtResource("4_sqh5n")]
+spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cluty"), ExtResource("6_15k22"), ExtResource("7_rj4d4")])

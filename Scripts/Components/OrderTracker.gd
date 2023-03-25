@@ -5,8 +5,6 @@ signal order_changed(order : Recipe)
 signal order_completed
 signal progress_changed(progress : int)
 
-@export var order_spawner : OrderSpawner
-
 @export var order_source : Interactable
 @export var order_destination : Interactable
 @export var fridge : Interactable

@@ -41,7 +41,7 @@ func update_effect_sprite_visibility():
 	$effect_sprite.visible = enabled
 
 func _input(_event):
-	if enabled and in_range and Input.is_action_just_released(interact_input_map):
+	if enabled and in_range and Input.is_action_just_pressed(interact_input_map):
 		emit_signal("invoked")
 
 func _ready():

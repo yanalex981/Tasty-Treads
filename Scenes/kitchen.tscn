@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqn5rbiqkg3ai"]
+[gd_scene load_steps=17 format=3 uid="uid://u6phxioott5c"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
+[ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
 [ext_resource type="Texture2D" uid="uid://c0xc7n7boh6q" path="res://Assets/player.png" id="2_ptg0c"]
 [ext_resource type="PackedScene" uid="uid://c04aat1tfor06" path="res://Scenes/Components/DirectionalMoveController.tscn" id="3_q7l5r"]
-[ext_resource type="PackedScene" uid="uid://dqn6ib017kytg" path="res://Scenes/Components/OrderSpawner.tscn" id="4_sqh5n"]
+[ext_resource type="PackedScene" uid="uid://dnt1pap5cyrvx" path="res://Scenes/Components/OrderTracker.tscn" id="4_4oyt0"]
+[ext_resource type="PackedScene" path="res://Scenes/Components/OrderSpawner.tscn" id="4_sqh5n"]
 [ext_resource type="Resource" uid="uid://c202jsm8sgybc" path="res://Resources/Recipes/cookies.tres" id="5_cluty"]
 [ext_resource type="Resource" uid="uid://bwnq5okk2taen" path="res://Resources/Recipes/cake.tres" id="6_15k22"]
 [ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
-[ext_resource type="PackedScene" uid="uid://dsb03nbrr3oek" path="res://Scenes/TaskInitiator.tscn" id="8_xnfjy"]
+[ext_resource type="PackedScene" uid="uid://bd51qipgd5htg" path="res://Scenes/Components/Interactable.tscn" id="8_xnfjy"]
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
 [ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
 
@@ -25,6 +27,7 @@ font_size = 36
 
 [node name="kitchen_main" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_hjfb8")
 
 [node name="round_timer" type="Timer" parent="."]
 
@@ -118,65 +121,98 @@ size_flags_horizontal = 8
 text = "Earnings: $0.00"
 label_settings = SubResource("LabelSettings_83scp")
 
+[node name="order_tracker" parent="." node_paths=PackedStringArray("order_spawner", "order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
+order_spawner = NodePath("../order_spawner")
+order_source = NodePath("../source_highlight")
+order_destination = NodePath("../destination_highlight")
+fridge = NodePath("../fridge_highlight")
+mixing_bowl = NodePath("../mixing_highlight")
+cutting_station = NodePath("../cutting_highlight")
+cooling_station = NodePath("../cooling_highlight")
+batter_station = NodePath("../batter_highlight")
+icing_station = NodePath("../icing_highlight")
+sprinkling_station = NodePath("../sprinkle_highlight")
+oven = NodePath("../oven_highlight")
+
 [node name="order_spawner" parent="." instance=ExtResource("4_sqh5n")]
 spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cluty"), ExtResource("6_15k22"), ExtResource("7_rj4d4")])
 
-[node name="task_initiator" parent="." instance=ExtResource("8_xnfjy")]
+[node name="fridge_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 464)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator2" parent="." instance=ExtResource("8_xnfjy")]
+[node name="mixing_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 576)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator3" parent="." instance=ExtResource("8_xnfjy")]
+[node name="batter_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(400, 464)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator4" parent="." instance=ExtResource("8_xnfjy")]
+[node name="cutting_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(568, 464)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator5" parent="." instance=ExtResource("8_xnfjy")]
+[node name="icing_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(784, 464)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator6" parent="." instance=ExtResource("8_xnfjy")]
+[node name="sprinkle_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(920, 464)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator7" parent="." instance=ExtResource("8_xnfjy")]
+[node name="oven_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 368)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator8" parent="." instance=ExtResource("8_xnfjy")]
+[node name="cooling_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 488)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator9" parent="." instance=ExtResource("8_xnfjy")]
+[node name="destination_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(1112, 248)
 interact_input_map = "interact"
+enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="task_initiator10" parent="." instance=ExtResource("8_xnfjy")]
+[node name="source_highlight" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(656, 216)
 interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
+
+[connection signal="invoked" from="fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
+[connection signal="invoked" from="mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
+[connection signal="invoked" from="batter_highlight" to="." method="_on_batter_highlight_invoked"]
+[connection signal="invoked" from="cutting_highlight" to="." method="_on_cutting_highlight_invoked"]
+[connection signal="invoked" from="icing_highlight" to="." method="_on_icing_highlight_invoked"]
+[connection signal="invoked" from="sprinkle_highlight" to="." method="_on_sprinkle_highlight_invoked"]
+[connection signal="invoked" from="oven_highlight" to="." method="_on_oven_highlight_invoked"]
+[connection signal="invoked" from="cooling_highlight" to="." method="_on_cooling_highlight_invoked"]
+[connection signal="invoked" from="destination_highlight" to="." method="_on_destination_highlight_invoked"]
+[connection signal="invoked" from="source_highlight" to="." method="_on_order_source_invoked"]

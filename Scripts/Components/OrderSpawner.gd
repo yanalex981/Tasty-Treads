@@ -4,7 +4,7 @@ extends Node
 
 @export var spawnable_orders : Array[Recipe]
 
-@onready var rng = RandomNumberGenerator.new()
+var rng = RandomNumberGenerator.new()
 
 var total_spawn_weighting : int:
 	get:

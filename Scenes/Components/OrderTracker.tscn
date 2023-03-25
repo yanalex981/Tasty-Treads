@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnt1pap5cyrvx"]
+
+[ext_resource type="Script" path="res://Scripts/Components/OrderTracker.gd" id="1_xf5ba"]
+
+[node name="order_tracker" type="Node"]
+script = ExtResource("1_xf5ba")

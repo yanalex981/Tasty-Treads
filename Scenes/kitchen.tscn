@@ -123,40 +123,60 @@ spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cl
 
 [node name="task_initiator" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 464)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator2" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 576)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator3" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(400, 464)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator4" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(568, 464)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator5" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(784, 464)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator6" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(920, 464)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator7" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 368)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="task_initiator8" parent="." instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 488)
+interact_input_map = "interact"
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator9" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(1112, 248)
+interact_input_map = "interact"
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator10" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(656, 216)
+interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")

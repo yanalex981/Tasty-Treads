@@ -26,8 +26,10 @@ signal progress_changed(progress : int)
 
 var progress : int = 0:
 	set(value):
-#		progress = clamp(value, 0, current_order.recipe_steps.size())
-		progress = value
+		var progress_max = 0
+		if current_order != null:
+			progress_max = current_order.recipe_steps.size()
+		progress = clamp(value, 0, progress_max)
 		emit_signal("progress_changed", value)
 		_update_highlight_visibility()
 

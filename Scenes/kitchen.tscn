@@ -121,8 +121,7 @@ size_flags_horizontal = 8
 text = "Earnings: $0.00"
 label_settings = SubResource("LabelSettings_83scp")
 
-[node name="order_tracker" parent="." node_paths=PackedStringArray("order_spawner", "order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
-order_spawner = NodePath("../order_spawner")
+[node name="order_tracker" parent="." node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
 order_source = NodePath("../source_highlight")
 order_destination = NodePath("../destination_highlight")
 fridge = NodePath("../fridge_highlight")

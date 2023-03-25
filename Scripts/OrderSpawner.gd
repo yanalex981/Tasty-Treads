@@ -22,3 +22,12 @@ var next_order : Recipe:
 			else:
 				return recipe
 		return spawnable_orders.back()
+
+func _get_configuration_warnings():
+	if spawnable_orders.size() == 0:
+		return ["Don't forget to add recipes so that this thing can spawn something!"]
+
+	if total_spawn_weighting == 0:
+		return ["Don't forget to configure the recipe spawn weighting so that it's not 0!"]
+	
+	return []

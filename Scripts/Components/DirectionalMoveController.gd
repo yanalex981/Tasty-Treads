@@ -7,8 +7,6 @@ extends Node
 var direction = Vector2.ZERO :
 	set(value):
 		direction = value
-	get:
-		return direction
 
 func _ready():
 	pass

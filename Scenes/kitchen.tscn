@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqn5rbiqkg3ai"]
+[gd_scene load_steps=15 format=3 uid="uid://dqn5rbiqkg3ai"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Texture2D" uid="uid://c0xc7n7boh6q" path="res://Assets/player.png" id="2_ptg0c"]
@@ -7,9 +7,15 @@
 [ext_resource type="Resource" uid="uid://c202jsm8sgybc" path="res://Resources/Recipes/cookies.tres" id="5_cluty"]
 [ext_resource type="Resource" uid="uid://bwnq5okk2taen" path="res://Resources/Recipes/cake.tres" id="6_15k22"]
 [ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
+[ext_resource type="PackedScene" uid="uid://dsb03nbrr3oek" path="res://Scenes/TaskInitiator.tscn" id="8_xnfjy"]
+[ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
+[ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yye5o"]
 size = Vector2(128, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2q0i"]
+radius = 56.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
 font_size = 36
@@ -65,6 +71,15 @@ offset = Vector2(-64, -128)
 
 [node name="DirectionalMoveController" parent="player" instance=ExtResource("3_q7l5r")]
 
+[node name="reachable_zone" type="Area2D" parent="player"]
+position = Vector2(0, -56)
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_group_ = true
+
+[node name="zone" type="CollisionShape2D" parent="player/reachable_zone"]
+shape = SubResource("CircleShape2D_c2q0i")
+
 [node name="left_counter_boundaries" type="StaticBody2D" parent="."]
 visible = false
 
@@ -105,3 +120,43 @@ label_settings = SubResource("LabelSettings_83scp")
 
 [node name="order_spawner" parent="." instance=ExtResource("4_sqh5n")]
 spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cluty"), ExtResource("6_15k22"), ExtResource("7_rj4d4")])
+
+[node name="task_initiator" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(200, 464)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator2" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(200, 576)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator3" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(400, 464)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator4" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(568, 464)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator5" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(784, 464)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator6" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(920, 464)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator7" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(1168, 368)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")
+
+[node name="task_initiator8" parent="." instance=ExtResource("8_xnfjy")]
+position = Vector2(1168, 488)
+effect_sprite = ExtResource("9_i0njw")
+proximity_sprite = ExtResource("10_i0fk7")

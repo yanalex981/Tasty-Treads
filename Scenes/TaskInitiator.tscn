@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsb03nbrr3oek"]
+
+[ext_resource type="Script" path="res://Scripts/TaskInitiator.gd" id="1_no5bq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cl24f"]
+radius = 8.0
+
+[node name="task_initiator" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_no5bq")
+
+[node name="effect_sprite" type="Sprite2D" parent="."]
+
+[node name="proximity_icon" type="Sprite2D" parent="."]
+visible = false
+
+[node name="interactable_zone" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cl24f")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

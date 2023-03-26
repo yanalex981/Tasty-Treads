@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://u6phxioott5c"]
+[gd_scene load_steps=22 format=3 uid="uid://u6phxioott5c"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
@@ -28,6 +28,13 @@ font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_83scp"]
 font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5kuc"]
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 
 [node name="kitchen_main" type="Node2D"]
 texture_filter = 1
@@ -135,6 +142,7 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="info_ui/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5kuc")
 
 [node name="MarginContainer" type="MarginContainer" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2

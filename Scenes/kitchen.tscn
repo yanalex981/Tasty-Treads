@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://u6phxioott5c"]
+[gd_scene load_steps=21 format=3 uid="uid://u6phxioott5c"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c04aat1tfor06" path="res://Scenes/Components/DirectionalMoveController.tscn" id="3_q7l5r"]
 [ext_resource type="PackedScene" uid="uid://dnt1pap5cyrvx" path="res://Scenes/Components/OrderTracker.tscn" id="4_4oyt0"]
 [ext_resource type="PackedScene" path="res://Scenes/Components/OrderSpawner.tscn" id="4_sqh5n"]
+[ext_resource type="PackedScene" uid="uid://diav24bdrxe1m" path="res://Scenes/UI/OrderTrackerDialog.tscn" id="5_3s0ib"]
 [ext_resource type="Resource" uid="uid://c202jsm8sgybc" path="res://Resources/Recipes/cookies.tres" id="5_cluty"]
 [ext_resource type="Resource" uid="uid://bwnq5okk2taen" path="res://Resources/Recipes/cake.tres" id="6_15k22"]
+[ext_resource type="Texture2D" uid="uid://bxdmjnw83vw6a" path="res://Assets/completed.png" id="6_l2gtt"]
+[ext_resource type="Texture2D" uid="uid://cxa0g1j4n3wwe" path="res://Assets/in_progress.png" id="7_p5an8"]
 [ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
+[ext_resource type="Texture2D" uid="uid://bynbsygtxakga" path="res://Assets/incomplete.png" id="8_vvdjn"]
 [ext_resource type="PackedScene" uid="uid://bd51qipgd5htg" path="res://Scenes/Components/Interactable.tscn" id="8_xnfjy"]
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
 [ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
@@ -139,12 +143,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Label" type="Label" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="order_tracker_ui" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_3s0ib")]
 layout_mode = 2
-text = "In progress: RECIPE TITLE
-STEP 1
-STEP 2
-STEP 3"
+completed_icon = ExtResource("6_l2gtt")
+in_progress_icon = ExtResource("7_p5an8")
+incomplete_icon = ExtResource("8_vvdjn")
 
 [node name="order_tracker" parent="." node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
 order_source = NodePath("../source_highlight")
@@ -230,6 +233,8 @@ interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
+[connection signal="order_changed" from="order_tracker" to="." method="_on_order_changed"]
+[connection signal="progress_changed" from="order_tracker" to="." method="_on_progress_changed"]
 [connection signal="invoked" from="fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
 [connection signal="invoked" from="mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
 [connection signal="invoked" from="batter_highlight" to="." method="_on_batter_highlight_invoked"]

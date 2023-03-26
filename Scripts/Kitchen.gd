@@ -29,3 +29,9 @@ func _on_oven_highlight_invoked():
 
 func _on_cooling_highlight_invoked():
 	$order_tracker.next_step()
+
+func _on_order_changed(order):
+	$info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui.order = order
+
+func _on_progress_changed(progress):
+	$info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui.progress = progress

@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcibglhxbdnno"]
+
+[ext_resource type="Script" path="res://Scripts/Microgames/FridgeMicrogame.gd" id="1_khjao"]
+[ext_resource type="Texture2D" uid="uid://b5s6ytudng33f" path="res://Assets/fridge.png" id="1_u20vr"]
+[ext_resource type="Texture2D" uid="uid://nriry6oa8w2g" path="res://Assets/Microgames/fridgeHand.png" id="2_qaa2h"]
+[ext_resource type="Script" path="res://Scripts/Microgames/RobotHand.gd" id="2_qk6wx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myj5y"]
+size = Vector2(280.351, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5g3r"]
+size = Vector2(270.767, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yelg5"]
+size = Vector2(20, 430.511)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46cup"]
+size = Vector2(20, 432.013)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwfsx"]
+radius = 31.1502
+height = 65.4952
+
+[sub_resource type="Animation" id="Animation_k7d2o"]
+resource_name = "grab_item"
+length = 0.33
+step = 0.11
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_mvciy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwhho"]
+_data = {
+"RESET": SubResource("Animation_mvciy"),
+"grab_item": SubResource("Animation_k7d2o")
+}
+
+[node name="FridgeMicrogame" type="Node2D"]
+script = ExtResource("1_khjao")
+
+[node name="Fridge" type="Sprite2D" parent="."]
+position = Vector2(696, 456)
+scale = Vector2(1.252, 1.252)
+texture = ExtResource("1_u20vr")
+
+[node name="BoundingBox" type="StaticBody2D" parent="Fridge"]
+
+[node name="BottomBound" type="CollisionShape2D" parent="Fridge/BoundingBox"]
+position = Vector2(-0.399353, 262.78)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_myj5y")
+
+[node name="TopBound" type="CollisionShape2D" parent="Fridge/BoundingBox"]
+position = Vector2(1.19812, -189.297)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_x5g3r")
+
+[node name="LeftBound" type="CollisionShape2D" parent="Fridge/BoundingBox"]
+position = Vector2(-147.764, 34.7444)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_yelg5")
+
+[node name="RightBound" type="CollisionShape2D" parent="Fridge/BoundingBox"]
+position = Vector2(146.965, 33.8978)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_46cup")
+
+[node name="RobotHand" type="CharacterBody2D" parent="."]
+position = Vector2(591, 676)
+scale = Vector2(1.252, 1.252)
+script = ExtResource("2_qk6wx")
+
+[node name="HandSprite" type="Sprite2D" parent="RobotHand"]
+position = Vector2(-0.00012207, 6.10352e-05)
+scale = Vector2(0.342506, 0.342506)
+texture = ExtResource("2_qaa2h")
+hframes = 2
+region_rect = Rect2(125, 76, 284, 436)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RobotHand"]
+position = Vector2(15.1757, -43.9297)
+shape = SubResource("CapsuleShape2D_iwfsx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RobotHand"]
+libraries = {
+"": SubResource("AnimationLibrary_lwhho")
+}
+
+[node name="Butter" type="Sprite2D" parent="."]

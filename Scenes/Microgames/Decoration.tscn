@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dobv58p7ry18r"]
+
+[ext_resource type="Texture2D" uid="uid://cmfrracwpekav" path="res://Assets/Microgames/decorationSpritesheet.png" id="1_tt8bd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pgmj"]
+radius = 35.0
+
+[node name="Decoration" type="RigidBody2D"]
+scale = Vector2(0.5625, 0.5625)
+collision_layer = 4
+collision_mask = 2
+mass = 0.01
+gravity_scale = 0.9
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_tt8bd")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.77778)
+shape = SubResource("CircleShape2D_6pgmj")

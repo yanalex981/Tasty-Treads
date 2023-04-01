@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var _animation_player = $AnimationPlayer
-const SPEED := 400
+const SPEED := 500
 
 func _physics_process(delta):
 	# move the hand based on input
@@ -19,7 +19,7 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 	
-	if Input.is_action_pressed("interact"):
+	if Input.is_action_just_pressed("interact"):
 		grab_item()
 
 	velocity = velocity.normalized() * SPEED # normalize so that diagonals move at same speed

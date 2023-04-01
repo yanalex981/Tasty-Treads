@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsy7sl5pmknux"]
+
+[ext_resource type="Script" path="res://Scripts/Microgames/Decorations/RobotHand.gd" id="1_3gtmu"]
+[ext_resource type="Texture2D" uid="uid://b73n8xad0assf" path="res://Assets/Microgames/decorationsHand.png" id="1_p3xjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wg74"]
+size = Vector2(34, 430.511)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycljp"]
+size = Vector2(34, 432.013)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnx5k"]
+radius = 103.999
+height = 527.945
+
+[node name="DecorationMicrogame" type="Node2D"]
+
+[node name="BoundingBox" type="StaticBody2D" parent="."]
+position = Vector2(696, 320)
+
+[node name="LeftBound" type="CollisionShape2D" parent="BoundingBox"]
+position = Vector2(-681, 64)
+scale = Vector2(1, 1.8)
+shape = SubResource("RectangleShape2D_7wg74")
+
+[node name="RightBound" type="CollisionShape2D" parent="BoundingBox"]
+position = Vector2(649, 64)
+scale = Vector2(1, 1.74494)
+shape = SubResource("RectangleShape2D_ycljp")
+
+[node name="RobotTray" type="CharacterBody2D" parent="."]
+position = Vector2(688, 512)
+script = ExtResource("1_3gtmu")
+
+[node name="Tray" type="Sprite2D" parent="RobotTray"]
+texture = ExtResource("1_p3xjj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RobotTray"]
+position = Vector2(0, 152)
+rotation = 1.56754
+shape = SubResource("CapsuleShape2D_xnx5k")
+
+[node name="HurtBox" type="Area2D" parent="RobotTray"]
+position = Vector2(0.244141, 112.125)
+scale = Vector2(1.06105, 1.17187)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="RobotTray/HurtBox"]
+polygon = PackedVector2Array(-112, -48, 88, -56, 168, 0, -176, 8)

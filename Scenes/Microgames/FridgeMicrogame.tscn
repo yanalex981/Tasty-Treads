@@ -22,7 +22,7 @@ size = Vector2(20, 430.511)
 size = Vector2(20, 432.013)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avxrk"]
-size = Vector2(105.5, 114)
+size = Vector2(74, 69)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ry0uh"]
 radius = 30.0
@@ -128,16 +128,16 @@ shape = SubResource("RectangleShape2D_46cup")
 position = Vector2(-438.75, -230.625)
 
 [node name="Left1" type="Marker2D" parent="Fridge/ValidItemPositions"]
-position = Vector2(413.125, 188.75)
+position = Vector2(407.5, 188.75)
 
 [node name="Right1" type="Marker2D" parent="Fridge/ValidItemPositions"]
-position = Vector2(485, 188.75)
+position = Vector2(490, 188.125)
 
 [node name="Left2" type="Marker2D" parent="Fridge/ValidItemPositions"]
-position = Vector2(413.125, 291.875)
+position = Vector2(408.75, 293.75)
 
 [node name="Right2" type="Marker2D" parent="Fridge/ValidItemPositions"]
-position = Vector2(485, 291.875)
+position = Vector2(492.5, 292.5)
 
 [node name="Left3" type="Marker2D" parent="Fridge/ValidItemPositions"]
 position = Vector2(416.25, 385)
@@ -166,7 +166,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IngredientsList/Milk/Hurtbox"]
-position = Vector2(0, -2.5)
+position = Vector2(5, 10.5)
 shape = SubResource("RectangleShape2D_avxrk")
 
 [node name="Eggs" type="Sprite2D" parent="IngredientsList"]
@@ -230,7 +230,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IngredientsList/Butter/Hurtbox"]
-position = Vector2(0, -2.5)
+position = Vector2(-4, -3)
 shape = SubResource("RectangleShape2D_avxrk")
 
 [node name="BlackBlock" type="Sprite2D" parent="IngredientsList"]
@@ -242,6 +242,7 @@ script = ExtResource("6_x677j")
 metadata/_edit_group_ = true
 
 [node name="Hurtbox" type="Area2D" parent="IngredientsList/BlackBlock"]
+scale = Vector2(0.84, 0.84)
 collision_layer = 4
 collision_mask = 2
 
@@ -258,6 +259,8 @@ script = ExtResource("6_x677j")
 metadata/_edit_group_ = true
 
 [node name="Hurtbox" type="Area2D" parent="IngredientsList/OpenedCan"]
+position = Vector2(1, 7)
+scale = Vector2(0.84, 1)
 collision_layer = 4
 collision_mask = 2
 
@@ -274,6 +277,8 @@ script = ExtResource("6_x677j")
 metadata/_edit_group_ = true
 
 [node name="Hurtbox" type="Area2D" parent="IngredientsList/Bottle"]
+position = Vector2(-1, 6)
+scale = Vector2(0.8, 1)
 collision_layer = 4
 collision_mask = 2
 
@@ -290,6 +295,7 @@ script = ExtResource("6_x677j")
 metadata/_edit_group_ = true
 
 [node name="Hurtbox" type="Area2D" parent="IngredientsList/Burger"]
+scale = Vector2(0.84, 0.88)
 collision_layer = 4
 collision_mask = 2
 
@@ -306,6 +312,7 @@ script = ExtResource("6_x677j")
 metadata/_edit_group_ = true
 
 [node name="Hurtbox" type="Area2D" parent="IngredientsList/FishHead"]
+scale = Vector2(1, 0.6)
 collision_layer = 4
 collision_mask = 2
 
@@ -365,11 +372,11 @@ Press space to grab an ingredient!
 
 [node name="NecessaryLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 1000.0
+offset_left = 1084.0
 offset_top = 368.0
-offset_right = 1216.0
+offset_right = 1300.0
 offset_bottom = 446.0
-text = "Necessary Ingredients:        /"
+text = "Ingredients:        /"
 
 [node name="ProgressLabel" type="Label" parent="UI"]
 layout_mode = 0
@@ -388,6 +395,7 @@ offset_bottom = 394.0
 text = "3"
 
 [node name="EndUI" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -402,7 +410,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.537255, 0.537255, 0.537255, 0.592157)
+color = Color(0.537255, 0.537255, 0.537255, 0.839216)
 
 [node name="CompletedLabel" type="Label" parent="UI/EndUI"]
 layout_mode = 0

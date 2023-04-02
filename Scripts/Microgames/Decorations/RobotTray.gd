@@ -5,7 +5,7 @@ const SPEED := 600
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 		# move the hand based on input
 	if Input.is_action_pressed("left"):
 		velocity.x = -SPEED

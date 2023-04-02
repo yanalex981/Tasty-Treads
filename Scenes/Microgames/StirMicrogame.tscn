@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://syue8axpggjn"]
+[gd_scene load_steps=5 format=3 uid="uid://syue8axpggjn"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirMicrogame.gd" id="1_noy1s"]
 [ext_resource type="Texture2D" uid="uid://bukumg13wixca" path="res://Assets/Microgames/whiskHand.png" id="2_hga18"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirHand.gd" id="3_lrjjg"]
+[ext_resource type="Texture2D" uid="uid://dx2t8kws0jkob" path="res://Assets/Controls/stir.png" id="4_lcxx0"]
 
 [node name="StirMicrogame" type="Node2D"]
 script = ExtResource("1_noy1s")
@@ -33,15 +34,10 @@ anchors_preset = 0
 offset_right = 1366.0
 offset_bottom = 771.0
 
-[node name="InstructionsLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 224.0
-offset_right = 320.0
-offset_bottom = 302.0
-text = "Press WASD or arrows keys in a clock-wise order to stir.
-
-Keep stirring until the meter fills up!"
+[node name="Controls" type="Sprite2D" parent="UI"]
+position = Vector2(1128, 328)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("4_lcxx0")
 
 [node name="EndUI" type="Control" parent="UI"]
 visible = false

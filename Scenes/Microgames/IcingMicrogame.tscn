@@ -1,22 +1,26 @@
-[gd_scene format=3 uid="uid://cyrpu1aaew6x3"]
+[gd_scene load_steps=3 format=3 uid="uid://cyrpu1aaew6x3"]
+
+[ext_resource type="Texture2D" uid="uid://dg8qauk2f8q4t" path="res://Assets/Microgames/cakeIcingSpriteSheet.png" id="1_ao7gy"]
+[ext_resource type="Texture2D" uid="uid://dftk7xkasjb6u" path="res://Assets/Controls/smear_icing.png" id="2_y2o8y"]
 
 [node name="IcingMicrogame" type="Node2D"]
+
+[node name="Cake" type="Sprite2D" parent="."]
+position = Vector2(584, 400)
+texture = ExtResource("1_ao7gy")
+hframes = 7
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1366.0
 offset_bottom = 771.0
+metadata/_edit_lock_ = true
 
-[node name="InstructionsLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 224.0
-offset_right = 320.0
-offset_bottom = 302.0
-text = "Hold A/D or the left/right button to apply icing.
-
-Ice the whole cake!"
+[node name="InstructionsLabel" type="Sprite2D" parent="UI"]
+position = Vector2(1136, 376)
+scale = Vector2(0.627143, 0.627143)
+texture = ExtResource("2_y2o8y")
 
 [node name="EndUI" type="Control" parent="UI"]
 visible = false

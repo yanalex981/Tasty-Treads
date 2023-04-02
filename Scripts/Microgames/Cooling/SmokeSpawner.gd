@@ -6,11 +6,7 @@ var active_smoke = 0
 func _ready():
 	var smoke_positions = get_children()
 	place_smoke(smoke_positions)
-	pass
-
-func _process(delta):
-	#print(active_smoke)
-	pass
+	
 
 func place_smoke(positions):
 	for i in range(positions.size()):

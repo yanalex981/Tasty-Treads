@@ -4,6 +4,7 @@ extends Node
 @export var speed : int = 400
 
 @onready var parent : CharacterBody2D = get_parent()
+@onready var sprite : AnimatedSprite2D = get_parent().get_child(1)
 var direction = Vector2.ZERO :
 	set(value):
 		direction = value
@@ -34,6 +35,19 @@ func _process(_delta):
 		
 	parent.velocity = direction * speed
 	parent.move_and_slide()
+	
+	# ---------- Handling Animations ---------- #
+	
+	if direction.x > 0:
+		sprite.play("right")
+	elif direction.x < 0:
+		sprite.play("left")
+	elif direction.y > 0:
+		sprite.play("down")
+	elif direction.y < 0:
+		sprite.play("up")
+	else:
+		sprite.set_frame_and_progress(0, 0)
 
 func _get_configuration_warnings():
 	var warnings = []

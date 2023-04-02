@@ -14,6 +14,7 @@ signal pour_stopped
 
 func _ready():
 	bowl.rotation_degrees = -45
+	dough.apply_scale(Vector2(0.5,1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

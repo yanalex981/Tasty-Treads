@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var pan = $Pan
 @onready var pan_player = $Pan/AnimationPlayer
+@onready var dough_player = $RobotBowl/Dough/AnimationPlayer
 @onready var bowl = $RobotBowl
 @onready var end_display = $UI/EndUI
 
@@ -10,6 +11,7 @@ const BIG_OVERFLOW_FRAME = 7
 
 var anim_started = false
 var anim_speeds = [0.5, 1.5, 3]
+var dough_scales = [0.3, 0.5, 1]
 var tilt_intervals = [-30, -15, 0, 45]
 var score = 0
 
@@ -57,12 +59,15 @@ func _on_robot_bowl_pour_started(tilt):
 	elif tilt > tilt_intervals[0] && tilt < tilt_intervals[1]:
 		pan_player.play() # continue fill
 		pan_player.speed_scale = anim_speeds[0] # change speed
+		dough_player.play("pour_slow")
 	elif tilt > tilt_intervals[1] && tilt < tilt_intervals[2]:
 		pan_player.play()
 		pan_player.speed_scale = anim_speeds[1]
+		dough_player.play("pour_normal")
 	elif tilt > tilt_intervals[2] && tilt < tilt_intervals[3]:
 		pan_player.play()
 		pan_player.speed_scale = anim_speeds[2]
+		dough_player.play("pour_fast")
 
 func _on_robot_bowl_pour_stopped():
 	# stop the fill

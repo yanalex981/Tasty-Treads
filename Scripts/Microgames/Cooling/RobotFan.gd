@@ -15,16 +15,12 @@ func _physics_process(_delta):
 	else:
 		velocity.x = 0
 	
-	# stop and start the fan on input
-	if Input.is_action_pressed("interact"):
-		blow_air()
-	if Input.is_action_just_released("interact"):
-		stop_air()
-	
+	if Input.is_action_pressed("up"):
+		velocity.y = -SPEED
+	elif Input.is_action_pressed("down"):
+		velocity.y = SPEED
+	else:
+		velocity.y = 0
+
 	move_and_slide()
 
-func blow_air():
-	animation_player.play("blow_air")
-
-func stop_air():
-	animation_player.play("RESET")

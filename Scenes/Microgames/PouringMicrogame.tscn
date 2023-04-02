@@ -1,10 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://pjbsr0714k4"]
+[gd_scene load_steps=14 format=3 uid="uid://pjbsr0714k4"]
 
 [ext_resource type="Texture2D" uid="uid://bj24cn23qg3vx" path="res://Assets/Microgames/panSpritesheet.png" id="1_01hm0"]
 [ext_resource type="Script" path="res://Scripts/Microgames/PouringMicrogame.gd" id="1_l237d"]
 [ext_resource type="Texture2D" uid="uid://dg30wulqywn5p" path="res://Assets/Microgames/bowlPourTemp.png" id="2_m7gjw"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Pouring/RobotBowl.gd" id="2_s1gy1"]
 [ext_resource type="Texture2D" uid="uid://cda1cgjmnyqyc" path="res://Assets/Microgames/doughPourTemp.png" id="3_itmyb"]
+
+[sub_resource type="Animation" id="Animation_yr5nh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_upakk"]
 resource_name = "fill_up"
@@ -23,25 +38,82 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_yr5nh"]
-length = 0.001
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkvs1"]
+_data = {
+"RESET": SubResource("Animation_yr5nh"),
+"fill_up": SubResource("Animation_upakk")
+}
+
+[sub_resource type="Animation" id="Animation_dxvm0"]
+resource_name = "pour_slow"
+loop_mode = 1
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("RobotBowl/Dough:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(0.3, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkvs1"]
+[sub_resource type="Animation" id="Animation_ytack"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotBowl/Dough:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hfmqj"]
+resource_name = "pour_normal"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotBowl/Dough:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0pelo"]
+resource_name = "pour_fast"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotBowl/Dough:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cc4c"]
 _data = {
-"RESET": SubResource("Animation_yr5nh"),
-"fill_up": SubResource("Animation_upakk")
+"RESET": SubResource("Animation_ytack"),
+"pour_fast": SubResource("Animation_0pelo"),
+"pour_normal": SubResource("Animation_hfmqj"),
+"pour_slow": SubResource("Animation_dxvm0")
 }
 
 [node name="PouringMicrogame" type="Node2D"]
@@ -64,9 +136,15 @@ position = Vector2(848, 360)
 script = ExtResource("2_s1gy1")
 
 [node name="Dough" type="Sprite2D" parent="RobotBowl"]
-visible = false
 position = Vector2(-44, 44)
+scale = Vector2(0.3, 1)
 texture = ExtResource("3_itmyb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RobotBowl/Dough"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_2cc4c")
+}
 
 [node name="Bowl" type="Sprite2D" parent="RobotBowl"]
 position = Vector2(-44, 44)

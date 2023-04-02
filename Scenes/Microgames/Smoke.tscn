@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fsjyp"]
 resource_name = "dissipating"
-length = 0.9
-step = 0.3
+length = 1.5
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,7 +47,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [3, 4, 5]
@@ -62,12 +62,13 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t01v8"]
 radius = 40.0
-height = 112.0
+height = 117.656
 
 [node name="Smoke" type="Node2D"]
 script = ExtResource("1_42yk4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_ybkj1")
 hframes = 3
 vframes = 2
@@ -80,9 +81,14 @@ libraries = {
 }
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(1, 0.977362)
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -8)
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(1.4, 1.35989)
 shape = SubResource("CapsuleShape2D_t01v8")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

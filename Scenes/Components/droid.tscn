@@ -1,0 +1,171 @@
+[gd_scene load_steps=22 format=3 uid="uid://cv585fpv1pme4"]
+
+[ext_resource type="Script" path="res://Scripts/droid.gd" id="1_i62je"]
+[ext_resource type="Texture2D" uid="uid://d1o28acmoff6" path="res://Assets/sousChefSpritesheet.png" id="1_yguwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_524o8"]
+size = Vector2(128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcv7p"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulna8"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mdns"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpfy7"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et334"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxydu"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20nvl"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8i6k"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjiq2"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d1qd"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7ojf"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxrg6"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daifn"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u237"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmi4o"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5m0y"]
+atlas = ExtResource("1_yguwn")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s8l8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcv7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulna8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpfy7")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et334")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxydu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20nvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8i6k")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjiq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d1qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7ojf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxrg6")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daifn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u237")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmi4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5m0y")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hx2w"]
+radius = 56.0
+
+[node name="droid" type="CharacterBody2D" groups=["droids"]]
+position = Vector2(680, 432)
+collision_layer = 2
+script = ExtResource("1_i62je")
+metadata/_edit_group_ = true
+
+[node name="boundaries" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_524o8")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -65)
+sprite_frames = SubResource("SpriteFrames_s8l8v")
+animation = &"right"
+
+[node name="reachable_zone" type="Area2D" parent="."]
+position = Vector2(0, -56)
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_group_ = true
+
+[node name="zone" type="CollisionShape2D" parent="reachable_zone"]
+shape = SubResource("CircleShape2D_5hx2w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

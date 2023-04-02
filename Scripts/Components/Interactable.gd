@@ -30,6 +30,9 @@ var in_range : bool = false:
 		update_effect_sprite_visibility()
 		update_proximity_icon_visibility()
 
+@onready var player : CharacterBody2D = get_parent().get_child(4) # Point to tree path of player
+@onready var droid1 : CharacterBody2D = get_parent().get_child(5).get_child(0) # Point to tree path of droid 1
+
 func update_proximity_icon_visibility():
 	if not enabled:
 		$proximity_icon.visible = false
@@ -43,6 +46,7 @@ func update_effect_sprite_visibility():
 func _input(_event):
 	if enabled and in_range and Input.is_action_just_pressed(interact_input_map):
 		emit_signal("invoked")
+		droid1.update_destination(player.position) # On successful order accept, make droid move to player position
 
 func _ready():
 	update_proximity_sprite_offset()

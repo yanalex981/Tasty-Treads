@@ -1,13 +1,14 @@
-[gd_scene load_steps=40 format=3 uid="uid://u6phxioott5c"]
+[gd_scene load_steps=43 format=3 uid="uid://u6phxioott5c"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
-[ext_resource type="Texture2D" uid="uid://c71btndrrdem7" path="res://Assets/chefSpritesheet.png" id="3_mb0vf"]
+[ext_resource type="Texture2D" path="res://Assets/chefSpritesheet.png" id="3_mb0vf"]
 [ext_resource type="PackedScene" uid="uid://c04aat1tfor06" path="res://Scenes/Components/DirectionalMoveController.tscn" id="3_q7l5r"]
 [ext_resource type="PackedScene" uid="uid://dnt1pap5cyrvx" path="res://Scenes/Components/OrderTracker.tscn" id="4_4oyt0"]
 [ext_resource type="PackedScene" path="res://Scenes/Components/OrderSpawner.tscn" id="4_sqh5n"]
 [ext_resource type="PackedScene" uid="uid://diav24bdrxe1m" path="res://Scenes/UI/OrderTrackerDialog.tscn" id="5_3s0ib"]
 [ext_resource type="Resource" uid="uid://c202jsm8sgybc" path="res://Resources/Recipes/cookies.tres" id="5_cluty"]
+[ext_resource type="PackedScene" uid="uid://cv585fpv1pme4" path="res://Scenes/Components/droid.tscn" id="5_kl830"]
 [ext_resource type="Resource" uid="uid://bwnq5okk2taen" path="res://Resources/Recipes/cake.tres" id="6_15k22"]
 [ext_resource type="Texture2D" uid="uid://bxdmjnw83vw6a" path="res://Assets/completed.png" id="6_l2gtt"]
 [ext_resource type="Texture2D" uid="uid://cxa0g1j4n3wwe" path="res://Assets/in_progress.png" id="7_p5an8"]
@@ -170,6 +171,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2q0i"]
 radius = 56.0
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6swry"]
+vertices = PackedVector2Array(341, 460, 188, 473, 194, 260, 464, 248, 1037, 461, 362, 471, 870, 247, 1181, 247, 1190, 657, 177, 651, 178, 616, 1037, 626, 467, 211, 867, 210)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 0, 3, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(7, 8, 11, 4), PackedInt32Array(6, 3, 12, 13)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(194, 260, 464, 248, 467, 211, 867, 210, 870, 247, 1181, 247, 1190, 657, 177, 651, 178, 616, 1037, 626, 1037, 461, 362, 471, 341, 460, 188, 473)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k1a63"]
+vertices = PackedVector2Array(187, 473, 341, 460, 340, 618, 178, 616)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(187, 473, 341, 460, 340, 618, 178, 616)])
+
 [sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
 font_size = 36
 
@@ -240,6 +251,15 @@ metadata/_edit_group_ = true
 
 [node name="zone" type="CollisionShape2D" parent="player/reachable_zone"]
 shape = SubResource("CircleShape2D_c2q0i")
+
+[node name="droid_movable_area" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6swry")
+
+[node name="droid1" parent="droid_movable_area" instance=ExtResource("5_kl830")]
+position = Vector2(350, 400)
+
+[node name="droid_movable_area2" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_k1a63")
 
 [node name="left_counter_boundaries" type="StaticBody2D" parent="."]
 visible = false

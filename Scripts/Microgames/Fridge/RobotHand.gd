@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var _animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 const SPEED := 500
 
 func _physics_process(delta):
@@ -26,4 +26,4 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func grab_item():
-	_animation_player.play("grab_item")
+	animation_player.play("grab_item")

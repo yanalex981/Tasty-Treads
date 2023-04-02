@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://blqp0u4j47ppy"]
+[gd_scene load_steps=9 format=3 uid="uid://djbgdpbrc71n7"]
 
 [ext_resource type="Texture2D" uid="uid://b73n8xad0assf" path="res://Assets/Microgames/decorationsHand.png" id="1_p3xjj"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/DecorationMicrogame.gd" id="1_vo2ua"]
-[ext_resource type="Script" path="res://Scripts/Microgames/DecorationSpawner.gd" id="2_x7fu1"]
+[ext_resource type="Script" path="res://Scripts/Microgames/Decorations/DecorationSpawner.gd" id="2_nh5h6"]
 [ext_resource type="PackedScene" uid="uid://dobv58p7ry18r" path="res://Scenes/Microgames/Decoration.tscn" id="3_2lqhw"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/RobotTray.gd" id="4_nv0if"]
 
@@ -20,7 +20,7 @@ height = 410.628
 script = ExtResource("1_vo2ua")
 
 [node name="DecorationSpawner" type="Node2D" parent="."]
-script = ExtResource("2_x7fu1")
+script = ExtResource("2_nh5h6")
 decor_scene = ExtResource("3_2lqhw")
 
 [node name="ProgressLabel" type="Label" parent="DecorationSpawner"]

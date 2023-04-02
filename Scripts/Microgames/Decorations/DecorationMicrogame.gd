@@ -12,7 +12,7 @@ func _ready():
 	spawner.spawn_all()
 	
 
-func _process(delta):
+func _process(_delta):
 	if spawner.num_caught == MAX_CAUGHT || spawner.num_left == 0:
 		# show that the game has ended
 		end_display.show()

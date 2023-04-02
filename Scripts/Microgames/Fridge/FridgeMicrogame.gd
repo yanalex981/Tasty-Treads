@@ -23,7 +23,7 @@ func _ready():
 #	start(good, bad)
 	pass
 
-func _process(delta):
+func _process(_delta):
 	# check if all the good ingredients are grabbed
 	if num_good_grabbed == total_items:
 		# show the game is done 
@@ -31,6 +31,7 @@ func _process(delta):
 		
 		# evaluate score
 		var penalty = num_bad_grabbed * 0.5
+		@warning_ignore("narrowing_conversion")
 		score = ((num_good_grabbed - penalty) / num_good_grabbed) * 100
 		# print(score)
 		emit_signal("game_ended", score)

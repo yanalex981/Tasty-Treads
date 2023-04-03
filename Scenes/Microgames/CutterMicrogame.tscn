@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf170ixwfsgqe"]
+[gd_scene load_steps=11 format=3 uid="uid://bf170ixwfsgqe"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Cutting/CutterMicrogame.gd" id="1_j6wog"]
 [ext_resource type="Texture2D" uid="uid://r856on8segq7" path="res://Assets/Microgames/cookiePanSpriteSheet.png" id="2_0vcw7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Microgames/Cutting/BeatSpawner.gd" id="4_a0uo5"]
 [ext_resource type="PackedScene" uid="uid://cxh5xwbfxbeut" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
 [ext_resource type="PackedScene" uid="uid://brtd0j1s4tn1u" path="res://Scenes/Microgames/CookieHole.tscn" id="6_tdrc7"]
+[ext_resource type="PackedScene" uid="uid://8p5xws8qqght" path="res://Scenes/Microgames/Cookie.tscn" id="7_b50gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pw6io"]
 radius = 50.0
@@ -91,9 +92,13 @@ shape = SubResource("RectangleShape2D_anhrq")
 script = ExtResource("4_a0uo5")
 beat_scene = ExtResource("5_r8cut")
 hole_scene = ExtResource("6_tdrc7")
+cookie_scene = ExtResource("7_b50gj")
 
 [node name="BeatSpawnLocation" type="Marker2D" parent="TimingBar/BeatSpawner"]
 position = Vector2(235, 175)
+
+[node name="CookieSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1060, 441)
 
 [node name="UI" type="Control" parent="."]
 visible = false

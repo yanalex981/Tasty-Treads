@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://syue8axpggjn"]
+[gd_scene load_steps=8 format=3 uid="uid://syue8axpggjn"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirMicrogame.gd" id="1_noy1s"]
 [ext_resource type="Texture2D" uid="uid://bukumg13wixca" path="res://Assets/Microgames/whiskHand.png" id="2_hga18"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirHand.gd" id="3_lrjjg"]
 [ext_resource type="Texture2D" uid="uid://dx2t8kws0jkob" path="res://Assets/Controls/stir.png" id="4_lcxx0"]
+[ext_resource type="Texture2D" uid="uid://d3afw0hco7ufh" path="res://Assets/Microgames/Minigame UI/mixingBarUnder.png" id="4_qxkb8"]
+[ext_resource type="Texture2D" uid="uid://ba7u43c2cu1e0" path="res://Assets/Microgames/Minigame UI/mixingBarFrame.png" id="5_3quk7"]
+[ext_resource type="Texture2D" uid="uid://uvc51l2x5wl" path="res://Assets/Microgames/Minigame UI/mixingBarProgress.png" id="6_3tsdx"]
 
 [node name="StirMicrogame" type="Node2D"]
 script = ExtResource("1_noy1s")
@@ -15,7 +18,7 @@ texture = ExtResource("2_hga18")
 hframes = 3
 script = ExtResource("3_lrjjg")
 
-[node name="StirProgressBar" type="ProgressBar" parent="StirHand"]
+[node name="StirProgressBar" type="TextureProgressBar" parent="StirHand"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -27,6 +30,9 @@ offset_right = -57.4286
 offset_bottom = 10.7551
 grow_horizontal = 2
 grow_vertical = 0
+texture_under = ExtResource("4_qxkb8")
+texture_over = ExtResource("5_3quk7")
+texture_progress = ExtResource("6_3tsdx")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

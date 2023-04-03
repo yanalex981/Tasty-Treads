@@ -9,10 +9,13 @@ var num_rounds = 0
 var keys_pressed = 0
 var progress_step = 0
 
+var x_adjust = 10
+
 signal completed
 
 func _ready():
-	progress_step = progress_bar.max_value / TOTAL_ROUNDS / SEQUENCE.size()
+	# -20 for smiley face overfill
+	progress_step = (progress_bar.max_value - x_adjust) / TOTAL_ROUNDS / SEQUENCE.size()
 
 func _process(delta):
 	if Input.is_action_just_pressed("up") && sequence_tracker.is_empty():

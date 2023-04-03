@@ -18,6 +18,7 @@ var activeBeats = []
 var spawnPointIndex = 0
 var holeSpawnLocations
 var cookieHeight = 10
+var baseCookieSpawnX
 
 func _ready():
 	# Spawn the first beat
@@ -28,6 +29,9 @@ func _ready():
 	activeBeats.push_back(beat)
 	# Set the hole spawn locations
 	holeSpawnLocations = hole_spawner.get_children()
+	
+	# Store the base x position of the cookie spawner
+	baseCookieSpawnX = cookie_spawnpoint.position.x
 
 func _process(delta):
 	timeSinceSpawn += TIME_INCREASE_VALUE * delta
@@ -64,6 +68,9 @@ func calculate_points():
 			newCookie.global_position = cookie_spawnpoint.position
 			# Move the spawn point for the next cookie
 			cookie_spawnpoint.position.y -= cookieHeight
+			# Offset the cookie spawnpoint x by some random value
+			var xOffset = randi_range(-10, 10)
+			cookie_spawnpoint.position.x = baseCookieSpawnX + xOffset
 		
 		# Remove the front beat from the queue
 		activeBeats.pop_front().delete()

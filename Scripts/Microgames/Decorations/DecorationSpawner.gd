@@ -4,14 +4,14 @@ extends Node2D
 @export var num_decorations: int = 12
 @onready var progress_label = $ProgressLabel
 
-const MAX_GRAVITY = 0.7
-const MIN_GRAVITY = 0.5
+const MAX_GRAVITY = 2
+const MIN_GRAVITY = 0.7
 
 var screen_size: Vector2
 var num_caught = 0
 var num_left = num_decorations
 var lifetime = 2
-var delay = 0.65
+var delay = 0.3
 
 func _ready():
 	screen_size = get_viewport_rect().size 
@@ -28,7 +28,7 @@ func spawn_decor():
 	collision_shape.shape.radius = 25
 	
 	# set spawn position (random)
-	var margin = 100
+	var margin = 150
 	var x_pos = randf_range(margin, screen_size.x - margin)
 	var texture_height = decor.get_child(0).texture.get_height()
 	decor.position = Vector2(x_pos, -texture_height)

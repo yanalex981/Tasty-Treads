@@ -34,15 +34,16 @@ func _process(delta):
 		frame = (frame + 1) % hframes
 		progress_bar.value += progress_step
 	elif Input.is_action_just_pressed("left") && !sequence_tracker.is_empty() && sequence_tracker[keys_pressed-1] == "down":
-		sequence_tracker = []
+		sequence_tracker.append("left")
 		keys_pressed = 4
 		frame = (frame + 1) % hframes
 		progress_bar.value += progress_step
 	
-
-	if keys_pressed != 0 && (keys_pressed % SEQUENCE.size() == 0):
+	# reset key tracking once a round has completed
+	if keys_pressed == 4:
 		num_rounds += 1
 		keys_pressed = 0
+		sequence_tracker = []
 	
 	if num_rounds == TOTAL_ROUNDS:
 		emit_signal("completed")

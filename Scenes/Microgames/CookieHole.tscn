@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://brtd0j1s4tn1u"]
+
+[ext_resource type="Script" path="res://Scripts/Microgames/Cutting/CookieHole.gd" id="1_18om7"]
+[ext_resource type="Texture2D" uid="uid://pdst8wgxpcgg" path="res://Assets/Microgames/cookiePanGoodHole.png" id="1_fn4wo"]
+[ext_resource type="Texture2D" uid="uid://cvypwijxdx5r3" path="res://Assets/Microgames/cookiePanPerfectHole.png" id="2_thfxu"]
+
+[node name="CookieHole" type="Node2D"]
+script = ExtResource("1_18om7")
+
+[node name="GoodSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_fn4wo")
+
+[node name="PerfectSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_thfxu")

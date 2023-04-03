@@ -7,12 +7,14 @@ const TOTAL_ROUNDS = 10
 var sequence_tracker = []
 var num_rounds = 0
 var keys_pressed = 0
+var progress_step = 0
 
 signal completed
 
+func _ready():
+	progress_step = progress_bar.max_value / TOTAL_ROUNDS / SEQUENCE.size()
+
 func _process(delta):
-	var progress_step = progress_bar.max_value / TOTAL_ROUNDS / SEQUENCE.size()
-	
 	if Input.is_action_just_pressed("up") && sequence_tracker.is_empty():
 		sequence_tracker.append("up")
 		keys_pressed = 1

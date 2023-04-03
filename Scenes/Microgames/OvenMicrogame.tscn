@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpfv22do8kf4e" path="res://Assets/Microgames/Minigame UI/ovenBarFrame.png" id="4_45k3y"]
 [ext_resource type="Texture2D" uid="uid://chnslkw126ecb" path="res://Assets/Microgames/Minigame UI/ovenBarProgress.png" id="5_052ct"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Oven/BakeLevelBar.gd" id="6_whq85"]
-[ext_resource type="PackedScene" uid="uid://b40hsr1ha8rgd" path="res://Scenes/Microgames/TimerLabel.tscn" id="8_r8dqy"]
+[ext_resource type="Script" path="res://Scripts/Microgames/TimerLabel.gd" id="8_peoba"]
 
 [node name="OvenMicrogame" type="Node2D"]
 script = ExtResource("1_uo1gh")
@@ -38,7 +38,7 @@ script = ExtResource("6_whq85")
 one_shot = true
 
 [node name="Controls" type="Sprite2D" parent="UI"]
-position = Vector2(176, 184)
+position = Vector2(224, 320)
 scale = Vector2(0.66, 0.66)
 texture = ExtResource("3_qpd2i")
 
@@ -68,8 +68,17 @@ offset_right = 743.0
 offset_bottom = 250.0
 text = "Finished!"
 
-[node name="TimerLabel" parent="UI" instance=ExtResource("8_r8dqy")]
-layout_mode = 0
+[node name="TimerLabel" type="Label" parent="UI"]
+offset_left = 1136.0
+offset_top = 232.0
+offset_right = 1176.0
+offset_bottom = 255.0
+script = ExtResource("8_peoba")
 num_seconds = 8
 
+[node name="GameTimer" type="Timer" parent="UI/TimerLabel"]
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="UI/BakeLevelBar/LullTimer" to="UI/BakeLevelBar" method="_on_lull_timer_timeout"]
+[connection signal="timeout" from="UI/TimerLabel/GameTimer" to="." method="_on_game_timer_timeout"]

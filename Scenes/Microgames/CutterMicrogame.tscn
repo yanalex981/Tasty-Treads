@@ -1,19 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://xrqglik6vxfd"]
+[gd_scene load_steps=9 format=3 uid="uid://bf170ixwfsgqe"]
 
+[ext_resource type="Script" path="res://Scripts/Microgames/Cutting/CutterMicrogame.gd" id="1_j6wog"]
 [ext_resource type="Texture2D" uid="uid://d1jylf2ps2072" path="res://icon.svg" id="1_vhcoq"]
+[ext_resource type="Texture2D" uid="uid://bsnlpogoccg8o" path="res://Assets/Microgames/Minigame UI/timingBar.png" id="2_jpjhd"]
+[ext_resource type="Script" path="res://Scripts/Microgames/Cutting/BeatSpawner.gd" id="4_a0uo5"]
+[ext_resource type="PackedScene" uid="uid://cxh5xwbfxbeut" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pw6io"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73r4e"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anhrq"]
+size = Vector2(462, 97.875)
 
 [node name="CutterMicrogame" type="Node2D"]
+script = ExtResource("1_j6wog")
 
 [node name="DoughTray" type="Sprite2D" parent="."]
 position = Vector2(664, 368)
 scale = Vector2(3.875, 2.4375)
 texture = ExtResource("1_vhcoq")
 
+[node name="TimingBar" type="Sprite2D" parent="."]
+position = Vector2(683, 485.5)
+texture = ExtResource("2_jpjhd")
+
+[node name="PerfectArea" type="Area2D" parent="TimingBar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/PerfectArea"]
+position = Vector2(-5, 175)
+shape = SubResource("CircleShape2D_pw6io")
+
+[node name="GoodArea" type="Area2D" parent="TimingBar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/GoodArea"]
+position = Vector2(-5, 175)
+shape = SubResource("CircleShape2D_73r4e")
+
+[node name="EndOfBar" type="Area2D" parent="TimingBar"]
+position = Vector2(-235, 175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/EndOfBar"]
+position = Vector2(-221, 0)
+shape = SubResource("RectangleShape2D_anhrq")
+
+[node name="BeatSpawner" type="Node2D" parent="TimingBar"]
+script = ExtResource("4_a0uo5")
+beat_scene = ExtResource("5_r8cut")
+
+[node name="BeatSpawnLocation" type="Marker2D" parent="TimingBar/BeatSpawner"]
+position = Vector2(235, 175)
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1366.0
-offset_bottom = 771.0
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 1383.0
+offset_bottom = 785.0
 
 [node name="InstructionsLabel" type="Label" parent="UI"]
 layout_mode = 0

@@ -25,6 +25,7 @@ offset_bottom = 771.0
 metadata/_edit_lock_ = true
 
 [node name="BakeLevelBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
 offset_left = 464.0
 offset_top = 152.0
 offset_right = 976.0
@@ -69,6 +70,7 @@ offset_bottom = 250.0
 text = "Finished!"
 
 [node name="TimerLabel" type="Label" parent="UI"]
+layout_mode = 0
 offset_left = 1136.0
 offset_top = 232.0
 offset_right = 1176.0

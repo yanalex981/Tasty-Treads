@@ -20,7 +20,6 @@ func _process(_delta):
 	# stop game when user hits stop or if the pan overflows
 	if Input.is_action_just_pressed("interact") || pan_player == null:
 		end_display.show()
-		get_tree().paused = true
 		
 		# evaluate: success when fill level is in success range
 		var fill_state = pan.frame 
@@ -29,12 +28,11 @@ func _process(_delta):
 		else:
 			success = false
 		
-		print(success)
-		emit_signal("game_ended", success)
+#		print(success)
 		
-		# close game
+		# signal end
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
+		emit_signal("game_ended", success)
 
 # Note: Should probably move bowl and pan under one node and move these functions there.
 func _on_robot_bowl_pour_started(tilt : float):

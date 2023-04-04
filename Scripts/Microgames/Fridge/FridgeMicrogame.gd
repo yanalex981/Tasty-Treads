@@ -40,7 +40,6 @@ func _process(_delta):
 	if num_good_grabbed == good_items.size():
 		# show the game is done 
 		end_display.show()
-		get_tree().paused = true
 		
 		# evaluate: if a single bad item was grabbed, it is a failure
 		if !bad_grabbed:
@@ -49,12 +48,10 @@ func _process(_delta):
 			success = false
 		
 #		print(success)
-		emit_signal("game_ended", success)
 		
-		# close the game
+		# signal end
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
-		
+		emit_signal("game_ended", success)
 
 # place the given ingredients
 func start(good_ingredients, bad_ingredients):

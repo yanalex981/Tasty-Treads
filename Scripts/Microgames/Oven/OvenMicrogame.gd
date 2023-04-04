@@ -40,7 +40,6 @@ func set_upgraded(status : bool):
 func _on_game_timer_timeout():
 	# show the game ended
 	end_display.show()
-	get_tree().paused = true
 	
 	# evaluate: success when bake level is b/t metric range
 	var b = bake_bar.value
@@ -50,8 +49,7 @@ func _on_game_timer_timeout():
 		success = false
 	
 #	print(success)
-	emit_signal("game_ended", success)
-	
+
 	# close game
 	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	emit_signal("game_ended", success)

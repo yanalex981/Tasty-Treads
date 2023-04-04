@@ -30,3 +30,4 @@ func set_speed(new_speed : int):
 
 func grab_item():
 	animation_player.play("grab_item")
+	print("grabbed")

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dg8qauk2f8q4t" path="res://Assets/Microgames/cakeIcingSpriteSheet.png" id="1_ao7gy"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Icing/IcingMicrogame.gd" id="1_ec2c8"]
 [ext_resource type="Texture2D" uid="uid://dftk7xkasjb6u" path="res://Assets/Controls/smear_icing.png" id="2_y2o8y"]
-[ext_resource type="Texture2D" uid="uid://bukumg13wixca" path="res://Assets/Microgames/whiskHand.png" id="3_2666n"]
+[ext_resource type="Texture2D" uid="uid://en40yonf1i8t" path="res://Assets/Microgames/icingHand.png" id="3_uu278"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Icing/Spatula.gd" id="4_lefvv"]
 
 [sub_resource type="Animation" id="Animation_e1afr"]
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(552, 472), Vector2(368, 480)]
+"values": [Vector2(616, 456), Vector2(432, 456)]
 }
 
 [sub_resource type="Animation" id="Animation_to2xj"]
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(568, 472), Vector2(736, 472)]
+"values": [Vector2(616, 464), Vector2(792, 464)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_18def"]
@@ -70,10 +70,8 @@ hframes = 7
 
 [node name="Spatula" type="Sprite2D" parent="."]
 position = Vector2(368, 480)
-rotation = -1.9625
 scale = Vector2(0.65625, 0.65625)
-texture = ExtResource("3_2666n")
-hframes = 3
+texture = ExtResource("3_uu278")
 script = ExtResource("4_lefvv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spatula"]
@@ -109,7 +107,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.537255, 0.537255, 0.537255, 0.592157)
+color = Color(0, 0, 0, 1)
 
 [node name="FinishedLabel" type="Label" parent="UI/EndUI"]
 layout_mode = 0

@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var animation_player = $AnimationPlayer
 
+signal smoke_gone
+
 func _ready():
 	var idle_mode = randi_range(0,2)
 	if idle_mode == 0:
@@ -18,5 +20,5 @@ func _on_hurtbox_area_entered(area):
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "dissipate":
-		get_tree().root.get_child(0).get_child(0).decrease_active()
+		emit_signal("smoke_gone")
 		queue_free()

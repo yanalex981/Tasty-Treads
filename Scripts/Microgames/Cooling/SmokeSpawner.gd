@@ -17,6 +17,7 @@ func place_smoke(positions):
 		active_smoke += 1
 		# set position
 		smoke.global_position = marker.global_position
+		smoke.smoke_gone.connect(decrease_active)
 		
 
 func decrease_active():

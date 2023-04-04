@@ -24,7 +24,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_upakk"]
 resource_name = "fill_up"
-length = 7.0
+length = 6.5
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -188,7 +188,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.537255, 0.537255, 0.537255, 0.592157)
+color = Color(0, 0, 0, 1)
 
 [node name="FinishedLabel" type="Label" parent="UI/EndUI"]
 layout_mode = 0

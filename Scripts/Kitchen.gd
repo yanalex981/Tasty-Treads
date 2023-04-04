@@ -31,47 +31,71 @@ func _on_order_source_invoked():
 func _on_destination_highlight_invoked():
 	$order_tracker.complete_order()
 
+func _disable_boundaries():
+	$left_counter_boundaries/boundaries.disabled = true
+	$right_counter_boundaries/boundaries.disabled = true
+	$wall_boundaries/boundaries.disabled = true
+
+func _enable_boundaries():
+	$left_counter_boundaries/boundaries.disabled = false
+	$right_counter_boundaries/boundaries.disabled = false
+	$wall_boundaries/boundaries.disabled = false
+
 func _on_fridge_highlight_invoked():
-#	var game = fridge_game.instantiate()
-	
-#	game.game_ended.connect(game_ended)
-#
-#	$microgames.add_child(game)
-#	var good : Array[String] = ['Eggs', "Flour", 'Butter']
-#	var bad : Array[String] = ['FishHead', 'Bottle']
-#	game.start(good, bad)
-##	game.set_upgraded(purchased_upgrades.tuneUpActivated)
-	$order_tracker.next_step()
+	var game = fridge_game.instantiate()
+	game.game_ended.connect(game_ended)
+#	get_tree().paused = true
+#	await get_tree().create_timer(1.0).timeout
+#	get_tree().paused = false
+	$microgames.add_child(game)
+	_disable_boundaries()
+	var good : Array[String] = ['Eggs', "Flour", 'Butter']
+	var bad : Array[String] = ['FishHead', 'Bottle']
+	game.set_upgraded(purchased_upgrades.tuneUpActivated)
+	game.start(good, bad)
 
 func _on_mixing_highlight_invoked():
-#	var game = mixing_game.instantiate()
-#	game.game_ended.connect(game_ended)
-#	$microgames.add_child(game)
-#	game.set_upgraded(purchased_upgrades.whiskActivated)
-	$order_tracker.next_step()
-#	var game = test.instantiate()
-#	$microgames.add_child(game)
+	var game = mixing_game.instantiate()
+	game.game_ended.connect(game_ended)
+	$microgames.add_child(game)
+	_disable_boundaries()
+	game.set_upgraded(purchased_upgrades.whiskActivated)
 
 func _on_batter_highlight_invoked():
 	var game = batter_game.instantiate()
 	game.game_ended.connect(game_ended)
 	$microgames.add_child(game)
-#	$order_tracker.next_step()
+	_disable_boundaries()
 
 func _on_cutting_highlight_invoked():
-	$order_tracker.next_step()
+	var game = cutting_game.instantiate()
+	game.game_ended.connect(game_ended)
+	$microgames.add_child(game)
+	_disable_boundaries()
 
 func _on_icing_highlight_invoked():
-	$order_tracker.next_step()
+	var game = icing_game.instantiate()
+	game.game_ended.connect(game_ended)
+	$microgames.add_child(game)
+	_disable_boundaries()
 
 func _on_sprinkle_highlight_invoked():
-	$order_tracker.next_step()
+	var game = sprinkle_game.instantiate()
+	game.game_ended.connect(game_ended)
+	$microgames.add_child(game)
+	_disable_boundaries()
 
 func _on_oven_highlight_invoked():
-	$order_tracker.next_step()
+	var game = oven_game.instantiate()
+	game.game_ended.connect(game_ended)
+	$microgames.add_child(game)
+	_disable_boundaries()
 
 func _on_cooling_highlight_invoked():
-	$order_tracker.next_step()
+	var game = cooling_game.instantiate()
+	game.game_ended.connect(game_ended)
+	$microgames.add_child(game)
+	_disable_boundaries()
 
 func _on_order_changed(order):
 	$info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui.order = order
@@ -89,5 +113,5 @@ func _update_time_remaining_label():
 func game_ended(results):
 	for node in $microgames.get_children():
 		node.queue_free()
-
-	$order_tracker.next_step
+	_enable_boundaries()
+	$order_tracker.next_step()

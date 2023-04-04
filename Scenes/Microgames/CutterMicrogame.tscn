@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Microgames/Cutting/CutterMicrogame.gd" id="1_j6wog"]
 [ext_resource type="Texture2D" uid="uid://r856on8segq7" path="res://Assets/Microgames/cookiePanSpriteSheet.png" id="2_0vcw7"]
 [ext_resource type="Texture2D" uid="uid://bsnlpogoccg8o" path="res://Assets/Microgames/Minigame UI/timingBar.png" id="2_jpjhd"]
-[ext_resource type="PackedScene" uid="uid://cxh5xwbfxbeut" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
-[ext_resource type="PackedScene" uid="uid://brtd0j1s4tn1u" path="res://Scenes/Microgames/CookieHole.tscn" id="6_tdrc7"]
-[ext_resource type="PackedScene" uid="uid://8p5xws8qqght" path="res://Scenes/Microgames/Cookie.tscn" id="7_b50gj"]
+[ext_resource type="PackedScene" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
+[ext_resource type="PackedScene" path="res://Scenes/Microgames/CookieHole.tscn" id="6_tdrc7"]
+[ext_resource type="PackedScene" path="res://Scenes/Microgames/Cookie.tscn" id="7_b50gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pw6io"]
 radius = 50.0

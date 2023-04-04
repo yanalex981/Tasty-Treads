@@ -25,7 +25,6 @@ func _process(_delta):
 	if spawner.get_num_caught() == number_to_clear || spawner.num_left == 0:
 		# show that the game has ended
 		end_display.show()
-		get_tree().paused = true
 		
 		# evaluate: success if requirement is fulfilled
 		if spawner.get_num_caught() == number_to_clear:
@@ -34,10 +33,9 @@ func _process(_delta):
 			success = false
 		
 #		print(success)
-		emit_signal("game_ended", success)
 		
-		# close game
+		# signal end
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
+		emit_signal("game_ended", success)
 
 

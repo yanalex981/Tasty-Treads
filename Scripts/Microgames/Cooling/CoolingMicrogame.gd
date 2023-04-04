@@ -22,7 +22,6 @@ func set_upgraded(status : bool):
 func _on_game_timer_timeout():
 	# show the game ended
 	end_display.show()
-	get_tree().paused = true
 	
 	var total_smoke :float = spawner.get_children().size() # count number of markers 
 	# evaluate: success when >= 65% smoke is cleared
@@ -31,9 +30,6 @@ func _on_game_timer_timeout():
 	else:
 		success = false
 	
-#	print(success)
-	emit_signal("game_ended", success)
-	
-	# close game
+	# signal end
 	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	emit_signal("game_ended", success)

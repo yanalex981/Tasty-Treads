@@ -233,14 +233,12 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_c2q0i")
 
 [node name="left_counter_boundaries" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="boundaries" type="CollisionPolygon2D" parent="left_counter_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(352, 520, 352, 608, 632, 608, 632, 520)
 
 [node name="right_counter_boundaries" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="boundaries" type="CollisionPolygon2D" parent="right_counter_boundaries"]
 build_mode = 1

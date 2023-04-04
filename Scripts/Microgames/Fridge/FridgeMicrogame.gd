@@ -12,8 +12,8 @@ extends Node2D
 @onready var arm = $RobotHand
 const UP_SPEED : int = 800
 
-var good_items : Array[String] = [] : set = set_good_items
-var bad_items : Array[String] = [] : set = set_bad_items
+var good_items : Array = [] : set = set_good_items
+var bad_items : Array = [] : set = set_bad_items
 
 var num_good_grabbed : int = 0
 var bad_grabbed : bool = false # tracks whether a bad ingredient was grabbed
@@ -26,10 +26,10 @@ func _ready():
 		arm.set_speed(UP_SPEED)
 	
 	# use for testing in-scene
-	if (testing):
-		var good = ['Eggs', "Flour", 'Butter']
-		var bad = ['FishHead', 'Bottle']
-		start(good, bad)
+#	if (testing):
+#		var good = ['Eggs', "Flour", 'Butter']
+#		var bad = ['FishHead', 'Bottle']
+#		start(good, bad)
 	
 
 func set_upgraded(status):
@@ -40,7 +40,6 @@ func _process(_delta):
 	if num_good_grabbed == good_items.size():
 		# show the game is done 
 		end_display.show()
-		get_tree().paused = true
 		
 		# evaluate: if a single bad item was grabbed, it is a failure
 		if !bad_grabbed:
@@ -49,12 +48,10 @@ func _process(_delta):
 			success = false
 		
 #		print(success)
-		emit_signal("game_ended", success)
 		
-		# close the game
+		# signal end
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
-		
+		emit_signal("game_ended", success)
 
 # place the given ingredients
 func start(good_ingredients, bad_ingredients):
@@ -95,3 +92,4 @@ func set_bad():
 
 func set_testing(status : bool):
 	testing = status
+

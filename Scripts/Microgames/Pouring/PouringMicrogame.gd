@@ -7,17 +7,17 @@ extends Node2D
 @onready var end_display = $UI/EndUI
 
 const SUCC_RANGE = [3, 5] # 4 is the perfect fill level
-const BIG_OVERFLOW_FRAME = 7
 
-var anim_started = false
-var anim_speeds = [0.5, 1.5, 3]
-var dough_scales = [0.3, 0.5, 1]
-var tilt_intervals = [-30, -15, 0, 45]
-var success = false
+var anim_started : bool = false
+var anim_speeds : Array[float] = [0.5, 1.5, 3] # speeds for pan filling
+var dough_scales : Array[float] = [0.3, 0.5, 1] # scales for dough width when pouring
+var tilt_intervals : Array[int] = [-30, -15, 0, 45] 
 
+var success : bool = false
 signal game_ended(results)
 
 func _process(_delta):
+	# stop game when user hits stop or if the pan overflows
 	if Input.is_action_just_pressed("interact") || pan_player == null:
 		end_display.show()
 		get_tree().paused = true
@@ -36,13 +36,15 @@ func _process(_delta):
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
-func _on_robot_bowl_pour_started(tilt):
+# Note: Should probably move bowl and pan under one node and move these functions there.
+func _on_robot_bowl_pour_started(tilt : float):
+	# instance check
 	if (pan_player == null):
 		return
 	
-	# adjust speed (or amount filled) depending on the angle
+	# adjust amount poured depending on the angle
 	if !anim_started:
-		#begin filling
+		# begin filling
 		anim_started = true
 		pan_player.play("fill_up")
 	elif tilt > tilt_intervals[0] && tilt < tilt_intervals[1]:
@@ -57,6 +59,7 @@ func _on_robot_bowl_pour_started(tilt):
 		pan_player.play()
 		pan_player.speed_scale = anim_speeds[2]
 		dough_player.play("pour_fast")
+
 
 func _on_robot_bowl_pour_stopped():
 	# stop the fill

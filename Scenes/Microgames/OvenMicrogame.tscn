@@ -16,6 +16,8 @@ script = ExtResource("1_uo1gh")
 position = Vector2(728, 464)
 texture = ExtResource("2_my1uw")
 
+[node name="Pan" type="Sprite2D" parent="Oven"]
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0

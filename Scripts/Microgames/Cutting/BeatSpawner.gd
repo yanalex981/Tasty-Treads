@@ -25,6 +25,8 @@ var baseCookieSpawnX
 var score = 0
 var upgradeEnabled = false
 
+signal game_ended(score)
+
 func _ready():
 	# Spawn the first beat
 	var beat = beat_scene.instantiate()
@@ -49,7 +51,10 @@ func _process(delta):
 		activeBeats.push_back(beat)
 	
 	elif totalBeatsSpawned == numBeats and activeBeats.size() == 0:
-		pass # Replace with code for closing
+		emit_signal("game_ended", score)
+		
+		# Close the game
+		queue_free()
 	
 	elif totalBeatsSpawned > numBeats:
 		# If there are ever more beats than cookies to cut, remove excess beats

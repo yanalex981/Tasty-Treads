@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://di88svpv7m2l0"]
+
+[ext_resource type="PackedScene" uid="uid://cybi17smgimsh" path="res://Scenes/Components/Agent.tscn" id="1_x0ca7"]
+[ext_resource type="Texture2D" uid="uid://c71btndrrdem7" path="res://Assets/chefSpritesheet.png" id="2_4w4s0"]
+[ext_resource type="PackedScene" uid="uid://c04aat1tfor06" path="res://Scenes/Components/DirectionalMoveController.tscn" id="3_fsd7g"]
+[ext_resource type="PackedScene" uid="uid://clfquop0wtig3" path="res://Scenes/Components/DirectionDataConnector.tscn" id="4_j62mn"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_swccq"]
+
+[node name="Agent" instance=ExtResource("1_x0ca7")]
+
+[node name="sprite" parent="." index="2"]
+texture = ExtResource("2_4w4s0")
+
+[node name="tree" parent="." index="4"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_swccq")
+
+[node name="DirectionalMoveController" parent="." index="5" instance=ExtResource("3_fsd7g")]
+
+[node name="DirectionConnector" parent="." index="6" node_paths=PackedStringArray("source", "destination") instance=ExtResource("4_j62mn")]
+source = NodePath("../DirectionalMoveController")
+destination = NodePath("../tree")

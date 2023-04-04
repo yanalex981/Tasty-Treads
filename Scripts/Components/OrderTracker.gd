@@ -2,7 +2,7 @@ class_name OrderTracker
 extends Node
 
 signal order_changed(order : Recipe)
-signal order_completed
+signal order_completed(earnings)
 signal progress_changed(progress : int)
 
 @export var order_source : Interactable
@@ -106,8 +106,9 @@ func next_location() -> Area2D:
 	return null
 
 func complete_order():
+	var price = current_order.price
 	current_order = null
-	emit_signal("order_completed")
+	emit_signal("order_completed", price)
 
 func _get_configuration_warnings():
 	return []

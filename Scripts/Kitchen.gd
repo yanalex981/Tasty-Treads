@@ -1,7 +1,9 @@
 class_name Kitchen
 extends Node2D
 
-signal day_is_over
+signal day_is_over(purchased_upgrades, earnings)
+
+var rng = RandomNumberGenerator.new()
 
 var earnings : int = 0:
 	set(value):
@@ -33,6 +35,7 @@ var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tsc
 @onready var order_tracker_ui : OrderTrackerDialog = $info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui
 @onready var earnings_label : Label = $info_ui/VBoxContainer/panel/padding/earnings_label
 @onready var player_spawn : Marker2D = $kitchen/player_spawn
+@onready var player : Player = $kitchen/player
 
 func _ready():
 	var seconds_remaining = ceil(round_timer.time_left)
@@ -76,16 +79,36 @@ func _on_progress_changed(progress):
 	order_tracker_ui.progress = progress
 
 func _on_round_timer_timeout():
-	emit_signal("day_is_over", purchased_upgrades)
+	emit_signal("day_is_over", purchased_upgrades, earnings)
 
 func _update_time_remaining_label():
 	var seconds_remaining = ceil(round_timer.time_left)
-	time_label.text = "Time Remaining: %s" % seconds_remaining
+	time_label.text = "Time Remaining: %ss" % seconds_remaining
 
-# collect from the droids
-func _on_order_completed():
+func _on_order_completed(earnings):
+	_update_earnings()
+
+func _on_player_order_changed(order):
+	if order == null:
+		return
+	
+	print(order.price)
+	var tips = rng.randi_range(1200, 2000)
+	player.tips = tips
+	print(tips)
+
+func _on_player_order_completed(earnings):
+	player.earnings += int(earnings)
+	player.earnings += player.tips
+	player.tips = 0
+
+	_update_earnings()
+
+func _update_earnings():
+	var sum = 0
 	for node in player_spawn.get_children():
 		if node is Droid:
-			var droid = node as Droid
-			earnings += droid.earnings
-			droid.earnings = 0
+			sum += node.earnings
+
+	sum += player.earnings
+	earnings = sum

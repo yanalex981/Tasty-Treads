@@ -31,14 +31,14 @@ border_width_right = 1
 border_width_bottom = 1
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1ooa3"]
-vertices = PackedVector2Array(64, 336, 64, 224, 440, 224, 160, 336, 440, 192, 888, 192, 888, 224, 1208, 224, 1208, 672, 1016, 480, 1016, 672, 344, 480, 160, 672, 344, 672)
+vertices = PackedVector2Array(64, 336, 64, 224, 440, 224, 160, 336, 440, 192, 888, 192, 888, 224, 1208, 224, 1208, 672, 1064, 480, 1064, 672, 296, 480, 160, 672, 296, 672)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(8, 10, 9), PackedInt32Array(2, 6, 9, 11, 3), PackedInt32Array(12, 3, 11, 13)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(64, 336, 160, 336, 160, 672, 344, 672, 344, 480, 1016, 480, 1016, 672, 1208, 672, 1208, 224, 888, 224, 888, 192, 440, 192, 440, 224, 64, 224)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(64, 336, 160, 336, 160, 672, 296, 672, 296, 480, 1064, 480, 1064, 672, 1208, 672, 1208, 224, 888, 224, 888, 192, 440, 192, 440, 224, 64, 224)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tc0wt"]
-vertices = PackedVector2Array(1016, 672, 344, 672, 344, 608, 632, 608, 632, 480, 736, 480, 736, 608, 1016, 608)
+vertices = PackedVector2Array(1064, 672, 296, 672, 296, 608, 640, 608, 640, 480, 736, 480, 736, 608, 1064, 608)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(0, 3, 6), PackedInt32Array(0, 6, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(344, 672, 344, 608, 632, 608, 632, 480, 736, 480, 736, 608, 1016, 608, 1016, 672)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(296, 672, 296, 608, 640, 608, 640, 480, 736, 480, 736, 608, 1064, 608, 1064, 672)])
 
 [node name="kitchen_main" type="Node2D"]
 texture_filter = 1
@@ -122,10 +122,11 @@ incomplete_icon = ExtResource("8_vvdjn")
 
 [node name="player_spawn" type="Marker2D" parent="kitchen"]
 
-[node name="Droid" parent="kitchen/player_spawn" node_paths=PackedStringArray("target_position") instance=ExtResource("7_x5gre")]
+[node name="Droid" parent="kitchen/player_spawn" node_paths=PackedStringArray("order_tracker", "order_spawner") instance=ExtResource("7_x5gre")]
 position = Vector2(800, 360)
 motion_mode = 0
-target_position = NodePath("../../fridge_highlight")
+order_tracker = NodePath("../../droid1_order_tracker2")
+order_spawner = NodePath("../../order_spawner")
 
 [node name="wall_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
@@ -172,6 +173,7 @@ batter_station = NodePath("../batter_highlight")
 icing_station = NodePath("../icing_highlight")
 sprinkling_station = NodePath("../sprinkle_highlight")
 oven = NodePath("../oven_highlight")
+invisible = true
 
 [node name="droid2_order_tracker3" parent="kitchen" node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
 order_source = NodePath("../source_highlight")
@@ -184,6 +186,7 @@ batter_station = NodePath("../batter_highlight")
 icing_station = NodePath("../icing_highlight")
 sprinkling_station = NodePath("../sprinkle_highlight")
 oven = NodePath("../oven_highlight")
+invisible = true
 
 [node name="order_spawner" parent="kitchen" instance=ExtResource("4_sqh5n")]
 spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cluty"), ExtResource("6_15k22"), ExtResource("7_rj4d4")])
@@ -262,11 +265,9 @@ position = Vector2(544, 416)
 motion_mode = 0
 
 [node name="floor_space" type="NavigationRegion2D" parent="kitchen"]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_1ooa3")
 
 [node name="floor_space2" type="NavigationRegion2D" parent="kitchen"]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_tc0wt")
 
 [node name="microgames" type="CanvasLayer" parent="."]
@@ -276,10 +277,6 @@ layer = 2
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
 [connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_order_changed"]
 [connection signal="progress_changed" from="kitchen/player_order_tracker" to="." method="_on_progress_changed"]
-[connection signal="order_changed" from="kitchen/droid1_order_tracker2" to="." method="_on_order_changed"]
-[connection signal="progress_changed" from="kitchen/droid1_order_tracker2" to="." method="_on_progress_changed"]
-[connection signal="order_changed" from="kitchen/droid2_order_tracker3" to="." method="_on_order_changed"]
-[connection signal="progress_changed" from="kitchen/droid2_order_tracker3" to="." method="_on_progress_changed"]
 [connection signal="invoked" from="kitchen/fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
 [connection signal="invoked" from="kitchen/mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
 [connection signal="invoked" from="kitchen/batter_highlight" to="." method="_on_batter_highlight_invoked"]

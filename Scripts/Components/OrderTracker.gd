@@ -16,6 +16,8 @@ signal progress_changed(progress : int)
 @export var sprinkling_station : Interactable
 @export var oven : Interactable
 
+@export var invisible : bool = false
+
 @onready var highlights = [order_source, order_destination, fridge, mixing_bowl, cutting_station, cooling_station, batter_station, icing_station, sprinkling_station, oven]
 
 @onready var current_order : Recipe:
@@ -37,6 +39,9 @@ func _ready():
 	_update_highlight_visibility()
 
 func _update_highlight_visibility():
+	if invisible:
+		return
+
 	if current_order == null:
 		for item in highlights:
 			item.enabled = false
@@ -73,30 +78,32 @@ func next_step():
 
 	progress += 1
 
-func next_location() -> Vector2:
+func next_location() -> Area2D:
 	if current_order == null:
-		return order_source.position
+		return order_source
+
+	if progress >= current_order.recipe_steps.size():
+		return order_destination
 
 	var step = current_order.recipe_steps[progress]
 	match step:
 		Recipe.TaskType.GET_INGREDIENTS:
-			return fridge.position
+			return fridge
 		Recipe.TaskType.MIX:
-			return mixing_bowl.position
+			return mixing_bowl
 		Recipe.TaskType.POUR:
-			return batter_station.position
+			return batter_station
 		Recipe.TaskType.CUT_COOKIES:
-			return cutting_station.position
+			return cutting_station
 		Recipe.TaskType.BAKE:
-			return oven.position
+			return oven
 		Recipe.TaskType.COOL:
-			return cooling_station.position
+			return cooling_station
 		Recipe.TaskType.SMEAR_ICING:
-			return icing_station.position
+			return icing_station
 		Recipe.TaskType.ADD_SPRINKLES:
-			return sprinkling_station.position
-	
-	return Vector2.ZERO
+			return sprinkling_station
+	return null
 
 func complete_order():
 	current_order = null

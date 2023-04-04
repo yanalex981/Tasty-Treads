@@ -13,15 +13,24 @@ var total_spawn_weighting : int:
 			weighting += recipe.spawn_weighting
 		return weighting
 
-var next_order : Recipe:
-	get:
-		var n = rng.randi_range(0, total_spawn_weighting - 1)
-		for recipe in spawnable_orders:
-			if n >= recipe.spawn_weighting:
-				n -= recipe.spawn_weighting
-			else:
-				return recipe
-		return spawnable_orders.back()
+func spawn_order():
+	var n = rng.randi_range(0, total_spawn_weighting - 1)
+	for recipe in spawnable_orders:
+		if n >= recipe.spawn_weighting:
+			n -= recipe.spawn_weighting
+		else:
+			return recipe
+	return spawnable_orders.back()
+
+#var next_order : Recipe:
+#	get:
+#		var n = rng.randi_range(0, total_spawn_weighting - 1)
+#		for recipe in spawnable_orders:
+#			if n >= recipe.spawn_weighting:
+#				n -= recipe.spawn_weighting
+#			else:
+#				return recipe
+#		return spawnable_orders.back()
 
 func _get_configuration_warnings():
 	if spawnable_orders.size() == 0:

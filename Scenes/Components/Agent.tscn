@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cybi17smgimsh"]
+[gd_scene load_steps=30 format=3 uid="uid://cybi17smgimsh"]
 
+[ext_resource type="Texture2D" uid="uid://bhf8on2bbi74a" path="res://Assets/sousChefSpritesheet.png" id="1_pwdx0"]
 [ext_resource type="Script" path="res://Scripts/Components/AgentAnim.gd" id="2_51dnd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qapmb"]
-size = Vector2(128, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ianli"]
+radius = 20.0
+height = 112.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0jou"]
 radius = 64.0
@@ -239,10 +241,12 @@ collision_layer = 2
 motion_mode = 1
 
 [node name="boundaries" type="CollisionShape2D" parent="."]
-position = Vector2(0, 40)
-shape = SubResource("RectangleShape2D_qapmb")
+position = Vector2(0, -20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ianli")
 
 [node name="reachable_zone" type="Area2D" parent="."]
+position = Vector2(0, -60)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_group_ = true
@@ -252,6 +256,8 @@ shape = SubResource("CircleShape2D_i0jou")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -64)
+texture = ExtResource("1_pwdx0")
 hframes = 4
 vframes = 4
 

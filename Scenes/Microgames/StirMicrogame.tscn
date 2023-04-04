@@ -1,31 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://syue8axpggjn"]
+[gd_scene load_steps=9 format=3 uid="uid://syue8axpggjn"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirMicrogame.gd" id="1_noy1s"]
+[ext_resource type="Texture2D" uid="uid://c7sg7w01jeyky" path="res://Assets/Microgames/bowlMixing.png" id="2_e6d6i"]
 [ext_resource type="Texture2D" uid="uid://bukumg13wixca" path="res://Assets/Microgames/whiskHand.png" id="2_hga18"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirHand.gd" id="3_lrjjg"]
+[ext_resource type="Texture2D" uid="uid://dx2t8kws0jkob" path="res://Assets/Controls/stir.png" id="4_lcxx0"]
+[ext_resource type="Texture2D" uid="uid://d3afw0hco7ufh" path="res://Assets/Microgames/Minigame UI/mixingBarUnder.png" id="4_qxkb8"]
+[ext_resource type="Texture2D" uid="uid://ba7u43c2cu1e0" path="res://Assets/Microgames/Minigame UI/mixingBarFrame.png" id="5_3quk7"]
+[ext_resource type="Texture2D" uid="uid://uvc51l2x5wl" path="res://Assets/Microgames/Minigame UI/mixingBarProgress.png" id="6_3tsdx"]
 
 [node name="StirMicrogame" type="Node2D"]
 script = ExtResource("1_noy1s")
+upgraded = true
+
+[node name="Bowl" type="Sprite2D" parent="."]
+position = Vector2(688, 424)
+scale = Vector2(1.15625, 1.10938)
+texture = ExtResource("2_e6d6i")
 
 [node name="StirHand" type="Sprite2D" parent="."]
-position = Vector2(696, 256)
+position = Vector2(704, 240)
 scale = Vector2(0.765625, 0.765625)
 texture = ExtResource("2_hga18")
 hframes = 3
 script = ExtResource("3_lrjjg")
 
-[node name="StirProgressBar" type="ProgressBar" parent="StirHand"]
+[node name="StirProgressBar" type="TextureProgressBar" parent="StirHand"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -475.429
-offset_top = -52.2448
-offset_right = -57.4286
-offset_bottom = 10.7551
+offset_left = -517.224
+offset_top = -52.2449
+offset_right = -35.2244
+offset_bottom = 89.7551
 grow_horizontal = 2
 grow_vertical = 0
+texture_under = ExtResource("4_qxkb8")
+texture_over = ExtResource("5_3quk7")
+texture_progress = ExtResource("6_3tsdx")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -33,15 +47,10 @@ anchors_preset = 0
 offset_right = 1366.0
 offset_bottom = 771.0
 
-[node name="InstructionsLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 224.0
-offset_right = 320.0
-offset_bottom = 302.0
-text = "Press WASD or arrows keys in a clock-wise order to stir.
-
-Keep stirring until the meter fills up!"
+[node name="Controls" type="Sprite2D" parent="UI"]
+position = Vector2(1128, 392)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("4_lcxx0")
 
 [node name="EndUI" type="Control" parent="UI"]
 visible = false

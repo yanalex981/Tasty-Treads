@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5s6ytudng33f"
-path="res://.godot/imported/fridge.png-1edc93eca3f4aa379ac52693a7a3f5db.ctex"
+uid="uid://bpfv22do8kf4e"
+path="res://.godot/imported/ovenBarFrame.png-f4b7a3b99585c331f49ed812f80851a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fridge.png"
-dest_files=["res://.godot/imported/fridge.png-1edc93eca3f4aa379ac52693a7a3f5db.ctex"]
+source_file="res://Assets/Microgames/Minigame UI/ovenBarFrame.png"
+dest_files=["res://.godot/imported/ovenBarFrame.png-f4b7a3b99585c331f49ed812f80851a8.ctex"]
 
 [params]
 

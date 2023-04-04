@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var smoke_scene: PackedScene
-var active_smoke = 0
+var active_smoke : int = 0
 
 func _ready():
 	var smoke_positions = get_children()

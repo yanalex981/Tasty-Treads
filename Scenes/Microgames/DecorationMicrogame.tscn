@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://djbgdpbrc71n7"]
+[gd_scene load_steps=10 format=3 uid="uid://djbgdpbrc71n7"]
 
 [ext_resource type="Texture2D" uid="uid://b73n8xad0assf" path="res://Assets/Microgames/decorationsHand.png" id="1_p3xjj"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/DecorationMicrogame.gd" id="1_vo2ua"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/DecorationSpawner.gd" id="2_nh5h6"]
 [ext_resource type="PackedScene" uid="uid://dobv58p7ry18r" path="res://Scenes/Microgames/Decoration.tscn" id="3_2lqhw"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/RobotTray.gd" id="4_nv0if"]
+[ext_resource type="Texture2D" uid="uid://bcv26d4pgyb82" path="res://Assets/Controls/catch_sprinkles.png" id="6_oo4uf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wg74"]
 size = Vector2(34, 430.511)
@@ -14,27 +15,28 @@ size = Vector2(34, 432.013)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnx5k"]
 radius = 67.915
-height = 410.628
+height = 327.657
 
 [node name="DecorationMicrogame" type="Node2D"]
 script = ExtResource("1_vo2ua")
+upgraded = false
 
 [node name="DecorationSpawner" type="Node2D" parent="."]
 script = ExtResource("2_nh5h6")
 decor_scene = ExtResource("3_2lqhw")
 
 [node name="ProgressLabel" type="Label" parent="DecorationSpawner"]
-offset_left = 1152.0
-offset_top = 368.0
-offset_right = 1328.0
-offset_bottom = 446.0
+offset_left = 1136.0
+offset_top = 320.0
+offset_right = 1312.0
+offset_bottom = 398.0
 text = "0"
 
 [node name="BoundingBox" type="StaticBody2D" parent="."]
 position = Vector2(696, 320)
 
 [node name="LeftBound" type="CollisionShape2D" parent="BoundingBox"]
-position = Vector2(-681, 64)
+position = Vector2(-656, 64)
 scale = Vector2(1, 1.8)
 shape = SubResource("RectangleShape2D_7wg74")
 
@@ -44,7 +46,7 @@ scale = Vector2(37.94, -0.0960279)
 shape = SubResource("RectangleShape2D_7wg74")
 
 [node name="RightBound" type="CollisionShape2D" parent="BoundingBox"]
-position = Vector2(649, 64)
+position = Vector2(616, 64)
 scale = Vector2(1, 1.74494)
 shape = SubResource("RectangleShape2D_ycljp")
 
@@ -76,24 +78,20 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1366.0
 offset_bottom = 771.0
+metadata/_edit_lock_ = true
 
-[node name="InstructionsLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 224.0
-offset_right = 320.0
-offset_bottom = 302.0
-text = "Use A/D or left/right arrows keys to move.
-
-Catch the sprinkles!"
+[node name="Controls" type="Sprite2D" parent="UI"]
+position = Vector2(232, 336)
+scale = Vector2(0.485714, 0.485714)
+texture = ExtResource("6_oo4uf")
 
 [node name="NecessaryLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 1040.0
-offset_top = 368.0
-offset_right = 1256.0
-offset_bottom = 446.0
-text = "Decorations:        /  8"
+offset_left = 1048.0
+offset_top = 320.0
+offset_right = 1264.0
+offset_bottom = 398.0
+text = "Sprinkles:        /  8"
 
 [node name="EndUI" type="Control" parent="UI"]
 visible = false

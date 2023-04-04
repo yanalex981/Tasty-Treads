@@ -3,7 +3,7 @@ extends Node2D
 @onready var end_display = $UI/EndUI
 @onready var cake = $Cake
 
-var score = 0
+var success = false
 
 signal game_ended(results)
 
@@ -12,10 +12,10 @@ func _on_spatula_completed():
 	end_display.show()
 	get_tree().paused = true
 	
-	# evaluate score
-	score = 100
-	# print(score)
-	emit_signal("game_ended", score)
+	# evaluate: success once completed
+	success = true
+	# print(success)
+	emit_signal("game_ended", success)
 
 	# close the game
 	await get_tree().create_timer(1.0).timeout

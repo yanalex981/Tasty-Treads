@@ -17,12 +17,12 @@ size = Vector2(34, 430.511)
 size = Vector2(34, 432.013)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmu33"]
-radius = 55.0641
-height = 246.017
+radius = 35.7676
+height = 200.463
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ygq4"]
 radius = 24.4137
-height = 64.6364
+height = 142.563
 
 [sub_resource type="Animation" id="Animation_ds5xq"]
 length = 0.001
@@ -66,141 +66,132 @@ _data = {
 script = ExtResource("1_6n2qk")
 
 [node name="SmokeSpawner" type="Node2D" parent="."]
-position = Vector2(696, 320)
+position = Vector2(696, 368)
 script = ExtResource("4_1e7x7")
 smoke_scene = ExtResource("2_88mte")
 
 [node name="Marker2D" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-224, -96)
+position = Vector2(-278, -150)
 
 [node name="Marker2D2" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(32, -96)
+position = Vector2(34, -150)
 
 [node name="Marker2D3" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(200, -96)
-
-[node name="Marker2D5" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-72, 8)
+position = Vector2(258, -150)
 
 [node name="Marker2D6" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-160, -96)
+position = Vector2(-206, -150)
 
 [node name="Marker2D7" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-96, -96)
+position = Vector2(-126, -150)
 
 [node name="Marker2D8" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(88, -96)
+position = Vector2(106, -150)
 
 [node name="Marker2D10" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-32, -96)
+position = Vector2(-46, -150)
 
 [node name="Marker2D11" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(144, -96)
+position = Vector2(178, -150)
 
 [node name="Marker2D4" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-222, -46)
+position = Vector2(-278, -78)
 
 [node name="Marker2D9" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(34, -46)
+position = Vector2(34, -78)
 
 [node name="Marker2D12" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(202, -46)
-
-[node name="Marker2D13" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-70, 58)
+position = Vector2(258, -78)
 
 [node name="Marker2D14" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-158, -46)
+position = Vector2(-206, -78)
 
 [node name="Marker2D15" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-94, -46)
+position = Vector2(-126, -78)
 
 [node name="Marker2D16" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(90, -46)
+position = Vector2(106, -78)
 
 [node name="Marker2D17" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-30, -46)
+position = Vector2(-46, -78)
 
 [node name="Marker2D18" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(146, -46)
+position = Vector2(178, -78)
 
 [node name="Marker2D19" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-222, 10)
+position = Vector2(-278, 10)
 
 [node name="Marker2D20" type="Marker2D" parent="SmokeSpawner"]
 position = Vector2(34, 10)
 
 [node name="Marker2D21" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(202, 10)
-
-[node name="Marker2D22" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-70, 114)
+position = Vector2(258, 10)
 
 [node name="Marker2D23" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-158, 10)
+position = Vector2(-206, 10)
 
 [node name="Marker2D24" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-94, 10)
+position = Vector2(-126, 10)
 
 [node name="Marker2D25" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(90, 10)
+position = Vector2(106, 10)
 
 [node name="Marker2D26" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-30, 10)
+position = Vector2(-46, 10)
 
 [node name="Marker2D27" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(146, 10)
+position = Vector2(178, 10)
 
 [node name="Marker2D28" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-222, 66)
+position = Vector2(-278, 98)
 
 [node name="Marker2D29" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(34, 66)
+position = Vector2(34, 98)
 
 [node name="Marker2D30" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(202, 66)
+position = Vector2(258, 98)
 
 [node name="Marker2D31" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-158, 66)
+position = Vector2(-206, 98)
 
 [node name="Marker2D32" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-94, 66)
+position = Vector2(-126, 98)
 
 [node name="Marker2D33" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(90, 66)
+position = Vector2(106, 98)
 
 [node name="Marker2D34" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-30, 66)
+position = Vector2(-46, 98)
 
 [node name="Marker2D35" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(146, 66)
+position = Vector2(178, 98)
 
 [node name="Marker2D36" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-222, 124)
+position = Vector2(-278, 178)
 
 [node name="Marker2D37" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(34, 124)
+position = Vector2(34, 178)
 
 [node name="Marker2D38" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(202, 124)
+position = Vector2(258, 178)
 
 [node name="Marker2D39" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-158, 124)
+position = Vector2(-206, 178)
 
 [node name="Marker2D40" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-94, 124)
+position = Vector2(-126, 178)
 
 [node name="Marker2D41" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(90, 124)
+position = Vector2(106, 178)
 
 [node name="Marker2D42" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(-30, 124)
+position = Vector2(-46, 178)
 
 [node name="Marker2D43" type="Marker2D" parent="SmokeSpawner"]
-position = Vector2(146, 124)
+position = Vector2(178, 178)
 
 [node name="BoundingBox" type="StaticBody2D" parent="."]
-position = Vector2(696, 320)
+position = Vector2(696, 368)
 
 [node name="LeftBound" type="CollisionShape2D" parent="BoundingBox"]
 position = Vector2(-681, 64)
@@ -223,12 +214,13 @@ scale = Vector2(1, 1.74494)
 shape = SubResource("RectangleShape2D_5cn5b")
 
 [node name="Tray" type="Sprite2D" parent="."]
-position = Vector2(680, 336)
-scale = Vector2(3.9375, 2.3125)
+position = Vector2(688, 378)
+scale = Vector2(5.16174, 3.44531)
 texture = ExtResource("1_1gkcl")
+metadata/_edit_lock_ = true
 
 [node name="RobotFan" type="CharacterBody2D" parent="."]
-position = Vector2(296, 600)
+position = Vector2(168, 600)
 collision_mask = 5
 script = ExtResource("2_c2hrm")
 
@@ -238,8 +230,8 @@ scale = Vector2(0.765625, 0.765625)
 texture = ExtResource("6_nimdp")
 
 [node name="ArmCollision" type="CollisionShape2D" parent="RobotFan"]
-position = Vector2(-56, 56)
-rotation = 0.486675
+position = Vector2(-48, 64)
+rotation = 0.523598
 shape = SubResource("CapsuleShape2D_bmu33")
 
 [node name="Hitbox" type="Area2D" parent="RobotFan"]
@@ -249,13 +241,14 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RobotFan/Hitbox"]
-position = Vector2(48.4795, -123.166)
+position = Vector2(40.4687, -86.31)
 rotation = 0.38455
 scale = Vector2(1.46087, 0.798213)
 shape = SubResource("CapsuleShape2D_6ygq4")
 debug_color = Color(0.811765, 0.266667, 0.196078, 0.419608)
 
 [node name="AirEffect" type="Sprite2D" parent="RobotFan/Hitbox"]
+self_modulate = Color(1, 1, 1, 0.396078)
 position = Vector2(30.9536, -61.4779)
 rotation = 0.449852
 scale = Vector2(1.53829, 1.66843)
@@ -277,7 +270,7 @@ offset_bottom = 771.0
 metadata/_edit_lock_ = true
 
 [node name="Controls" type="Sprite2D" parent="UI"]
-position = Vector2(1136, 488)
+position = Vector2(1184, 392)
 scale = Vector2(0.591429, 0.591429)
 texture = ExtResource("8_lhkql")
 
@@ -314,7 +307,6 @@ offset_top = 232.0
 offset_right = 1136.0
 offset_bottom = 255.0
 script = ExtResource("7_f68go")
-num_seconds = 5
 
 [node name="GameTimer" type="Timer" parent="UI/TimerLabel"]
 one_shot = true

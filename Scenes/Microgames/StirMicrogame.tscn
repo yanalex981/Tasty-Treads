@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://syue8axpggjn"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirMicrogame.gd" id="1_noy1s"]
-[ext_resource type="Texture2D" uid="uid://c7sg7w01jeyky" path="res://Assets/Microgames/bowlMixing.png" id="2_e6d6i"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/bowlMixing.png" id="2_e6d6i"]
 [ext_resource type="Texture2D" uid="uid://bukumg13wixca" path="res://Assets/Microgames/whiskHand.png" id="2_hga18"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Stir/StirHand.gd" id="3_lrjjg"]
 [ext_resource type="Texture2D" uid="uid://dx2t8kws0jkob" path="res://Assets/Controls/stir.png" id="4_lcxx0"]

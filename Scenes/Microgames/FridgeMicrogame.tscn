@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://djkq04k1wo633"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Fridge/FridgeMicrogame.gd" id="1_j84xc"]
-[ext_resource type="Texture2D" uid="uid://b5s6ytudng33f" path="res://Assets/Microgames/fridge.png" id="1_u20vr"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/fridge.png" id="1_u20vr"]
 [ext_resource type="Texture2D" uid="uid://nriry6oa8w2g" path="res://Assets/Microgames/fridgeHand.png" id="2_qaa2h"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Fridge/GoodItem.gd" id="4_psq78"]
 [ext_resource type="Texture2D" uid="uid://cdl6ehb3ya5pr" path="res://Assets/Microgames/goodThings.png" id="5_3avgb"]

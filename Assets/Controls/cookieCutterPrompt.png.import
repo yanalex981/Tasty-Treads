@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmh050nyspgwt"
-path="res://.godot/imported/bowlPourPrompt.png-9b6e9f9cd2e2378f71a8e2b052562a91.ctex"
+uid="uid://c0j8j0loo4c7f"
+path="res://.godot/imported/cookieCutterPrompt.png-455f3e3d1baa08fe6cd04a1a69693686.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Controls/bowlPourPrompt.png"
-dest_files=["res://.godot/imported/bowlPourPrompt.png-9b6e9f9cd2e2378f71a8e2b052562a91.ctex"]
+source_file="res://Assets/Controls/cookieCutterPrompt.png"
+dest_files=["res://.godot/imported/cookieCutterPrompt.png-455f3e3d1baa08fe6cd04a1a69693686.ctex"]
 
 [params]
 

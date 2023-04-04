@@ -26,10 +26,10 @@ func _ready():
 		arm.set_speed(UP_SPEED)
 	
 	# use for testing in-scene
-	if (testing):
-		var good = ['Eggs', "Flour", 'Butter']
-		var bad = ['FishHead', 'Bottle']
-		start(good, bad)
+#	if (testing):
+#		var good = ['Eggs', "Flour", 'Butter']
+#		var bad = ['FishHead', 'Bottle']
+#		start(good, bad)
 	
 
 func set_upgraded(status):

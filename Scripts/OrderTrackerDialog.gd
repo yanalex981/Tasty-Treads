@@ -1,3 +1,4 @@
+class_name OrderTrackerDialog
 extends VBoxContainer
 
 @export var completed_icon : Texture:

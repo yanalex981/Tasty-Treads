@@ -110,31 +110,33 @@ incomplete_icon = ExtResource("8_vvdjn")
 [node name="microgames" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="player_spawn" type="Marker2D" parent="."]
+[node name="kitchen" type="CanvasLayer" parent="."]
 
-[node name="wall_boundaries" type="StaticBody2D" parent="."]
+[node name="player_spawn" type="Marker2D" parent="kitchen"]
+
+[node name="wall_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
 collision_mask = 0
 
-[node name="boundaries" type="CollisionPolygon2D" parent="wall_boundaries"]
+[node name="boundaries" type="CollisionPolygon2D" parent="kitchen/wall_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(440, 224, 64, 224, 64, 424, 160, 424, 160, 608, 128, 608, 128, 672, 1304, 672, 1304, 608, 1208, 608, 1208, 336, 1304, 336, 1304, 224, 888, 224, 888, 192, 440, 192)
 
-[node name="left_counter_boundaries" type="StaticBody2D" parent="."]
+[node name="left_counter_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
 
-[node name="boundaries" type="CollisionPolygon2D" parent="left_counter_boundaries"]
+[node name="boundaries" type="CollisionPolygon2D" parent="kitchen/left_counter_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(352, 520, 352, 608, 632, 608, 632, 520)
 
-[node name="right_counter_boundaries" type="StaticBody2D" parent="."]
+[node name="right_counter_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
 
-[node name="boundaries" type="CollisionPolygon2D" parent="right_counter_boundaries"]
+[node name="boundaries" type="CollisionPolygon2D" parent="kitchen/right_counter_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(736, 520, 736, 608, 1016, 608, 1016, 520)
 
-[node name="player_order_tracker" parent="." node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
+[node name="player_order_tracker" parent="kitchen" node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
 order_source = NodePath("../source_highlight")
 order_destination = NodePath("../destination_highlight")
 fridge = NodePath("../fridge_highlight")
@@ -146,97 +148,120 @@ icing_station = NodePath("../icing_highlight")
 sprinkling_station = NodePath("../sprinkle_highlight")
 oven = NodePath("../oven_highlight")
 
-[node name="droid1_order_tracker" parent="." instance=ExtResource("4_4oyt0")]
+[node name="droid1_order_tracker2" parent="kitchen" node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
+order_source = NodePath("../source_highlight")
+order_destination = NodePath("../destination_highlight")
+fridge = NodePath("../fridge_highlight")
+mixing_bowl = NodePath("../mixing_highlight")
+cutting_station = NodePath("../cutting_highlight")
+cooling_station = NodePath("../cooling_highlight")
+batter_station = NodePath("../batter_highlight")
+icing_station = NodePath("../icing_highlight")
+sprinkling_station = NodePath("../sprinkle_highlight")
+oven = NodePath("../oven_highlight")
 
-[node name="droid2_order_tracker" parent="." instance=ExtResource("4_4oyt0")]
+[node name="droid2_order_tracker3" parent="kitchen" node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
+order_source = NodePath("../source_highlight")
+order_destination = NodePath("../destination_highlight")
+fridge = NodePath("../fridge_highlight")
+mixing_bowl = NodePath("../mixing_highlight")
+cutting_station = NodePath("../cutting_highlight")
+cooling_station = NodePath("../cooling_highlight")
+batter_station = NodePath("../batter_highlight")
+icing_station = NodePath("../icing_highlight")
+sprinkling_station = NodePath("../sprinkle_highlight")
+oven = NodePath("../oven_highlight")
 
-[node name="order_spawner" parent="." instance=ExtResource("4_sqh5n")]
+[node name="order_spawner" parent="kitchen" instance=ExtResource("4_sqh5n")]
 spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cluty"), ExtResource("6_15k22"), ExtResource("7_rj4d4")])
 
-[node name="fridge_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="fridge_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 464)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="mixing_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="mixing_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 576)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="batter_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="batter_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(400, 464)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="cutting_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="cutting_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(568, 464)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="icing_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="icing_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(784, 464)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="sprinkle_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="sprinkle_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(920, 464)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="oven_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="oven_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 368)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="cooling_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="cooling_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 488)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="destination_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="destination_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(1112, 248)
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="source_highlight" parent="." instance=ExtResource("8_xnfjy")]
+[node name="source_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(656, 216)
 interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="player" parent="." instance=ExtResource("15_8mjq4")]
+[node name="player" parent="kitchen" instance=ExtResource("15_8mjq4")]
 position = Vector2(544, 416)
-script = null
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
-[connection signal="order_changed" from="player_order_tracker" to="." method="_on_order_changed"]
-[connection signal="progress_changed" from="player_order_tracker" to="." method="_on_progress_changed"]
-[connection signal="invoked" from="fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
-[connection signal="invoked" from="mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
-[connection signal="invoked" from="batter_highlight" to="." method="_on_batter_highlight_invoked"]
-[connection signal="invoked" from="cutting_highlight" to="." method="_on_cutting_highlight_invoked"]
-[connection signal="invoked" from="icing_highlight" to="." method="_on_icing_highlight_invoked"]
-[connection signal="invoked" from="sprinkle_highlight" to="." method="_on_sprinkle_highlight_invoked"]
-[connection signal="invoked" from="oven_highlight" to="." method="_on_oven_highlight_invoked"]
-[connection signal="invoked" from="cooling_highlight" to="." method="_on_cooling_highlight_invoked"]
-[connection signal="invoked" from="destination_highlight" to="." method="_on_destination_highlight_invoked"]
-[connection signal="invoked" from="source_highlight" to="." method="_on_order_source_invoked"]
+[connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_order_changed"]
+[connection signal="progress_changed" from="kitchen/player_order_tracker" to="." method="_on_progress_changed"]
+[connection signal="order_changed" from="kitchen/droid1_order_tracker2" to="." method="_on_order_changed"]
+[connection signal="progress_changed" from="kitchen/droid1_order_tracker2" to="." method="_on_progress_changed"]
+[connection signal="order_changed" from="kitchen/droid2_order_tracker3" to="." method="_on_order_changed"]
+[connection signal="progress_changed" from="kitchen/droid2_order_tracker3" to="." method="_on_progress_changed"]
+[connection signal="invoked" from="kitchen/fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
+[connection signal="invoked" from="kitchen/mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
+[connection signal="invoked" from="kitchen/batter_highlight" to="." method="_on_batter_highlight_invoked"]
+[connection signal="invoked" from="kitchen/cutting_highlight" to="." method="_on_cutting_highlight_invoked"]
+[connection signal="invoked" from="kitchen/icing_highlight" to="." method="_on_icing_highlight_invoked"]
+[connection signal="invoked" from="kitchen/sprinkle_highlight" to="." method="_on_sprinkle_highlight_invoked"]
+[connection signal="invoked" from="kitchen/oven_highlight" to="." method="_on_oven_highlight_invoked"]
+[connection signal="invoked" from="kitchen/cooling_highlight" to="." method="_on_cooling_highlight_invoked"]
+[connection signal="invoked" from="kitchen/destination_highlight" to="." method="_on_destination_highlight_invoked"]
+[connection signal="invoked" from="kitchen/source_highlight" to="." method="_on_order_source_invoked"]

@@ -11,7 +11,6 @@
 
 [node name="sprite" parent="." index="2"]
 texture = ExtResource("2_4w4s0")
-frame = 8
 
 [node name="tree" parent="." index="4"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_swccq")

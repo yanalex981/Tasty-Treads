@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://d883un6ilof6"]
+[gd_scene load_steps=19 format=3 uid="uid://d883un6ilof6"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
-[ext_resource type="PackedScene" uid="uid://c04aat1tfor06" path="res://Scenes/Components/DirectionalMoveController.tscn" id="3_q7l5r"]
 [ext_resource type="PackedScene" uid="uid://dnt1pap5cyrvx" path="res://Scenes/Components/OrderTracker.tscn" id="4_4oyt0"]
 [ext_resource type="PackedScene" path="res://Scenes/Components/OrderSpawner.tscn" id="4_sqh5n"]
 [ext_resource type="PackedScene" uid="uid://diav24bdrxe1m" path="res://Scenes/UI/OrderTrackerDialog.tscn" id="5_3s0ib"]
@@ -15,8 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bd51qipgd5htg" path="res://Scenes/Components/Interactable.tscn" id="8_xnfjy"]
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
 [ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
-[ext_resource type="PackedScene" uid="uid://cybi17smgimsh" path="res://Scenes/Components/Agent.tscn" id="15_5joh5"]
-[ext_resource type="Texture2D" uid="uid://bhf8on2bbi74a" path="res://Assets/sousChefSpritesheet.png" id="16_p26q3"]
+[ext_resource type="PackedScene" uid="uid://di88svpv7m2l0" path="res://Scenes/Components/Player.tscn" id="15_8mjq4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
 font_size = 36
@@ -220,11 +218,8 @@ interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
-[node name="Agent" parent="." instance=ExtResource("15_5joh5")]
-position = Vector2(520, 376)
-spritesheet = ExtResource("16_p26q3")
-
-[node name="DirectionalMoveController" parent="Agent" instance=ExtResource("3_q7l5r")]
+[node name="player" parent="." instance=ExtResource("15_8mjq4")]
+position = Vector2(544, 416)
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]

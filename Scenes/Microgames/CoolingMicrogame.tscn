@@ -300,16 +300,16 @@ offset_right = 743.0
 offset_bottom = 250.0
 text = "Finished!"
 
-[node name="TimerLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 1096.0
-offset_top = 232.0
-offset_right = 1136.0
-offset_bottom = 255.0
-script = ExtResource("7_f68go")
-
-[node name="GameTimer" type="Timer" parent="UI/TimerLabel"]
+[node name="GameTimer" type="Timer" parent="UI"]
+wait_time = 5.0
 one_shot = true
 autostart = true
+script = ExtResource("7_f68go")
 
-[connection signal="timeout" from="UI/TimerLabel/GameTimer" to="." method="_on_game_timer_timeout"]
+[node name="TimerLabel" type="Label" parent="UI/GameTimer"]
+offset_left = 1136.0
+offset_top = 232.0
+offset_right = 1176.0
+offset_bottom = 255.0
+
+[connection signal="timeout" from="UI/GameTimer" to="." method="_on_game_timer_timeout"]

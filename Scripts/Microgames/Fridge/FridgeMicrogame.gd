@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var upgraded : bool = false : set = set_upgraded
-@export var testing : bool = false 
+@export var testing : bool = false : set = set_testing
 
 @onready var item_position_list = $Fridge/ValidItemPositions
 @onready var ingredients = $IngredientsList
@@ -92,3 +92,6 @@ func increase_good():
 
 func set_bad():
 	bad_grabbed = true
+
+func set_testing(status : bool):
+	testing = status

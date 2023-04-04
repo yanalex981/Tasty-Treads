@@ -1,4 +1,7 @@
+class_name UpgradeUI
 extends Control
+
+signal upgrading_finished
 
 # ---------- TOGGLE BUTTON VARIABLES ---------- #
 @onready var whiskToggle = $"CenterAlign/Buttons/WhiskButtons/WhiskToggle"
@@ -255,3 +258,6 @@ func _toggle_droid_2():
 		droid2Label.text = "Chef Droid 2 active"
 	else:
 		droid2Label.text = "Chef Droid 2 inactive"
+
+func _on_next_day_pressed():
+	emit_signal("upgrading_finished")

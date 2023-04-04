@@ -1,4 +1,7 @@
+class_name Kitchen
 extends Node2D
+
+signal day_is_over
 
 func _on_order_source_invoked():
 	$order_tracker.current_order = $order_spawner.next_order
@@ -35,3 +38,7 @@ func _on_order_changed(order):
 
 func _on_progress_changed(progress):
 	$info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui.progress = progress
+
+func _on_round_timer_timeout():
+	emit_signal("day_is_over")
+	print("day is over")

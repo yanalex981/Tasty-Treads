@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf170ixwfsgqe"]
+[gd_scene load_steps=11 format=3 uid="uid://bf170ixwfsgqe"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Cutting/CutterMicrogame.gd" id="1_j6wog"]
-[ext_resource type="Texture2D" uid="uid://r856on8segq7" path="res://Assets/Microgames/cookiePanSpriteSheet.png" id="2_0vcw7"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/cookiePanSpriteSheet.png" id="2_0vcw7"]
 [ext_resource type="Texture2D" uid="uid://bsnlpogoccg8o" path="res://Assets/Microgames/Minigame UI/timingBar.png" id="2_jpjhd"]
-[ext_resource type="PackedScene" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
-[ext_resource type="PackedScene" path="res://Scenes/Microgames/CookieHole.tscn" id="6_tdrc7"]
-[ext_resource type="PackedScene" path="res://Scenes/Microgames/Cookie.tscn" id="7_b50gj"]
+[ext_resource type="PackedScene" uid="uid://cu24ohi6xxko3" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
+[ext_resource type="PackedScene" uid="uid://dtqa0ncaynwvb" path="res://Scenes/Microgames/CookieHole.tscn" id="6_tdrc7"]
+[ext_resource type="Texture2D" uid="uid://c0j8j0loo4c7f" path="res://Assets/Controls/cookieCutterPrompt.png" id="7_05wuq"]
+[ext_resource type="PackedScene" uid="uid://pwmnpwo4wjdc" path="res://Scenes/Microgames/Cookie.tscn" id="7_b50gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pw6io"]
 radius = 50.0
@@ -108,7 +109,12 @@ offset_top = 14.0
 offset_right = 1383.0
 offset_bottom = 785.0
 
+[node name="Controls" type="Sprite2D" parent="UI"]
+position = Vector2(172, 213)
+texture = ExtResource("7_05wuq")
+
 [node name="InstructionsLabel" type="Label" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 51.0
 offset_top = 224.0

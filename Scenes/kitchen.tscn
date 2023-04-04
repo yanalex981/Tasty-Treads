@@ -265,9 +265,11 @@ position = Vector2(544, 416)
 motion_mode = 0
 
 [node name="floor_space" type="NavigationRegion2D" parent="kitchen"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_1ooa3")
 
 [node name="floor_space2" type="NavigationRegion2D" parent="kitchen"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_tc0wt")
 
 [node name="microgames" type="CanvasLayer" parent="."]

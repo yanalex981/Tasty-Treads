@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 @export var order_tracker : OrderTracker
 @export var order_spawner : OrderSpawner
+@export var speed : float = 300
+
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var nav_agent : NavigationAgent2D = $nav_agent
 @onready var target_position : Area2D:
@@ -17,25 +20,22 @@ func _process(_delta):
 	if nav_agent.is_target_reachable():
 		var next_location = nav_agent.get_next_path_position()
 		var direction = global_position.direction_to(next_location)
-		self.velocity = direction.normalized() * 500
+		self.velocity = direction.normalized() * speed
 		
 		$tree.direction = direction
 		
 		move_and_slide()
 
-func _on_reachable_area_entered(area):
-	if area != target_position:
-		return
-
 func _on_nav_agent_target_reached():
 	if order_tracker.current_order == null:
 		order_tracker.current_order = order_spawner.spawn_order()
-
-#	await get_tree().create_timer(2.0).timeout
+	
+	nav_agent.target_position = Vector2.ZERO
+	
+	await get_tree().create_timer(rng.randf_range(3, 5)).timeout
 	if order_tracker.progress >= order_tracker.current_order.recipe_steps.size():
 		order_tracker.complete_order()
-#		order_tracker.current_order = order_spawner.spawn_order()
-
+	
 	order_tracker.next_step()
 	target_position = order_tracker.next_location()
 	nav_agent.target_position = target_position.global_position

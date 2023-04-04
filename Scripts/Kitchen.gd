@@ -28,7 +28,7 @@ func _ready():
 	time_label.text = "Time Remaining: %s" % seconds_remaining
 
 func _on_order_source_invoked():
-	player_order_tracker.current_order = order_spawner.next_order
+	player_order_tracker.current_order = order_spawner.spawn_order()
 
 func _on_destination_highlight_invoked():
 	player_order_tracker.complete_order()

@@ -151,3 +151,6 @@ func calculate_points():
 		
 		# Remove the front beat from the queue
 		activeBeats.pop_front().delete()
+
+func set_upgraded(status : bool):
+	upgradeEnabled = status

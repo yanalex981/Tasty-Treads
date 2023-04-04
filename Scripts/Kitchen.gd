@@ -3,6 +3,10 @@ extends Node2D
 
 signal day_is_over
 
+func _ready():
+	var seconds_remaining = ceil($round_timer.time_left)
+	$info_ui/VBoxContainer/panel/padding/time_label.text = "Time Remaining: %s" % seconds_remaining
+
 func _on_order_source_invoked():
 	$order_tracker.current_order = $order_spawner.next_order
 
@@ -41,4 +45,7 @@ func _on_progress_changed(progress):
 
 func _on_round_timer_timeout():
 	emit_signal("day_is_over")
-	print("day is over")
+
+func _update_time_remaining_label():
+	var seconds_remaining = ceil($round_timer.time_left)
+	$info_ui/VBoxContainer/panel/padding/time_label.text = "Time Remaining: %s" % seconds_remaining

@@ -3,145 +3,122 @@
 [ext_resource type="Script" path="res://Scripts/UpgradeUI.gd" id="1_pebeg"]
 [ext_resource type="LabelSettings" uid="uid://dx5x1s4xb0sqs" path="res://Resources/UpgradeButtonLabelSettings.tres" id="2_eeurv"]
 
-[node name="UpgradeUI" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="viewport" type="CanvasLayer"]
 script = ExtResource("1_pebeg")
 
-[node name="CenterAlign" type="CenterContainer" parent="."]
-layout_mode = 1
+[node name="UpgradeUI" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Buttons" type="VBoxContainer" parent="CenterAlign"]
+[node name="earnings_label" type="Label" parent="UpgradeUI"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="CenterAlign" type="CenterContainer" parent="UpgradeUI"]
 layout_mode = 2
 
-[node name="WhiskButtons" type="HBoxContainer" parent="CenterAlign/Buttons"]
+[node name="Buttons" type="VBoxContainer" parent="UpgradeUI/CenterAlign"]
 layout_mode = 2
 
-[node name="WhiskToggle" type="CheckButton" parent="CenterAlign/Buttons/WhiskButtons"]
-layout_mode = 2
-disabled = true
-
-[node name="WhiskPurchase" type="Button" parent="CenterAlign/Buttons/WhiskButtons"]
+[node name="WhiskButtons" type="HBoxContainer" parent="UpgradeUI/CenterAlign/Buttons"]
 layout_mode = 2
 
-[node name="WhiskLabel" type="Label" parent="CenterAlign/Buttons/WhiskButtons"]
-layout_mode = 2
-label_settings = ExtResource("2_eeurv")
-
-[node name="CookieCutterButtons" type="HBoxContainer" parent="CenterAlign/Buttons"]
-layout_mode = 2
-
-[node name="CookieCutterToggle" type="CheckButton" parent="CenterAlign/Buttons/CookieCutterButtons"]
+[node name="WhiskToggle" type="CheckButton" parent="UpgradeUI/CenterAlign/Buttons/WhiskButtons"]
 layout_mode = 2
 disabled = true
 
-[node name="CookieCutterPurchase" type="Button" parent="CenterAlign/Buttons/CookieCutterButtons"]
+[node name="WhiskPurchase" type="Button" parent="UpgradeUI/CenterAlign/Buttons/WhiskButtons"]
 layout_mode = 2
 
-[node name="CookieCutterLabel" type="Label" parent="CenterAlign/Buttons/CookieCutterButtons"]
+[node name="WhiskLabel" type="Label" parent="UpgradeUI/CenterAlign/Buttons/WhiskButtons"]
 layout_mode = 2
 label_settings = ExtResource("2_eeurv")
 
-[node name="OvenButtons" type="HBoxContainer" parent="CenterAlign/Buttons"]
+[node name="CookieCutterButtons" type="HBoxContainer" parent="UpgradeUI/CenterAlign/Buttons"]
 layout_mode = 2
 
-[node name="OvenToggle" type="CheckButton" parent="CenterAlign/Buttons/OvenButtons"]
+[node name="CookieCutterToggle" type="CheckButton" parent="UpgradeUI/CenterAlign/Buttons/CookieCutterButtons"]
 layout_mode = 2
 disabled = true
 
-[node name="OvenPurchase" type="Button" parent="CenterAlign/Buttons/OvenButtons"]
+[node name="CookieCutterPurchase" type="Button" parent="UpgradeUI/CenterAlign/Buttons/CookieCutterButtons"]
 layout_mode = 2
 
-[node name="OvenLabel" type="Label" parent="CenterAlign/Buttons/OvenButtons"]
+[node name="CookieCutterLabel" type="Label" parent="UpgradeUI/CenterAlign/Buttons/CookieCutterButtons"]
 layout_mode = 2
 label_settings = ExtResource("2_eeurv")
 
-[node name="TuneUpButtons" type="HBoxContainer" parent="CenterAlign/Buttons"]
+[node name="OvenButtons" type="HBoxContainer" parent="UpgradeUI/CenterAlign/Buttons"]
 layout_mode = 2
 
-[node name="TuneUpToggle" type="CheckButton" parent="CenterAlign/Buttons/TuneUpButtons"]
+[node name="OvenToggle" type="CheckButton" parent="UpgradeUI/CenterAlign/Buttons/OvenButtons"]
 layout_mode = 2
 disabled = true
 
-[node name="TuneUpPurchase" type="Button" parent="CenterAlign/Buttons/TuneUpButtons"]
+[node name="OvenPurchase" type="Button" parent="UpgradeUI/CenterAlign/Buttons/OvenButtons"]
 layout_mode = 2
 
-[node name="TuneUpLabel" type="Label" parent="CenterAlign/Buttons/TuneUpButtons"]
+[node name="OvenLabel" type="Label" parent="UpgradeUI/CenterAlign/Buttons/OvenButtons"]
 layout_mode = 2
 label_settings = ExtResource("2_eeurv")
 
-[node name="Droid1Buttons" type="HBoxContainer" parent="CenterAlign/Buttons"]
+[node name="TuneUpButtons" type="HBoxContainer" parent="UpgradeUI/CenterAlign/Buttons"]
 layout_mode = 2
 
-[node name="Droid1Toggle" type="CheckButton" parent="CenterAlign/Buttons/Droid1Buttons"]
+[node name="TuneUpToggle" type="CheckButton" parent="UpgradeUI/CenterAlign/Buttons/TuneUpButtons"]
 layout_mode = 2
 disabled = true
 
-[node name="Droid1Purchase" type="Button" parent="CenterAlign/Buttons/Droid1Buttons"]
+[node name="TuneUpPurchase" type="Button" parent="UpgradeUI/CenterAlign/Buttons/TuneUpButtons"]
 layout_mode = 2
 
-[node name="Droid1Label" type="Label" parent="CenterAlign/Buttons/Droid1Buttons"]
+[node name="TuneUpLabel" type="Label" parent="UpgradeUI/CenterAlign/Buttons/TuneUpButtons"]
 layout_mode = 2
 label_settings = ExtResource("2_eeurv")
 
-[node name="Droid2Buttons" type="HBoxContainer" parent="CenterAlign/Buttons"]
+[node name="Droid1Buttons" type="HBoxContainer" parent="UpgradeUI/CenterAlign/Buttons"]
 layout_mode = 2
 
-[node name="Droid2Toggle" type="CheckButton" parent="CenterAlign/Buttons/Droid2Buttons"]
+[node name="Droid1Toggle" type="CheckButton" parent="UpgradeUI/CenterAlign/Buttons/Droid1Buttons"]
 layout_mode = 2
 disabled = true
 
-[node name="Droid2Purchase" type="Button" parent="CenterAlign/Buttons/Droid2Buttons"]
+[node name="Droid1Purchase" type="Button" parent="UpgradeUI/CenterAlign/Buttons/Droid1Buttons"]
 layout_mode = 2
 
-[node name="Droid2Label" type="Label" parent="CenterAlign/Buttons/Droid2Buttons"]
+[node name="Droid1Label" type="Label" parent="UpgradeUI/CenterAlign/Buttons/Droid1Buttons"]
 layout_mode = 2
 label_settings = ExtResource("2_eeurv")
 
-[node name="NextDayButton" type="CenterContainer" parent="CenterAlign/Buttons"]
+[node name="Droid2Buttons" type="HBoxContainer" parent="UpgradeUI/CenterAlign/Buttons"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterAlign/Buttons/NextDayButton"]
+[node name="Droid2Toggle" type="CheckButton" parent="UpgradeUI/CenterAlign/Buttons/Droid2Buttons"]
+layout_mode = 2
+disabled = true
+
+[node name="Droid2Purchase" type="Button" parent="UpgradeUI/CenterAlign/Buttons/Droid2Buttons"]
+layout_mode = 2
+
+[node name="Droid2Label" type="Label" parent="UpgradeUI/CenterAlign/Buttons/Droid2Buttons"]
+layout_mode = 2
+label_settings = ExtResource("2_eeurv")
+
+[node name="NextDayButton" type="CenterContainer" parent="UpgradeUI/CenterAlign/Buttons"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UpgradeUI/CenterAlign/Buttons/NextDayButton"]
 layout_mode = 2
 text = "Start Next Day"
 
-[node name="earnings_label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PurchaseConfirmPanel" type="Panel" parent="."]
+[node name="PurchaseConfirmPanel" type="Panel" parent="UpgradeUI"]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -84.0
-offset_bottom = -84.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
-[node name="PurchaseConfirmLabel" type="Label" parent="PurchaseConfirmPanel"]
+[node name="PurchaseConfirmLabel" type="Label" parent="UpgradeUI/PurchaseConfirmPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -156,4 +133,4 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Purchase complete!"
 
-[connection signal="pressed" from="CenterAlign/Buttons/NextDayButton/Button" to="." method="_on_next_day_pressed"]
+[connection signal="pressed" from="UpgradeUI/CenterAlign/Buttons/NextDayButton/Button" to="." method="_on_next_day_pressed"]

@@ -1,32 +1,32 @@
 class_name UpgradeUI
-extends Control
+extends CanvasLayer
 
 signal upgrading_finished
 
 # ---------- TOGGLE BUTTON VARIABLES ---------- #
-@onready var whiskToggle = $"CenterAlign/Buttons/WhiskButtons/WhiskToggle"
-@onready var cutterToggle = $"CenterAlign/Buttons/CookieCutterButtons/CookieCutterToggle"
-@onready var ovenToggle = $"CenterAlign/Buttons/OvenButtons/OvenToggle"
-@onready var tuneUpToggle = $"CenterAlign/Buttons/TuneUpButtons/TuneUpToggle"
-@onready var droid1Toggle = $"CenterAlign/Buttons/Droid1Buttons/Droid1Toggle"
-@onready var droid2Toggle = $"CenterAlign/Buttons/Droid2Buttons/Droid2Toggle"
+@onready var whiskToggle = $UpgradeUI/CenterAlign/Buttons/WhiskButtons/WhiskToggle
+@onready var cutterToggle = $"UpgradeUI/CenterAlign/Buttons/CookieCutterButtons/CookieCutterToggle"
+@onready var ovenToggle = $"UpgradeUI/CenterAlign/Buttons/OvenButtons/OvenToggle"
+@onready var tuneUpToggle = $"UpgradeUI/CenterAlign/Buttons/TuneUpButtons/TuneUpToggle"
+@onready var droid1Toggle = $"UpgradeUI/CenterAlign/Buttons/Droid1Buttons/Droid1Toggle"
+@onready var droid2Toggle = $"UpgradeUI/CenterAlign/Buttons/Droid2Buttons/Droid2Toggle"
 # ---------- PURCHASE BUTTON VARIABLES ---------- #
-@onready var whiskPurchaseButton = $"CenterAlign/Buttons/WhiskButtons/WhiskPurchase"
-@onready var cutterPurchaseButton = $"CenterAlign/Buttons/CookieCutterButtons/CookieCutterPurchase"
-@onready var ovenPurchaseButton = $"CenterAlign/Buttons/OvenButtons/OvenPurchase"
-@onready var tuneUpPurchaseButton = $"CenterAlign/Buttons/TuneUpButtons/TuneUpPurchase"
-@onready var droid1PurchaseButton = $"CenterAlign/Buttons/Droid1Buttons/Droid1Purchase"
-@onready var droid2PurchaseButton = $"CenterAlign/Buttons/Droid2Buttons/Droid2Purchase"
+@onready var whiskPurchaseButton = $"UpgradeUI/CenterAlign/Buttons/WhiskButtons/WhiskPurchase"
+@onready var cutterPurchaseButton = $"UpgradeUI/CenterAlign/Buttons/CookieCutterButtons/CookieCutterPurchase"
+@onready var ovenPurchaseButton = $"UpgradeUI/CenterAlign/Buttons/OvenButtons/OvenPurchase"
+@onready var tuneUpPurchaseButton = $"UpgradeUI/CenterAlign/Buttons/TuneUpButtons/TuneUpPurchase"
+@onready var droid1PurchaseButton = $"UpgradeUI/CenterAlign/Buttons/Droid1Buttons/Droid1Purchase"
+@onready var droid2PurchaseButton = $"UpgradeUI/CenterAlign/Buttons/Droid2Buttons/Droid2Purchase"
 # ---------- PURCHASE BUTTON LABELS ---------- #
-@onready var whiskLabel = $"CenterAlign/Buttons/WhiskButtons//WhiskLabel"
-@onready var cutterLabel = $"CenterAlign/Buttons/CookieCutterButtons/CookieCutterLabel"
-@onready var ovenLabel = $"CenterAlign/Buttons/OvenButtons/OvenLabel"
-@onready var tuneUpLabel = $"CenterAlign/Buttons/TuneUpButtons/TuneUpLabel"
-@onready var droid1Label = $"CenterAlign/Buttons/Droid1Buttons/Droid1Label"
-@onready var droid2Label = $"CenterAlign/Buttons/Droid2Buttons/Droid2Label"
+@onready var whiskLabel = $"UpgradeUI/CenterAlign/Buttons/WhiskButtons//WhiskLabel"
+@onready var cutterLabel = $"UpgradeUI/CenterAlign/Buttons/CookieCutterButtons/CookieCutterLabel"
+@onready var ovenLabel = $"UpgradeUI/CenterAlign/Buttons/OvenButtons/OvenLabel"
+@onready var tuneUpLabel = $"UpgradeUI/CenterAlign/Buttons/TuneUpButtons/TuneUpLabel"
+@onready var droid1Label = $"UpgradeUI/CenterAlign/Buttons/Droid1Buttons/Droid1Label"
+@onready var droid2Label = $"UpgradeUI/CenterAlign/Buttons/Droid2Buttons/Droid2Label"
 # ---------- OTHER UI VARIABLES ---------- #
-@onready var purchaseConfirmPanel = $"PurchaseConfirmPanel"
-@onready var earningsLabel = $"earnings_label"
+@onready var purchaseConfirmPanel = $"UpgradeUI/PurchaseConfirmPanel"
+@onready var earningsLabel = $"UpgradeUI/earnings_label"
 
 const WHISK_PRICE = 50
 const CUTTER_PRICE = 50
@@ -37,7 +37,7 @@ const DROID_2_PRICE = 150
 const PURCHASE_CONFIRM_ALPHA = 1
 const FADE_SPEED = 0.75
 
-var money = 2500
+var money = 2
 var justPurchased = false
 var insufficientFunds = false
 var whiskActivated = false

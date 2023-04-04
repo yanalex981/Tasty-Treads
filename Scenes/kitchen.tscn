@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://u6phxioott5c"]
+[gd_scene load_steps=40 format=3 uid="uid://d883un6ilof6"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
@@ -189,7 +189,10 @@ script = ExtResource("1_hjfb8")
 
 [node name="round_timer" type="Timer" parent="."]
 wait_time = 300.0
-one_shot = true
+autostart = true
+
+[node name="time_tracker" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="background" type="CanvasLayer" parent="."]
@@ -394,6 +397,7 @@ effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
+[connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
 [connection signal="order_changed" from="order_tracker" to="." method="_on_order_changed"]
 [connection signal="progress_changed" from="order_tracker" to="." method="_on_progress_changed"]
 [connection signal="invoked" from="fridge_highlight" to="." method="_on_fridge_highlight_invoked"]

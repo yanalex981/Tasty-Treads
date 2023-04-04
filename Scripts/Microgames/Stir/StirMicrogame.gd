@@ -1,20 +1,32 @@
 extends Node2D
 
+@export var upgraded : bool = false : set = set_upgraded
+
+@onready var arm = $StirHand
 @onready var end_display = $UI/EndUI
 
-var score = 0
+const UP_ROUNDS : int = 6
+const UP_SPEED : int = 2
 
+var success = false
 signal game_ended(results)
+
+func _ready():
+	if upgraded:
+		arm.set_upgrade(UP_ROUNDS, UP_SPEED)
+
+func set_upgraded(status : bool):
+	upgraded = status
 
 func _on_stir_hand_completed():
 	# show the game is done 
 	end_display.show()
 	get_tree().paused = true
 	
-	# evaluate score
-	score = 100
-	# print(score)
-	emit_signal("game_ended", score)
+	# evaluate: success once completed
+	success = true
+	# print(success)
+	emit_signal("game_ended", success)
 
 	# close the game
 	await get_tree().create_timer(1.0).timeout

@@ -4,19 +4,21 @@ extends Node2D
 @export var num_decorations: int = 12
 @onready var progress_label = $ProgressLabel
 
-const MAX_GRAVITY = 0.7
-const MIN_GRAVITY = 0.5
+const MAX_GRAVITY : float = 2
+const MIN_GRAVITY : float = 0.7
 
-var screen_size: Vector2
-var num_caught = 0
-var num_left = num_decorations
-var lifetime = 2
-var delay = 0.65
+var screen_size: Vector2 # used to calculate spawn position
+var num_caught : int = 0 : get = get_num_caught
+var num_left : int = num_decorations
+var lifetime : float = 2 # how long a sprinkle lives before destruction
+var delay : float = 0.3 # time between sprinkle spawns
 
 func _ready():
 	screen_size = get_viewport_rect().size 
 
-	
+func get_num_caught() -> int:
+	return num_caught
+
 func spawn_decor():
 	var decor = decor_scene.instantiate()
 	get_parent().add_child(decor)
@@ -28,12 +30,12 @@ func spawn_decor():
 	collision_shape.shape.radius = 25
 	
 	# set spawn position (random)
-	var margin = 100
+	var margin = 150
 	var x_pos = randf_range(margin, screen_size.x - margin)
 	var texture_height = decor.get_child(0).texture.get_height()
 	decor.position = Vector2(x_pos, -texture_height)
 	
-	# set velocity 
+	# set how fast it falls
 	decor.gravity_scale = randf_range(MIN_GRAVITY, MAX_GRAVITY)
 	
 	# destroy the decorations after a certain amount of time

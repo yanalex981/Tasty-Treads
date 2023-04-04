@@ -1,19 +1,112 @@
-[gd_scene load_steps=2 format=3 uid="uid://xrqglik6vxfd"]
+[gd_scene load_steps=10 format=3 uid="uid://bf170ixwfsgqe"]
 
-[ext_resource type="Texture2D" uid="uid://d1jylf2ps2072" path="res://icon.svg" id="1_vhcoq"]
+[ext_resource type="Script" path="res://Scripts/Microgames/Cutting/CutterMicrogame.gd" id="1_j6wog"]
+[ext_resource type="Texture2D" uid="uid://r856on8segq7" path="res://Assets/Microgames/cookiePanSpriteSheet.png" id="2_0vcw7"]
+[ext_resource type="Texture2D" uid="uid://bsnlpogoccg8o" path="res://Assets/Microgames/Minigame UI/timingBar.png" id="2_jpjhd"]
+[ext_resource type="PackedScene" uid="uid://cxh5xwbfxbeut" path="res://Scenes/Microgames/Beat.tscn" id="5_r8cut"]
+[ext_resource type="PackedScene" uid="uid://brtd0j1s4tn1u" path="res://Scenes/Microgames/CookieHole.tscn" id="6_tdrc7"]
+[ext_resource type="PackedScene" uid="uid://8p5xws8qqght" path="res://Scenes/Microgames/Cookie.tscn" id="7_b50gj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pw6io"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73r4e"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anhrq"]
+size = Vector2(462, 97.875)
 
 [node name="CutterMicrogame" type="Node2D"]
+script = ExtResource("1_j6wog")
+beat_scene = ExtResource("5_r8cut")
+hole_scene = ExtResource("6_tdrc7")
+cookie_scene = ExtResource("7_b50gj")
+
+[node name="CookieStack" type="Node2D" parent="."]
 
 [node name="DoughTray" type="Sprite2D" parent="."]
 position = Vector2(664, 368)
 scale = Vector2(3.875, 2.4375)
-texture = ExtResource("1_vhcoq")
+texture = ExtResource("2_0vcw7")
+region_enabled = true
+region_rect = Rect2(6, 33, 155, 90)
+
+[node name="CookieHoleSpawnPoints" type="Node2D" parent="DoughTray"]
+
+[node name="HoleSpawnPoint1" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(-50, -19)
+
+[node name="HoleSpawnPoint2" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(-30, -20)
+
+[node name="HoleSpawnPoint3" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(-10, -18)
+
+[node name="HoleSpawnPoint4" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(10, -21)
+
+[node name="HoleSpawnPoint5" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(30, -18)
+
+[node name="HoleSpawnPoint6" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(52, -17)
+
+[node name="HoleSpawnPoint7" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(-55.2903, 17.3333)
+
+[node name="HoleSpawnPoint8" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(-35.2903, 16.3333)
+
+[node name="HoleSpawnPoint9" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(-15.2903, 18.3333)
+
+[node name="HoleSpawnPoint10" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(4.70968, 15.3333)
+
+[node name="HoleSpawnPoint11" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(24.7097, 18.3333)
+
+[node name="HoleSpawnPoint12" type="Marker2D" parent="DoughTray/CookieHoleSpawnPoints"]
+position = Vector2(46.7097, 19.3333)
+
+[node name="TimingBar" type="Sprite2D" parent="."]
+position = Vector2(683, 485.5)
+texture = ExtResource("2_jpjhd")
+
+[node name="PerfectArea" type="Area2D" parent="TimingBar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/PerfectArea"]
+position = Vector2(-5, 175)
+shape = SubResource("CircleShape2D_pw6io")
+
+[node name="GoodArea" type="Area2D" parent="TimingBar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/GoodArea"]
+position = Vector2(-5, 175)
+shape = SubResource("CircleShape2D_73r4e")
+
+[node name="EndOfBar" type="Area2D" parent="TimingBar"]
+position = Vector2(-235, 175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/EndOfBar"]
+position = Vector2(-221, 0)
+shape = SubResource("RectangleShape2D_anhrq")
+
+[node name="BeatSpawner" type="Node2D" parent="TimingBar"]
+
+[node name="BeatSpawnLocation" type="Marker2D" parent="TimingBar/BeatSpawner"]
+position = Vector2(235, 175)
+
+[node name="CookieSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1060, 441)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1366.0
-offset_bottom = 771.0
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 1383.0
+offset_bottom = 785.0
 
 [node name="InstructionsLabel" type="Label" parent="UI"]
 layout_mode = 0

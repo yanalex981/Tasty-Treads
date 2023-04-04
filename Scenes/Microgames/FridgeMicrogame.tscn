@@ -101,6 +101,7 @@ height = 55.9105
 
 [node name="FridgeMicrogame" type="Node2D"]
 script = ExtResource("1_j84xc")
+testing = true
 
 [node name="Fridge" type="Sprite2D" parent="."]
 position = Vector2(702, 369)
@@ -415,13 +416,23 @@ offset_right = 743.0
 offset_bottom = 250.0
 text = "Completed!"
 
+[connection signal="caught_is_good" from="IngredientsList/Milk" to="." method="increase_good"]
 [connection signal="area_entered" from="IngredientsList/Milk/Hurtbox" to="IngredientsList/Milk" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_good" from="IngredientsList/Eggs" to="." method="increase_good"]
 [connection signal="area_entered" from="IngredientsList/Eggs/Hurtbox" to="IngredientsList/Eggs" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_good" from="IngredientsList/Flour" to="." method="increase_good"]
 [connection signal="area_entered" from="IngredientsList/Flour/Hurtbox" to="IngredientsList/Flour" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_good" from="IngredientsList/Sugar" to="." method="increase_good"]
 [connection signal="area_entered" from="IngredientsList/Sugar/Hurtbox" to="IngredientsList/Sugar" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_good" from="IngredientsList/Butter" to="." method="increase_good"]
 [connection signal="area_entered" from="IngredientsList/Butter/Hurtbox" to="IngredientsList/Butter" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_bad" from="IngredientsList/BlackBlock" to="." method="set_bad"]
 [connection signal="area_entered" from="IngredientsList/BlackBlock/Hurtbox" to="IngredientsList/BlackBlock" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_bad" from="IngredientsList/OpenedCan" to="." method="set_bad"]
 [connection signal="area_entered" from="IngredientsList/OpenedCan/Hurtbox" to="IngredientsList/OpenedCan" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_bad" from="IngredientsList/Bottle" to="." method="set_bad"]
 [connection signal="area_entered" from="IngredientsList/Bottle/Hurtbox" to="IngredientsList/Bottle" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_bad" from="IngredientsList/Burger" to="." method="set_bad"]
 [connection signal="area_entered" from="IngredientsList/Burger/Hurtbox" to="IngredientsList/Burger" method="_on_hurtbox_area_entered"]
+[connection signal="caught_is_bad" from="IngredientsList/FishHead" to="." method="set_bad"]
 [connection signal="area_entered" from="IngredientsList/FishHead/Hurtbox" to="IngredientsList/FishHead" method="_on_hurtbox_area_entered"]

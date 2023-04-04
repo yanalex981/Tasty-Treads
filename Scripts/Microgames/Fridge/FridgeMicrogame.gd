@@ -12,8 +12,8 @@ extends Node2D
 @onready var arm = $RobotHand
 const UP_SPEED : int = 800
 
-var good_items : Array[String] = [] : set = set_good_items
-var bad_items : Array[String] = [] : set = set_bad_items
+var good_items : Array = [] : set = set_good_items
+var bad_items : Array = [] : set = set_bad_items
 
 var num_good_grabbed : int = 0
 var bad_grabbed : bool = false # tracks whether a bad ingredient was grabbed
@@ -95,3 +95,4 @@ func set_bad():
 
 func set_testing(status : bool):
 	testing = status
+

@@ -134,7 +134,7 @@ visible = false
 build_mode = 1
 polygon = PackedVector2Array(736, 520, 736, 608, 1016, 608, 1016, 520)
 
-[node name="order_tracker" parent="." node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
+[node name="player_order_tracker" parent="." node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
 order_source = NodePath("../source_highlight")
 order_destination = NodePath("../destination_highlight")
 fridge = NodePath("../fridge_highlight")
@@ -145,6 +145,10 @@ batter_station = NodePath("../batter_highlight")
 icing_station = NodePath("../icing_highlight")
 sprinkling_station = NodePath("../sprinkle_highlight")
 oven = NodePath("../oven_highlight")
+
+[node name="droid1_order_tracker" parent="." instance=ExtResource("4_4oyt0")]
+
+[node name="droid2_order_tracker" parent="." instance=ExtResource("4_4oyt0")]
 
 [node name="order_spawner" parent="." instance=ExtResource("4_sqh5n")]
 spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cluty"), ExtResource("6_15k22"), ExtResource("7_rj4d4")])
@@ -220,11 +224,12 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="player" parent="." instance=ExtResource("15_8mjq4")]
 position = Vector2(544, 416)
+script = null
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
-[connection signal="order_changed" from="order_tracker" to="." method="_on_order_changed"]
-[connection signal="progress_changed" from="order_tracker" to="." method="_on_progress_changed"]
+[connection signal="order_changed" from="player_order_tracker" to="." method="_on_order_changed"]
+[connection signal="progress_changed" from="player_order_tracker" to="." method="_on_progress_changed"]
 [connection signal="invoked" from="fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
 [connection signal="invoked" from="mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
 [connection signal="invoked" from="batter_highlight" to="." method="_on_batter_highlight_invoked"]

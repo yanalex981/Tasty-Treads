@@ -6,11 +6,9 @@
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_qjaro"]
 
 [node name="Droid" instance=ExtResource("1_rp25k")]
-script = null
 
 [node name="sprite" parent="." index="2"]
 texture = ExtResource("2_c5bcw")
-frame = 0
 
 [node name="tree" parent="." index="4"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_qjaro")

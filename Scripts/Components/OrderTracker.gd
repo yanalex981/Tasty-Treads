@@ -73,6 +73,31 @@ func next_step():
 
 	progress += 1
 
+func next_location() -> Vector2:
+	if current_order == null:
+		return order_source.position
+
+	var step = current_order.recipe_steps[progress]
+	match step:
+		Recipe.TaskType.GET_INGREDIENTS:
+			return fridge.position
+		Recipe.TaskType.MIX:
+			return mixing_bowl.position
+		Recipe.TaskType.POUR:
+			return batter_station.position
+		Recipe.TaskType.CUT_COOKIES:
+			return cutting_station.position
+		Recipe.TaskType.BAKE:
+			return oven.position
+		Recipe.TaskType.COOL:
+			return cooling_station.position
+		Recipe.TaskType.SMEAR_ICING:
+			return icing_station.position
+		Recipe.TaskType.ADD_SPRINKLES:
+			return sprinkling_station.position
+	
+	return Vector2.ZERO
+
 func complete_order():
 	current_order = null
 

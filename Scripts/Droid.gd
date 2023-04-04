@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var speed : float = 300
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var earnings : int = 0
 
 @onready var nav_agent : NavigationAgent2D = $nav_agent
 @onready var target_position : Area2D:
@@ -35,6 +36,8 @@ func _on_nav_agent_target_reached():
 	
 	# if it's the last step in the order, submit it and go to the receiving belt
 	if order_tracker.progress >= order_tracker.current_order.recipe_steps.size():
+		earnings += order_tracker.current_order.price
+		# TODO tip the bot?
 		order_tracker.complete_order()
 		target_position = order_tracker.next_location()
 		return

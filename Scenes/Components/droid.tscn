@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://p0ns6kefi1q6"]
+[gd_scene load_steps=4 format=3 uid="uid://bhlrsnbtkbq6y"]
 
 [ext_resource type="PackedScene" uid="uid://cybi17smgimsh" path="res://Scenes/Components/Agent.tscn" id="1_rp25k"]
 [ext_resource type="Script" path="res://Scripts/Droid.gd" id="2_lysgy"]

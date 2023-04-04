@@ -3,6 +3,15 @@ extends Node2D
 
 signal day_is_over
 
+var earnings : int = 0:
+	set(value):
+		earnings = value
+		var dollars = str(value / 100)
+		var cents = str(value % 100)
+		if cents.length() < 2:
+			cents = "0" + cents
+		earnings_label.text = "Earnings: $%s.%s" % [dollars, cents]
+
 var purchased_upgrades : UpgradesReceipt = UpgradesReceipt.new()
 
 # no upgrades
@@ -22,6 +31,8 @@ var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tsc
 @onready var player_order_tracker : OrderTracker = $kitchen/player_order_tracker
 @onready var order_spawner : OrderSpawner = $kitchen/order_spawner
 @onready var order_tracker_ui : OrderTrackerDialog = $info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui
+@onready var earnings_label : Label = $info_ui/VBoxContainer/panel/padding/earnings_label
+@onready var player_spawn : Marker2D = $kitchen/player_spawn
 
 func _ready():
 	var seconds_remaining = ceil(round_timer.time_left)
@@ -31,6 +42,7 @@ func _on_order_source_invoked():
 	player_order_tracker.current_order = order_spawner.spawn_order()
 
 func _on_destination_highlight_invoked():
+	earnings += player_order_tracker.current_order.price
 	player_order_tracker.complete_order()
 
 func _on_fridge_highlight_invoked():
@@ -69,3 +81,11 @@ func _on_round_timer_timeout():
 func _update_time_remaining_label():
 	var seconds_remaining = ceil(round_timer.time_left)
 	time_label.text = "Time Remaining: %s" % seconds_remaining
+
+# collect from the droids
+func _on_order_completed():
+	for node in player_spawn.get_children():
+		if node is Droid:
+			var droid = node as Droid
+			earnings += droid.earnings
+			droid.earnings = 0

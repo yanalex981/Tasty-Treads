@@ -10,12 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bxdmjnw83vw6a" path="res://Assets/completed.png" id="6_l2gtt"]
 [ext_resource type="Texture2D" uid="uid://cxa0g1j4n3wwe" path="res://Assets/in_progress.png" id="7_p5an8"]
 [ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
-[ext_resource type="PackedScene" uid="uid://p0ns6kefi1q6" path="res://Scenes/Components/droid.tscn" id="7_x5gre"]
+[ext_resource type="PackedScene" uid="uid://bhlrsnbtkbq6y" path="res://Scenes/Components/droid.tscn" id="7_x5gre"]
 [ext_resource type="Texture2D" uid="uid://bynbsygtxakga" path="res://Assets/incomplete.png" id="8_vvdjn"]
 [ext_resource type="PackedScene" uid="uid://bd51qipgd5htg" path="res://Scenes/Components/Interactable.tscn" id="8_xnfjy"]
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
 [ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
-[ext_resource type="PackedScene" uid="uid://di88svpv7m2l0" path="res://Scenes/Components/Player.tscn" id="15_8mjq4"]
+[ext_resource type="PackedScene" uid="uid://cbha6lmyk56do" path="res://Scenes/Components/Player.tscn" id="15_8mjq4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
 font_size = 36
@@ -279,6 +279,7 @@ layer = 2
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
 [connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_order_changed"]
 [connection signal="progress_changed" from="kitchen/player_order_tracker" to="." method="_on_progress_changed"]
+[connection signal="order_completed" from="kitchen/droid1_order_tracker2" to="." method="_on_order_completed"]
 [connection signal="invoked" from="kitchen/fridge_highlight" to="." method="_on_fridge_highlight_invoked"]
 [connection signal="invoked" from="kitchen/mixing_highlight" to="." method="_on_mixing_highlight_invoked"]
 [connection signal="invoked" from="kitchen/batter_highlight" to="." method="_on_batter_highlight_invoked"]

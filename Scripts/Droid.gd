@@ -29,13 +29,18 @@ func _process(_delta):
 func _on_nav_agent_target_reached():
 	if order_tracker.current_order == null:
 		order_tracker.current_order = order_spawner.spawn_order()
+		order_tracker.next_step()
+		target_position = order_tracker.next_location()
+		return
 	
-	nav_agent.target_position = Vector2.ZERO
-	
-	await get_tree().create_timer(rng.randf_range(3, 5)).timeout
 	if order_tracker.progress >= order_tracker.current_order.recipe_steps.size():
 		order_tracker.complete_order()
+		target_position = order_tracker.next_location()
+		return
 	
+	nav_agent.target_position = Vector2.ZERO
+#	await get_tree().create_timer(rng.randf_range(0.5, 0.75)).timeout
+	await get_tree().create_timer(rng.randf_range(3, 5)).timeout
 	order_tracker.next_step()
+	
 	target_position = order_tracker.next_location()
-	nav_agent.target_position = target_position.global_position

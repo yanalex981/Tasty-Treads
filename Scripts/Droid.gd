@@ -19,6 +19,8 @@ func _process(_delta):
 		var direction = global_position.direction_to(next_location)
 		self.velocity = direction.normalized() * 500
 		
+		$tree.direction = direction
+		
 		move_and_slide()
 
 func _on_reachable_area_entered(area):
@@ -30,6 +32,9 @@ func _on_nav_agent_target_reached():
 		order_tracker.current_order = order_spawner.spawn_order()
 
 #	await get_tree().create_timer(2.0).timeout
+	if order_tracker.progress >= order_tracker.current_order.recipe_steps.size():
+		order_tracker.complete_order()
+#		order_tracker.current_order = order_spawner.spawn_order()
 
 	order_tracker.next_step()
 	target_position = order_tracker.next_location()

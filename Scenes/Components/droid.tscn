@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb5dgoww7jejb"]
+[gd_scene load_steps=5 format=3 uid="uid://p0ns6kefi1q6"]
 
 [ext_resource type="PackedScene" uid="uid://cybi17smgimsh" path="res://Scenes/Components/Agent.tscn" id="1_rp25k"]
 [ext_resource type="Texture2D" uid="uid://bhf8on2bbi74a" path="res://Assets/sousChefSpritesheet.png" id="2_c5bcw"]
+[ext_resource type="Script" path="res://Scripts/Droid.gd" id="2_lysgy"]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_qjaro"]
 
 [node name="Droid" instance=ExtResource("1_rp25k")]
+script = ExtResource("2_lysgy")
 
 [node name="sprite" parent="." index="2"]
 texture = ExtResource("2_c5bcw")
 
 [node name="tree" parent="." index="4"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_qjaro")
+
+[node name="nav_agent" type="NavigationAgent2D" parent="." index="5"]
+
+[connection signal="area_entered" from="reachable_zone" to="." method="_on_reachable_area_entered"]

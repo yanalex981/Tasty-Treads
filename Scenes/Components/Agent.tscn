@@ -1,13 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://cybi17smgimsh"]
+[gd_scene load_steps=29 format=3 uid="uid://cybi17smgimsh"]
 
 [ext_resource type="Script" path="res://Scripts/Components/AgentAnim.gd" id="2_51dnd"]
-[ext_resource type="Texture2D" uid="uid://bynbsygtxakga" path="res://Assets/incomplete.png" id="2_xd0dm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qapmb"]
 size = Vector2(128, 48)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0jou"]
-radius = 56.0
+radius = 64.0
 
 [sub_resource type="Animation" id="Animation_45y0y"]
 length = 0.001
@@ -236,15 +235,14 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_uhtb2"]
 
 [node name="Agent" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
 
 [node name="boundaries" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -24)
+position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_qapmb")
 
 [node name="reachable_zone" type="Area2D" parent="."]
-visible = false
-position = Vector2(0, -56)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_group_ = true
@@ -254,8 +252,6 @@ shape = SubResource("CircleShape2D_i0jou")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -65)
-texture = ExtResource("2_xd0dm")
 hframes = 4
 vframes = 4
 

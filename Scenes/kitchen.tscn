@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d883un6ilof6"]
+[gd_scene load_steps=22 format=3 uid="uid://d883un6ilof6"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bxdmjnw83vw6a" path="res://Assets/completed.png" id="6_l2gtt"]
 [ext_resource type="Texture2D" uid="uid://cxa0g1j4n3wwe" path="res://Assets/in_progress.png" id="7_p5an8"]
 [ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
+[ext_resource type="PackedScene" uid="uid://p0ns6kefi1q6" path="res://Scenes/Components/Droid.tscn" id="7_x5gre"]
 [ext_resource type="Texture2D" uid="uid://bynbsygtxakga" path="res://Assets/incomplete.png" id="8_vvdjn"]
 [ext_resource type="PackedScene" uid="uid://bd51qipgd5htg" path="res://Scenes/Components/Interactable.tscn" id="8_xnfjy"]
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
@@ -28,6 +29,16 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1ooa3"]
+vertices = PackedVector2Array(64, 336, 64, 224, 440, 224, 160, 336, 440, 192, 888, 192, 888, 224, 1208, 224, 1208, 672, 1016, 480, 1016, 672, 344, 480, 160, 672, 344, 672)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(8, 10, 9), PackedInt32Array(2, 6, 9, 11, 3), PackedInt32Array(12, 3, 11, 13)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(64, 336, 160, 336, 160, 672, 344, 672, 344, 480, 1016, 480, 1016, 672, 1208, 672, 1208, 224, 888, 224, 888, 192, 440, 192, 440, 224, 64, 224)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tc0wt"]
+vertices = PackedVector2Array(1016, 672, 344, 672, 344, 608, 632, 608, 632, 480, 736, 480, 736, 608, 1016, 608)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(0, 3, 6), PackedInt32Array(0, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(344, 672, 344, 608, 632, 608, 632, 480, 736, 480, 736, 608, 1016, 608, 1016, 672)])
 
 [node name="kitchen_main" type="Node2D"]
 texture_filter = 1
@@ -107,12 +118,14 @@ completed_icon = ExtResource("6_l2gtt")
 in_progress_icon = ExtResource("7_p5an8")
 incomplete_icon = ExtResource("8_vvdjn")
 
-[node name="microgames" type="CanvasLayer" parent="."]
-layer = 2
-
 [node name="kitchen" type="CanvasLayer" parent="."]
 
 [node name="player_spawn" type="Marker2D" parent="kitchen"]
+
+[node name="Droid" parent="kitchen/player_spawn" node_paths=PackedStringArray("target_position") instance=ExtResource("7_x5gre")]
+position = Vector2(800, 360)
+motion_mode = 0
+target_position = NodePath("../../fridge_highlight")
 
 [node name="wall_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
@@ -246,6 +259,18 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="player" parent="kitchen" instance=ExtResource("15_8mjq4")]
 position = Vector2(544, 416)
+motion_mode = 0
+
+[node name="floor_space" type="NavigationRegion2D" parent="kitchen"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_1ooa3")
+
+[node name="floor_space2" type="NavigationRegion2D" parent="kitchen"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_tc0wt")
+
+[node name="microgames" type="CanvasLayer" parent="."]
+layer = 2
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]

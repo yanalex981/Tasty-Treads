@@ -17,6 +17,19 @@
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
 [ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_83scp"]
+font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5kuc"]
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yye5o"]
 size = Vector2(128, 48)
 
@@ -170,19 +183,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2q0i"]
 radius = 56.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
-font_size = 36
-
-[sub_resource type="LabelSettings" id="LabelSettings_83scp"]
-font_size = 36
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5kuc"]
-bg_color = Color(0, 0, 0, 0.784314)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-
 [node name="kitchen_main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_hjfb8")
@@ -211,6 +211,58 @@ offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_7se1p")
+
+[node name="info_ui" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info_ui"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="panel" type="PanelContainer" parent="info_ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="padding" type="MarginContainer" parent="info_ui/VBoxContainer/panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="time_label" type="Label" parent="info_ui/VBoxContainer/panel/padding"]
+layout_mode = 2
+text = "Time Remaining: 0s"
+label_settings = SubResource("LabelSettings_hlyr4")
+
+[node name="earnings_label" type="Label" parent="info_ui/VBoxContainer/panel/padding"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Earnings: $0.00"
+label_settings = SubResource("LabelSettings_83scp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="info_ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="info_ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5kuc")
+
+[node name="MarginContainer" type="MarginContainer" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="order_tracker_ui" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_3s0ib")]
+layout_mode = 2
+completed_icon = ExtResource("6_l2gtt")
+in_progress_icon = ExtResource("7_p5an8")
+incomplete_icon = ExtResource("8_vvdjn")
+
+[node name="microgames" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="player_spawn" type="Marker2D" parent="."]
 
@@ -262,55 +314,6 @@ visible = false
 [node name="boundaries" type="CollisionPolygon2D" parent="right_counter_boundaries"]
 build_mode = 1
 polygon = PackedVector2Array(736, 520, 736, 608, 1016, 608, 1016, 520)
-
-[node name="info_ui" type="CanvasLayer" parent="."]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="info_ui"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="panel" type="PanelContainer" parent="info_ui/VBoxContainer"]
-layout_mode = 2
-
-[node name="padding" type="MarginContainer" parent="info_ui/VBoxContainer/panel"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-
-[node name="time_label" type="Label" parent="info_ui/VBoxContainer/panel/padding"]
-layout_mode = 2
-text = "Time Remaining: 0s"
-label_settings = SubResource("LabelSettings_hlyr4")
-
-[node name="earnings_label" type="Label" parent="info_ui/VBoxContainer/panel/padding"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Earnings: $0.00"
-label_settings = SubResource("LabelSettings_83scp")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="info_ui/VBoxContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="info_ui/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_g5kuc")
-
-[node name="MarginContainer" type="MarginContainer" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="order_tracker_ui" parent="info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("5_3s0ib")]
-layout_mode = 2
-completed_icon = ExtResource("6_l2gtt")
-in_progress_icon = ExtResource("7_p5an8")
-incomplete_icon = ExtResource("8_vvdjn")
 
 [node name="order_tracker" parent="." node_paths=PackedStringArray("order_source", "order_destination", "fridge", "mixing_bowl", "cutting_station", "cooling_station", "batter_station", "icing_station", "sprinkling_station", "oven") instance=ExtResource("4_4oyt0")]
 order_source = NodePath("../source_highlight")

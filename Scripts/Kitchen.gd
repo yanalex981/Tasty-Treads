@@ -5,6 +5,18 @@ signal day_is_over
 
 var purchased_upgrades : UpgradesReceipt = UpgradesReceipt.new()
 
+# no upgrades
+var fridge_game : PackedScene = preload("res://Scenes/Microgames/FridgeMicrogame.tscn")
+var batter_game : PackedScene = preload("res://Scenes/Microgames/PouringMicrogame.tscn")
+var icing_game : PackedScene = preload("res://Scenes/Microgames/IcingMicrogame.tscn")
+var sprinkle_game : PackedScene = preload("res://Scenes/Microgames/DecorationMicrogame.tscn")
+var cooling_game : PackedScene = preload("res://Scenes/Microgames/CoolingMicrogame.tscn")
+
+# has upgrades
+var mixing_game : PackedScene = preload("res://Scenes/Microgames/StirMicrogame.tscn")
+var cutting_game : PackedScene = preload("res://Scenes/Microgames/CutterMicrogame.tscn")
+var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tscn")
+
 func _ready():
 	var seconds_remaining = ceil($round_timer.time_left)
 	$info_ui/VBoxContainer/panel/padding/time_label.text = "Time Remaining: %s" % seconds_remaining

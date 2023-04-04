@@ -3,6 +3,8 @@ extends Node2D
 
 signal day_is_over
 
+var purchased_upgrades : UpgradesReceipt = UpgradesReceipt.new()
+
 func _ready():
 	var seconds_remaining = ceil($round_timer.time_left)
 	$info_ui/VBoxContainer/panel/padding/time_label.text = "Time Remaining: %s" % seconds_remaining
@@ -44,7 +46,7 @@ func _on_progress_changed(progress):
 	$info_ui/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/order_tracker_ui.progress = progress
 
 func _on_round_timer_timeout():
-	emit_signal("day_is_over")
+	emit_signal("day_is_over", purchased_upgrades)
 
 func _update_time_remaining_label():
 	var seconds_remaining = ceil($round_timer.time_left)

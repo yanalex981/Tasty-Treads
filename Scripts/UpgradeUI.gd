@@ -1,7 +1,7 @@
 class_name UpgradeUI
 extends CanvasLayer
 
-signal upgrading_finished
+signal upgrading_finished(receipt)
 
 # ---------- TOGGLE BUTTON VARIABLES ---------- #
 @onready var whiskToggle = $UpgradeUI/CenterAlign/Buttons/WhiskButtons/WhiskToggle
@@ -40,12 +40,8 @@ const FADE_SPEED = 0.75
 var money = 2
 var justPurchased = false
 var insufficientFunds = false
-var whiskActivated = false
-var cutterActivated = false
-var ovenActivated = false
-var tuneUpActivated = false
-var droid1Activated = false
-var droid2Activated = false
+
+var purchased_upgrades : UpgradesReceipt
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -144,7 +140,7 @@ func _purchase_cutter():
 func _purchase_oven():
 	if money >= OVEN_PRICE:
 		money -= OVEN_PRICE
-		ovenActivated = true
+		purchased_upgrades.ovenActivated = true
 		justPurchased = true
 		# Hide the purchase button
 		ovenPurchaseButton.disabled = true
@@ -163,7 +159,7 @@ func _purchase_oven():
 func _purchase_tune_up():
 	if money >= TUNE_UP_PRICE:
 		money -= TUNE_UP_PRICE
-		tuneUpActivated = true
+		purchased_upgrades.tuneUpActivated = true
 		justPurchased = true
 		# Hide the purchase button
 		tuneUpPurchaseButton.disabled = true
@@ -182,7 +178,7 @@ func _purchase_tune_up():
 func _purchase_droid_1():
 	if money >= DROID_1_PRICE:
 		money -= DROID_1_PRICE
-		droid1Activated = true
+		purchased_upgrades.droid1Activated = true
 		justPurchased = true
 		# Hide the purchase button
 		droid1PurchaseButton.disabled = true
@@ -201,7 +197,7 @@ func _purchase_droid_1():
 func _purchase_droid_2():
 	if money >= DROID_2_PRICE:
 		money -= DROID_2_PRICE
-		droid2Activated = true
+		purchased_upgrades.droid2Activated = true
 		justPurchased = true
 		# Hide the purchase button
 		droid2PurchaseButton.disabled = true
@@ -218,46 +214,46 @@ func _purchase_droid_2():
 		insufficientFunds = true
 
 func _toggle_whisk():
-	whiskActivated = whiskToggle.button_pressed
-	if whiskActivated:
+	purchased_upgrades.whiskActivated = whiskToggle.button_pressed
+	if purchased_upgrades.whiskActivated:
 		whiskLabel.text = "Electric Whisk active"
 	else:
 		whiskLabel.text = "Electric Whisk inactive"
 
 func _toggle_cutter():
-	cutterActivated = cutterToggle.button_pressed
-	if cutterActivated:
+	purchased_upgrades.cutterActivated = cutterToggle.button_pressed
+	if purchased_upgrades.cutterActivated:
 		cutterLabel.text = "Dual-Wield Cookie Cutters active"
 	else:
 		cutterLabel.text = "Dual-Wield Cookie Cutters inactive"
 
 func _toggle_oven():
-	ovenActivated = ovenToggle.button_pressed
-	if ovenActivated:
+	purchased_upgrades.ovenActivated = ovenToggle.button_pressed
+	if purchased_upgrades.ovenActivated:
 		ovenLabel.text = "Oven-O'-Matic 5090Ti active"
 	else:
 		ovenLabel.text = "Oven-O'-Matic 5090Ti inactive"
 
 func _toggle_tune_up():
-	tuneUpActivated = tuneUpToggle.button_pressed
-	if tuneUpActivated:
+	purchased_upgrades.tuneUpActivated = tuneUpToggle.button_pressed
+	if purchased_upgrades.tuneUpActivated:
 		tuneUpLabel.text = "Tune Up active"
 	else:
 		tuneUpLabel.text = "Tune Up inactive"
 
 func _toggle_droid_1():
-	droid1Activated = droid1Toggle.button_pressed
-	if droid1Activated:
+	purchased_upgrades.droid1Activated = droid1Toggle.button_pressed
+	if purchased_upgrades.droid1Activated:
 		droid1Label.text = "Chef Droid 1 active"
 	else:
 		droid1Label.text = "Chef Droid 1 inactive"
 
 func _toggle_droid_2():
-	droid2Activated = droid2Toggle.button_pressed
-	if droid2Activated:
+	purchased_upgrades.droid2Activated = droid2Toggle.button_pressed
+	if purchased_upgrades.droid2Activated:
 		droid2Label.text = "Chef Droid 2 active"
 	else:
 		droid2Label.text = "Chef Droid 2 inactive"
 
 func _on_next_day_pressed():
-	emit_signal("upgrading_finished")
+	emit_signal("upgrading_finished", purchased_upgrades)

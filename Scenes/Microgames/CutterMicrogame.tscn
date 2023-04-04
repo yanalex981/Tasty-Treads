@@ -87,7 +87,7 @@ position = Vector2(-5, 175)
 shape = SubResource("CircleShape2D_73r4e")
 
 [node name="EndOfBar" type="Area2D" parent="TimingBar"]
-position = Vector2(-235, 175)
+position = Vector2(-90, 175)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimingBar/EndOfBar"]
 position = Vector2(-221, 0)

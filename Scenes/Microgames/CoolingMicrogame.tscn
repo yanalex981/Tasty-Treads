@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://dl0cs8jsrhqyj"]
 
-[ext_resource type="Texture2D" uid="uid://d1jylf2ps2072" path="res://icon.svg" id="1_1gkcl"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Cooling/CoolingMicrogame.gd" id="1_6n2qk"]
 [ext_resource type="PackedScene" uid="uid://cb00rsfw04bg5" path="res://Scenes/Microgames/Smoke.tscn" id="2_88mte"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Cooling/RobotFan.gd" id="2_c2hrm"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Cooling/SmokeSpawner.gd" id="4_1e7x7"]
+[ext_resource type="Texture2D" uid="uid://c5kac83lmcugy" path="res://Assets/Microgames/coolingPan.png" id="4_q51ow"]
 [ext_resource type="Texture2D" uid="uid://varudqrc00sq" path="res://Assets/Microgames/vacuumArm.png" id="6_nimdp"]
 [ext_resource type="Texture2D" uid="uid://cbu3c656nkxh5" path="res://Assets/Microgames/smokeEffects.png" id="7_d32es"]
 [ext_resource type="Script" path="res://Scripts/Microgames/TimerLabel.gd" id="7_f68go"]
@@ -215,9 +215,8 @@ shape = SubResource("RectangleShape2D_5cn5b")
 
 [node name="Tray" type="Sprite2D" parent="."]
 position = Vector2(688, 378)
-scale = Vector2(5.16174, 3.44531)
-texture = ExtResource("1_1gkcl")
-metadata/_edit_lock_ = true
+scale = Vector2(1.30355, 1.3823)
+texture = ExtResource("4_q51ow")
 
 [node name="RobotFan" type="CharacterBody2D" parent="."]
 position = Vector2(168, 600)

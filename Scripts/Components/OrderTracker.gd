@@ -107,6 +107,7 @@ func next_location() -> Area2D:
 
 func complete_order():
 	current_order = null
+	emit_signal("order_completed")
 
 func _get_configuration_warnings():
 	return []

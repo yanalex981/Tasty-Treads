@@ -38,6 +38,10 @@ var progress : int = 0:
 func _ready():
 	_update_highlight_visibility()
 
+func disable_highlights():
+	for highlight in highlights:
+		highlight.enabled = false
+
 func _update_highlight_visibility():
 	if invisible:
 		return

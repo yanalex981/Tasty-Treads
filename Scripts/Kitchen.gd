@@ -53,6 +53,8 @@ func _game_ended(success):
 	if not success:
 		player.tips -= 200
 
+	player.enabled = true
+
 	for node in microgame_canvas.get_children():
 		node.queue_free()
 	player_order_tracker.next_step()
@@ -60,6 +62,8 @@ func _game_ended(success):
 func _on_fridge_highlight_invoked():
 	var game = fridge_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 	game.connect("game_ended", _game_ended)
 	var good = ['Eggs', "Flour", 'Butter']
 	var bad = ['FishHead', 'Bottle']
@@ -69,42 +73,56 @@ func _on_fridge_highlight_invoked():
 func _on_mixing_highlight_invoked():
 	var game = mixing_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 
 func _on_batter_highlight_invoked():
-	var game = mixing_game.instantiate()
+	var game = batter_game.instantiate()
 	microgame_canvas.add_child(game)
-	game.set_upgraded(purchased_upgrades.whiskActivated)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
+#	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 
 func _on_cutting_highlight_invoked():
 	var game = cutting_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 #	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 
 func _on_icing_highlight_invoked():
 	var game = icing_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 #	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 
 func _on_sprinkle_highlight_invoked():
 	var game = sprinkle_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 
 func _on_oven_highlight_invoked():
 	var game = oven_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 
 func _on_cooling_highlight_invoked():
 	var game = cooling_game.instantiate()
 	microgame_canvas.add_child(game)
+	player_order_tracker.disable_highlights()
+	player.enabled = false
 	game.set_upgraded(purchased_upgrades.whiskActivated)
 	game.connect("game_ended", _game_ended)
 

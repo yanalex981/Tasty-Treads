@@ -31,7 +31,7 @@ func _process(_delta):
 #		print(success)
 		
 		# signal end
-		await get_tree().create_timer(1.0).timeout
+#		await get_tree().create_timer(1.0).timeout
 		emit_signal("game_ended", success)
 
 # Note: Should probably move bowl and pan under one node and move these functions there.

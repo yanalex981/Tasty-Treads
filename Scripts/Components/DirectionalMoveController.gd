@@ -29,12 +29,15 @@ func _input(_event):
 	if Input.is_action_pressed("right"):
 		new_direction += Vector2(1, 0)
 
+	if not parent.enabled:
+		new_direction = Vector2.ZERO
+	
 	direction = new_direction.normalized()
 
 func _process(_delta):
 	if Engine.is_editor_hint():
 		return
-		
+	
 	parent.velocity = direction * speed
 	parent.move_and_slide()
 

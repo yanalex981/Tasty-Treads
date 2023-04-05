@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6x208wee3jfc"]
+[gd_scene load_steps=5 format=3 uid="uid://b6x208wee3jfc"]
 
 [ext_resource type="Script" path="res://Scripts/UpgradeUI.gd" id="1_pebeg"]
 [ext_resource type="LabelSettings" uid="uid://dx5x1s4xb0sqs" path="res://Resources/UpgradeButtonLabelSettings.tres" id="2_eeurv"]
+[ext_resource type="AudioStream" uid="uid://v16csj3x6mlu" path="res://Assets/Audio/snd_buy.wav" id="3_0wyij"]
+[ext_resource type="AudioStream" uid="uid://dhb17a37tmh3u" path="res://Assets/Audio/snd_fail.wav" id="4_u2c0f"]
 
 [node name="viewport" type="CanvasLayer"]
 script = ExtResource("1_pebeg")
@@ -132,5 +134,11 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Purchase complete!"
+
+[node name="PurchaseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0wyij")
+
+[node name="PurchaseFailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_u2c0f")
 
 [connection signal="pressed" from="UpgradeUI/CenterAlign/Buttons/NextDayButton/Button" to="." method="_on_next_day_pressed"]

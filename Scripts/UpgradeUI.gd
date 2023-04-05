@@ -27,6 +27,8 @@ signal upgrading_finished(receipt, cash)
 # ---------- OTHER UI VARIABLES ---------- #
 @onready var purchaseConfirmPanel = $"UpgradeUI/PurchaseConfirmPanel"
 @onready var earningsLabel = $"UpgradeUI/earnings_label"
+@onready var purchaseSuccessSound = $"PurchaseSound"
+@onready var purchaseFailSound = $"PurchaseFailSound"
 
 const WHISK_PRICE = 50
 const CUTTER_PRICE = 50
@@ -116,8 +118,10 @@ func _purchase_whisk():
 		_toggle_whisk()
 		# Change focus to the toggle that just activated
 		whiskToggle.grab_focus()
+		purchaseSuccessSound.play()
 	else:
 		insufficientFunds = true
+		purchaseFailSound.play()
 
 func _purchase_cutter():
 	if money >= CUTTER_PRICE:
@@ -134,8 +138,10 @@ func _purchase_cutter():
 		_toggle_cutter()
 		# Change focus to the toggle that just activated
 		cutterToggle.grab_focus()
+		purchaseSuccessSound.play()
 	else:
 		insufficientFunds = true
+		purchaseFailSound.play()
 
 func _purchase_oven():
 	if money >= OVEN_PRICE:
@@ -153,8 +159,10 @@ func _purchase_oven():
 		_toggle_oven()
 		# Change focus to the toggle that just activated
 		ovenToggle.grab_focus()
+		purchaseSuccessSound.play()
 	else:
 		insufficientFunds = true
+		purchaseFailSound.play()
 
 func _purchase_tune_up():
 	if money >= TUNE_UP_PRICE:
@@ -172,8 +180,10 @@ func _purchase_tune_up():
 		_toggle_tune_up()
 		# Change focus to the toggle that just activated
 		tuneUpToggle.grab_focus()
+		purchaseSuccessSound.play()
 	else:
 		insufficientFunds = true
+		purchaseFailSound.play()
 
 func _purchase_droid_1():
 	if money >= DROID_1_PRICE:
@@ -191,8 +201,10 @@ func _purchase_droid_1():
 		_toggle_droid_1()
 		# Change focus to the toggle that just activated
 		droid1Toggle.grab_focus()
+		purchaseSuccessSound.play()
 	else:
 		insufficientFunds = true
+		purchaseFailSound.play()
 
 func _purchase_droid_2():
 	if money >= DROID_2_PRICE:
@@ -210,8 +222,10 @@ func _purchase_droid_2():
 		_toggle_droid_2()
 		# Change focus to the toggle that just activated
 		droid2Toggle.grab_focus()
+		purchaseSuccessSound.play()
 	else:
 		insufficientFunds = true
+		purchaseFailSound.play()
 
 func _toggle_whisk():
 	purchased_upgrades.whiskActivated = whiskToggle.button_pressed

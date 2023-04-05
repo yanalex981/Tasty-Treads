@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://djkq04k1wo633"]
+[gd_scene load_steps=24 format=3 uid="uid://djkq04k1wo633"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Fridge/FridgeMicrogame.gd" id="1_j84xc"]
 [ext_resource type="Texture2D" uid="uid://b5s6ytudng33f" path="res://Assets/Microgames/fridge.png" id="1_u20vr"]
@@ -98,6 +98,12 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fndq"]
 radius = 26.3578
 height = 55.9105
+
+[sub_resource type="Theme" id="Theme_7iirb"]
+
+[sub_resource type="Theme" id="Theme_i1u0x"]
+
+[sub_resource type="Theme" id="Theme_essct"]
 
 [node name="FridgeMicrogame" type="Node2D"]
 script = ExtResource("1_j84xc")
@@ -371,6 +377,8 @@ offset_left = 1080.0
 offset_top = 416.0
 offset_right = 1296.0
 offset_bottom = 494.0
+theme = SubResource("Theme_7iirb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Ingredients:        /"
 
 [node name="ProgressLabel" type="Label" parent="UI/NecessaryLabel"]
@@ -378,6 +386,8 @@ layout_mode = 0
 offset_left = 108.0
 offset_right = 284.0
 offset_bottom = 78.0
+theme = SubResource("Theme_i1u0x")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 
 [node name="TotalLabel" type="Label" parent="UI/NecessaryLabel"]
@@ -385,6 +395,8 @@ layout_mode = 0
 offset_left = 140.0
 offset_right = 180.0
 offset_bottom = 26.0
+theme = SubResource("Theme_essct")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "3"
 
 [node name="EndUI" type="Control" parent="UI"]

@@ -303,7 +303,7 @@ navigation_polygon = SubResource("NavigationPolygon_tc0wt")
 [node name="microgames" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_1ccdr")
 autoplay = true
 

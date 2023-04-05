@@ -26,7 +26,7 @@ var holeSpawnLocations
 var cookieHeight = 10
 var baseCookieSpawnX
 var score = 0
-var upgradeEnabled = false
+var upgraded = false
 
 signal game_ended(score)
 
@@ -76,7 +76,7 @@ func _process(delta):
 func calculate_points():
 	if activeBeats.size() > 0:
 		# Behaviour is different when Dual-Wield Cookie Cutters upgrade is active
-		if !upgradeEnabled:
+		if !upgraded:
 			# Create a new hole at the appropriate location
 			var newHole = hole_scene.instantiate()
 			var beatType = activeBeats[0].beatType 

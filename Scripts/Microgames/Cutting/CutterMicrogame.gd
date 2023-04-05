@@ -57,11 +57,12 @@ func _process(delta):
 			# show the game ended
 		end_display.show()
 		
-		emit_signal("game_ended", score)
+		var success = score > SCORE_TO_PASS
+		emit_signal("game_ended", success)
 		
 		# close game
-		await get_tree().create_timer(1.0).timeout
-		queue_free()
+#		await get_tree().create_timer(1.0).timeout
+#		queue_free()
 	
 	elif totalBeatsSpawned > numBeats:
 		# If there are ever more beats than cookies to cut, remove excess beats

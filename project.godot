@@ -57,3 +57,6 @@ interact={
 2d_physics/layer_1="Obstacles"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Interactables"
+2d_physics/layer_5="Kitchen_Obstacles"
+2d_physics/layer_6="Kitchen_Player"
+2d_physics/layer_7="Kitchen_Interactables"

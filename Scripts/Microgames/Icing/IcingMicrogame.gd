@@ -16,7 +16,7 @@ func _on_spatula_completed():
 	# print(success)
 
 	# close the game
-	await get_tree().create_timer(1.0).timeout
+#	await get_tree().create_timer(1.0).timeout
 	emit_signal("game_ended", success)
 
 func _on_spatula_layer_applied():

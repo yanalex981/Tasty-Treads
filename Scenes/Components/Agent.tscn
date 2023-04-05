@@ -237,7 +237,8 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_uhtb2"]
 
 [node name="Agent" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 32
+collision_mask = 16
 motion_mode = 1
 
 [node name="boundaries" type="CollisionShape2D" parent="."]
@@ -249,8 +250,8 @@ shape = SubResource("CapsuleShape2D_ianli")
 [node name="reachable_zone" type="Area2D" parent="."]
 visible = false
 position = Vector2(0, -60)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 64
+collision_mask = 64
 metadata/_edit_group_ = true
 
 [node name="zone" type="CollisionShape2D" parent="reachable_zone"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dg8qauk2f8q4t" path="res://Assets/Microgames/cakeIcingSpriteSheet.png" id="1_ao7gy"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Icing/IcingMicrogame.gd" id="1_ec2c8"]
 [ext_resource type="Texture2D" uid="uid://dftk7xkasjb6u" path="res://Assets/Controls/smear_icing.png" id="2_y2o8y"]
-[ext_resource type="Texture2D" path="res://Assets/Microgames/icingHand.png" id="3_uu278"]
+[ext_resource type="Texture2D" uid="uid://en40yonf1i8t" path="res://Assets/Microgames/icingHand.png" id="3_uu278"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Icing/Spatula.gd" id="4_lefvv"]
 
 [sub_resource type="Animation" id="Animation_e1afr"]

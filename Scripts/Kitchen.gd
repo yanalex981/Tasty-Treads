@@ -36,6 +36,7 @@ var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tsc
 @onready var earnings_label : Label = $info_ui/VBoxContainer/panel/padding/earnings_label
 @onready var player_spawn : Marker2D = $kitchen/player_spawn
 @onready var player : Player = $kitchen/player
+@onready var microgame_canvas : CanvasLayer = $microgames
 
 func _ready():
 	var seconds_remaining = ceil(round_timer.time_left)
@@ -48,29 +49,64 @@ func _on_destination_highlight_invoked():
 	earnings += player_order_tracker.current_order.price
 	player_order_tracker.complete_order()
 
-func _on_fridge_highlight_invoked():
+func _game_ended(success):
+	if not success:
+		player.tips -= 200
+
+	for node in microgame_canvas.get_children():
+		node.queue_free()
 	player_order_tracker.next_step()
+
+func _on_fridge_highlight_invoked():
+	var game = fridge_game.instantiate()
+	microgame_canvas.add_child(game)
+	game.connect("game_ended", _game_ended)
+	var good = ['Eggs', "Flour", 'Butter']
+	var bad = ['FishHead', 'Bottle']
+	game.start(good, bad)
+	game.set_upgraded(purchased_upgrades.tuneUpActivated)
 
 func _on_mixing_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = mixing_game.instantiate()
+	microgame_canvas.add_child(game)
+	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_batter_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = mixing_game.instantiate()
+	microgame_canvas.add_child(game)
+	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_cutting_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = cutting_game.instantiate()
+	microgame_canvas.add_child(game)
+#	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_icing_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = icing_game.instantiate()
+	microgame_canvas.add_child(game)
+#	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_sprinkle_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = sprinkle_game.instantiate()
+	microgame_canvas.add_child(game)
+	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_oven_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = oven_game.instantiate()
+	microgame_canvas.add_child(game)
+	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_cooling_highlight_invoked():
-	player_order_tracker.next_step()
+	var game = cooling_game.instantiate()
+	microgame_canvas.add_child(game)
+	game.set_upgraded(purchased_upgrades.whiskActivated)
+	game.connect("game_ended", _game_ended)
 
 func _on_order_changed(order):
 	order_tracker_ui.order = order

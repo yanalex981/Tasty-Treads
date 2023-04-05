@@ -45,7 +45,7 @@ texture_filter = 1
 script = ExtResource("1_hjfb8")
 
 [node name="round_timer" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 180.0
 autostart = true
 
 [node name="time_tracker" type="Timer" parent="."]
@@ -124,12 +124,15 @@ incomplete_icon = ExtResource("8_vvdjn")
 
 [node name="Droid" parent="kitchen/player_spawn" node_paths=PackedStringArray("order_tracker", "order_spawner") instance=ExtResource("7_x5gre")]
 position = Vector2(800, 360)
+collision_layer = 2
+collision_mask = 1
 motion_mode = 0
 order_tracker = NodePath("../../droid1_order_tracker2")
 order_spawner = NodePath("../../order_spawner")
 
 [node name="wall_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
+collision_layer = 16
 collision_mask = 0
 
 [node name="boundaries" type="CollisionPolygon2D" parent="kitchen/wall_boundaries"]
@@ -138,6 +141,8 @@ polygon = PackedVector2Array(440, 224, 64, 224, 64, 424, 160, 424, 160, 608, 128
 
 [node name="left_counter_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
+collision_layer = 16
+collision_mask = 16
 
 [node name="boundaries" type="CollisionPolygon2D" parent="kitchen/left_counter_boundaries"]
 build_mode = 1
@@ -145,6 +150,8 @@ polygon = PackedVector2Array(352, 520, 352, 608, 632, 608, 632, 520)
 
 [node name="right_counter_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
+collision_layer = 16
+collision_mask = 16
 
 [node name="boundaries" type="CollisionPolygon2D" parent="kitchen/right_counter_boundaries"]
 build_mode = 1
@@ -193,6 +200,8 @@ spawnable_orders = Array[Resource("res://Scripts/Recipe.gd")]([ExtResource("5_cl
 
 [node name="fridge_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 464)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -200,6 +209,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="mixing_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(200, 576)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -207,6 +218,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="batter_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(400, 464)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -214,6 +227,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="cutting_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(568, 464)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -221,6 +236,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="icing_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(784, 464)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -228,6 +245,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="sprinkle_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(920, 464)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -235,6 +254,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="oven_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 368)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -242,6 +263,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="cooling_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(1168, 488)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -249,6 +272,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="destination_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(1112, 248)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 enabled = false
 effect_sprite = ExtResource("9_i0njw")
@@ -256,6 +281,8 @@ proximity_sprite = ExtResource("10_i0fk7")
 
 [node name="source_highlight" parent="kitchen" instance=ExtResource("8_xnfjy")]
 position = Vector2(656, 216)
+collision_layer = 64
+collision_mask = 64
 interact_input_map = "interact"
 effect_sprite = ExtResource("9_i0njw")
 proximity_sprite = ExtResource("10_i0fk7")
@@ -277,8 +304,8 @@ layer = 2
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
-[connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_player_order_changed"]
 [connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_order_changed"]
+[connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_player_order_changed"]
 [connection signal="order_completed" from="kitchen/player_order_tracker" to="." method="_on_player_order_completed"]
 [connection signal="progress_changed" from="kitchen/player_order_tracker" to="." method="_on_progress_changed"]
 [connection signal="order_completed" from="kitchen/droid1_order_tracker2" to="." method="_on_order_completed"]

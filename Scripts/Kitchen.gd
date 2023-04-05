@@ -37,6 +37,9 @@ var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tsc
 @onready var player_spawn : Marker2D = $kitchen/player_spawn
 @onready var player : Player = $kitchen/player
 @onready var microgame_canvas : CanvasLayer = $microgames
+@onready var failSound : AudioStreamPlayer = $MinigameFailSound
+@onready var successSound : AudioStreamPlayer = $MinigameSuccessSound
+@onready var orderSound : AudioStreamPlayer = $OrderCompleteSound
 
 func _ready():
 	var seconds_remaining = ceil(round_timer.time_left)
@@ -52,6 +55,9 @@ func _on_destination_highlight_invoked():
 func _game_ended(success):
 	if not success:
 		player.tips -= 200
+		failSound.play()
+	else :
+		successSound.play()
 
 	player.enabled = true
 
@@ -141,6 +147,7 @@ func _update_time_remaining_label():
 
 func _on_order_completed(earnings):
 	_update_earnings()
+	orderSound.play()
 
 func _on_player_order_changed(order):
 	if order == null:

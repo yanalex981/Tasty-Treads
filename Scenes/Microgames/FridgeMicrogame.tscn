@@ -373,20 +373,18 @@ offset_right = 1296.0
 offset_bottom = 494.0
 text = "Ingredients:        /"
 
-[node name="ProgressLabel" type="Label" parent="UI"]
+[node name="ProgressLabel" type="Label" parent="UI/NecessaryLabel"]
 layout_mode = 0
-offset_left = 1188.0
-offset_top = 416.0
-offset_right = 1364.0
-offset_bottom = 494.0
+offset_left = 108.0
+offset_right = 284.0
+offset_bottom = 78.0
 text = "0"
 
-[node name="TotalLabel" type="Label" parent="UI"]
+[node name="TotalLabel" type="Label" parent="UI/NecessaryLabel"]
 layout_mode = 0
-offset_left = 1220.0
-offset_top = 416.0
-offset_right = 1260.0
-offset_bottom = 442.0
+offset_left = 140.0
+offset_right = 180.0
+offset_bottom = 26.0
 text = "3"
 
 [node name="EndUI" type="Control" parent="UI"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cb00rsfw04bg5" path="res://Scenes/Microgames/Smoke.tscn" id="2_88mte"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Cooling/RobotFan.gd" id="2_c2hrm"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Cooling/SmokeSpawner.gd" id="4_1e7x7"]
-[ext_resource type="Texture2D" uid="uid://c5kac83lmcugy" path="res://Assets/Microgames/coolingPan.png" id="4_q51ow"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/coolingPan.png" id="4_q51ow"]
 [ext_resource type="Texture2D" uid="uid://varudqrc00sq" path="res://Assets/Microgames/vacuumArm.png" id="6_nimdp"]
 [ext_resource type="Texture2D" uid="uid://cbu3c656nkxh5" path="res://Assets/Microgames/smokeEffects.png" id="7_d32es"]
 [ext_resource type="Script" path="res://Scripts/Microgames/TimerLabel.gd" id="7_f68go"]

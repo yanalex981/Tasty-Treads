@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://ds77dbghyaifc"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Oven/OvenMicrogame.gd" id="1_uo1gh"]
-[ext_resource type="Texture2D" uid="uid://dvwb0qsxl73xw" path="res://Assets/Microgames/oven.png" id="2_my1uw"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/oven.png" id="2_my1uw"]
 [ext_resource type="Texture2D" uid="uid://b0tmnyluad5ak" path="res://Assets/Microgames/Minigame UI/ovenBarUnder.png" id="3_g8yms"]
 [ext_resource type="Texture2D" uid="uid://b4l6scnj0u4a6" path="res://Assets/Controls/mash.png" id="3_qpd2i"]
-[ext_resource type="Texture2D" uid="uid://clyesl6hixtl4" path="res://Assets/Microgames/ovenPan.png" id="3_y23o3"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/ovenPan.png" id="3_y23o3"]
 [ext_resource type="Texture2D" uid="uid://bpfv22do8kf4e" path="res://Assets/Microgames/Minigame UI/ovenBarFrame.png" id="4_45k3y"]
 [ext_resource type="Texture2D" uid="uid://chnslkw126ecb" path="res://Assets/Microgames/Minigame UI/ovenBarProgress.png" id="5_052ct"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Oven/BakeLevelBar.gd" id="6_whq85"]

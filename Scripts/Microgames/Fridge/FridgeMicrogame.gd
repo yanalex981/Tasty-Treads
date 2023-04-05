@@ -1,12 +1,11 @@
 extends Node2D
 
 @export var upgraded : bool = false : set = set_upgraded
-@export var testing : bool = false : set = set_testing
 
 @onready var item_position_list = $Fridge/ValidItemPositions
 @onready var ingredients = $IngredientsList
-@onready var progress_label = $UI/ProgressLabel
-@onready var total_label = $UI/TotalLabel
+@onready var progress_label = $UI/NecessaryLabel/ProgressLabel
+@onready var total_label = $UI/NecessaryLabel/TotalLabel
 @onready var end_display = $UI/EndUI
 
 @onready var arm = $RobotHand
@@ -26,10 +25,9 @@ func _ready():
 		arm.set_speed(UP_SPEED)
 	
 	# use for testing in-scene
-#	if (testing):
-#		var good = ['Eggs', "Flour", 'Butter']
-#		var bad = ['FishHead', 'Bottle']
-#		start(good, bad)
+#	var good = ['Eggs', "Flour", 'Butter']
+#	var bad = ['FishHead', 'Bottle']
+#	start(good, bad)
 	
 
 func set_upgraded(status):
@@ -89,7 +87,4 @@ func increase_good():
 
 func set_bad():
 	bad_grabbed = true
-
-func set_testing(status : bool):
-	testing = status
 

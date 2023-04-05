@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://8p5xws8qqght"]
+[gd_scene load_steps=2 format=3 uid="uid://pwmnpwo4wjdc"]
 
-[ext_resource type="Texture2D" uid="uid://dre1qda1u437l" path="res://Assets/Microgames/cookie.png" id="1_igkew"]
+[ext_resource type="Texture2D" path="res://Assets/Microgames/cookie.png" id="1_igkew"]
 
 [node name="Cookie" type="Node2D"]
 

@@ -2,7 +2,7 @@ class_name OrderTracker
 extends Node
 
 signal order_changed(order : Recipe)
-signal order_completed
+signal order_completed(earnings)
 signal progress_changed(progress : int)
 
 @export var order_source : Interactable
@@ -15,6 +15,8 @@ signal progress_changed(progress : int)
 @export var icing_station : Interactable
 @export var sprinkling_station : Interactable
 @export var oven : Interactable
+
+@export var invisible : bool = false
 
 @onready var highlights = [order_source, order_destination, fridge, mixing_bowl, cutting_station, cooling_station, batter_station, icing_station, sprinkling_station, oven]
 
@@ -37,6 +39,9 @@ func _ready():
 	_update_highlight_visibility()
 
 func _update_highlight_visibility():
+	if invisible:
+		return
+
 	if current_order == null:
 		for item in highlights:
 			item.enabled = false
@@ -73,8 +78,37 @@ func next_step():
 
 	progress += 1
 
+func next_location() -> Area2D:
+	if current_order == null:
+		return order_source
+
+	if progress >= current_order.recipe_steps.size():
+		return order_destination
+
+	var step = current_order.recipe_steps[progress]
+	match step:
+		Recipe.TaskType.GET_INGREDIENTS:
+			return fridge
+		Recipe.TaskType.MIX:
+			return mixing_bowl
+		Recipe.TaskType.POUR:
+			return batter_station
+		Recipe.TaskType.CUT_COOKIES:
+			return cutting_station
+		Recipe.TaskType.BAKE:
+			return oven
+		Recipe.TaskType.COOL:
+			return cooling_station
+		Recipe.TaskType.SMEAR_ICING:
+			return icing_station
+		Recipe.TaskType.ADD_SPRINKLES:
+			return sprinkling_station
+	return null
+
 func complete_order():
+	var price = current_order.price
 	current_order = null
+	emit_signal("order_completed", price)
 
 func _get_configuration_warnings():
 	return []

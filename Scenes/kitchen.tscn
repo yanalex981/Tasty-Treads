@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d883un6ilof6"]
+[gd_scene load_steps=22 format=3 uid="uid://d883un6ilof6"]
 
 [ext_resource type="Texture2D" uid="uid://brni2ye3h35s7" path="res://Assets/kitchen_background.png" id="1_7se1p"]
 [ext_resource type="Script" path="res://Scripts/Kitchen.gd" id="1_hjfb8"]
@@ -10,16 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bxdmjnw83vw6a" path="res://Assets/completed.png" id="6_l2gtt"]
 [ext_resource type="Texture2D" uid="uid://cxa0g1j4n3wwe" path="res://Assets/in_progress.png" id="7_p5an8"]
 [ext_resource type="Resource" uid="uid://ddwwrgj7afykp" path="res://Resources/Recipes/croissant.tres" id="7_rj4d4"]
-[ext_resource type="PackedScene" uid="uid://bhlrsnbtkbq6y" path="res://Scenes/Components/droid.tscn" id="7_x5gre"]
 [ext_resource type="Texture2D" uid="uid://bynbsygtxakga" path="res://Assets/incomplete.png" id="8_vvdjn"]
 [ext_resource type="PackedScene" uid="uid://bd51qipgd5htg" path="res://Scenes/Components/Interactable.tscn" id="8_xnfjy"]
 [ext_resource type="Texture2D" uid="uid://xt6ufjiufigx" path="res://Assets/area_highlight.png" id="9_i0njw"]
 [ext_resource type="Texture2D" uid="uid://c1h4jem4tkrnl" path="res://Assets/Controls/interact.png" id="10_i0fk7"]
 [ext_resource type="PackedScene" uid="uid://cbha6lmyk56do" path="res://Scenes/Components/Player.tscn" id="15_8mjq4"]
 [ext_resource type="AudioStream" uid="uid://desg2mssge1xs" path="res://Assets/Audio/snd_mainGameMusic.mp3" id="17_1ccdr"]
-[ext_resource type="AudioStream" uid="uid://cqckye4nc8o7v" path="res://Assets/Audio/snd_success.wav" id="18_el2l5"]
-[ext_resource type="AudioStream" uid="uid://dhb17a37tmh3u" path="res://Assets/Audio/snd_fail.wav" id="19_0jjg6"]
-[ext_resource type="AudioStream" uid="uid://o32futk063l1" path="res://Assets/Audio/snd_endRecipe.wav" id="20_iuy3l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlyr4"]
 font_size = 36
@@ -125,14 +121,7 @@ incomplete_icon = ExtResource("8_vvdjn")
 [node name="kitchen" type="CanvasLayer" parent="."]
 
 [node name="player_spawn" type="Marker2D" parent="kitchen"]
-
-[node name="Droid" parent="kitchen/player_spawn" node_paths=PackedStringArray("order_tracker", "order_spawner") instance=ExtResource("7_x5gre")]
-position = Vector2(800, 360)
-collision_layer = 2
-collision_mask = 1
-motion_mode = 0
-order_tracker = NodePath("../../droid1_order_tracker2")
-order_spawner = NodePath("../../order_spawner")
+position = Vector2(704, 320)
 
 [node name="wall_boundaries" type="StaticBody2D" parent="kitchen"]
 visible = false
@@ -306,19 +295,9 @@ navigation_polygon = SubResource("NavigationPolygon_tc0wt")
 [node name="microgames" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_1ccdr")
-volume_db = -10.0
 autoplay = true
-
-[node name="MinigameSuccessSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_el2l5")
-
-[node name="MinigameFailSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_0jjg6")
-
-[node name="OrderCompleteSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_iuy3l")
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]

@@ -14,7 +14,21 @@ var earnings : int = 0:
 			cents = "0" + cents
 		earnings_label.text = "Earnings: $%s.%s" % [dollars, cents]
 
-var purchased_upgrades : UpgradesReceipt = UpgradesReceipt.new()
+var purchased_upgrades : UpgradesReceipt = UpgradesReceipt.new():
+	set(value):
+		purchased_upgrades = value
+		
+		if purchased_upgrades.droid1Activated:
+			var droid = droid_scene.instantiate() as Droid
+			droid.order_spawner = order_spawner
+			droid.order_tracker = droid1_order_tracker
+			player_spawn.add_child(droid)
+
+		if purchased_upgrades.droid2Activated:
+			var droid = droid_scene.instantiate() as Droid
+			droid.order_spawner = order_spawner
+			droid.order_tracker = droid2_order_tracker
+			player_spawn.add_child(droid)
 
 # no upgrades
 var fridge_game : PackedScene = preload("res://Scenes/Microgames/FridgeMicrogame.tscn")
@@ -27,6 +41,8 @@ var cooling_game : PackedScene = preload("res://Scenes/Microgames/CoolingMicroga
 var mixing_game : PackedScene = preload("res://Scenes/Microgames/StirMicrogame.tscn")
 var cutting_game : PackedScene = preload("res://Scenes/Microgames/CutterMicrogame.tscn")
 var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tscn")
+
+var droid_scene : PackedScene = preload("res://Scenes/Components/Droid.tscn")
 
 @onready var round_timer : Timer = $round_timer
 @onready var time_label : Label = $info_ui/VBoxContainer/panel/padding/time_label
@@ -41,10 +57,13 @@ var oven_game : PackedScene = preload("res://Scenes/Microgames/OvenMicrogame.tsc
 @onready var successSound : AudioStreamPlayer = $MinigameSuccessSound
 @onready var orderSound : AudioStreamPlayer = $OrderCompleteSound
 
+@onready var droid1_order_tracker : OrderTracker = $kitchen/droid1_order_tracker2
+@onready var droid2_order_tracker : OrderTracker = $kitchen/droid2_order_tracker3
+
 func _ready():
 	var seconds_remaining = ceil(round_timer.time_left)
 	time_label.text = "Time Remaining: %s" % seconds_remaining
-
+	
 func _on_order_source_invoked():
 	player_order_tracker.current_order = order_spawner.spawn_order()
 

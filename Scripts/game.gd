@@ -6,7 +6,7 @@ var upgrade = preload("res://Scenes/UI/UpgradeUI.tscn")
 var purchased_upgrades : UpgradesReceipt = UpgradesReceipt.new()
 
 func _ready():
-	_show_kitchen_screen(purchased_upgrades, 1000)
+	_show_kitchen_screen(purchased_upgrades, 0)
 
 func _clear_children():
 	for node in get_children():

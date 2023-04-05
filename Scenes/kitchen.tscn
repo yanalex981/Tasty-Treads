@@ -301,8 +301,8 @@ autoplay = true
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="time_tracker" to="." method="_update_time_remaining_label"]
-[connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_player_order_changed"]
 [connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_order_changed"]
+[connection signal="order_changed" from="kitchen/player_order_tracker" to="." method="_on_player_order_changed"]
 [connection signal="order_completed" from="kitchen/player_order_tracker" to="." method="_on_player_order_completed"]
 [connection signal="progress_changed" from="kitchen/player_order_tracker" to="." method="_on_progress_changed"]
 [connection signal="order_completed" from="kitchen/droid1_order_tracker2" to="." method="_on_order_completed"]

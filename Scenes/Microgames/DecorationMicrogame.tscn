@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djbgdpbrc71n7"]
+[gd_scene load_steps=12 format=3 uid="uid://djbgdpbrc71n7"]
 
 [ext_resource type="Texture2D" uid="uid://b73n8xad0assf" path="res://Assets/Microgames/decorationsHand.png" id="1_p3xjj"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/DecorationMicrogame.gd" id="1_vo2ua"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dobv58p7ry18r" path="res://Scenes/Microgames/Decoration.tscn" id="3_2lqhw"]
 [ext_resource type="Script" path="res://Scripts/Microgames/Decorations/RobotTray.gd" id="4_nv0if"]
 [ext_resource type="Texture2D" uid="uid://bcv26d4pgyb82" path="res://Assets/Controls/catch_sprinkles.png" id="6_oo4uf"]
+
+[sub_resource type="Theme" id="Theme_3o7dn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wg74"]
 size = Vector2(34, 430.511)
@@ -16,6 +18,8 @@ size = Vector2(34, 432.013)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnx5k"]
 radius = 67.915
 height = 327.657
+
+[sub_resource type="Theme" id="Theme_rlvrl"]
 
 [node name="DecorationMicrogame" type="Node2D"]
 script = ExtResource("1_vo2ua")
@@ -30,6 +34,8 @@ offset_left = 1136.0
 offset_top = 320.0
 offset_right = 1312.0
 offset_bottom = 398.0
+theme = SubResource("Theme_3o7dn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 
 [node name="BoundingBox" type="StaticBody2D" parent="."]
@@ -91,6 +97,8 @@ offset_left = 1048.0
 offset_top = 320.0
 offset_right = 1264.0
 offset_bottom = 398.0
+theme = SubResource("Theme_rlvrl")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Sprinkles:        /  8"
 
 [node name="EndUI" type="Control" parent="UI"]

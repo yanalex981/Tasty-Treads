@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxh5xwbfxbeut"]
+[gd_scene load_steps=7 format=3 uid="uid://cu24ohi6xxko3"]
 
 [ext_resource type="Script" path="res://Scripts/Microgames/Cutting/Beat.gd" id="1_m6eni"]
 [ext_resource type="Texture2D" uid="uid://b1g0onhyghygr" path="res://Assets/Microgames/Minigame UI/timingIndicator.png" id="1_p3ww1"]

@@ -23,7 +23,9 @@ func _process(delta):
 
 func _on_hurtbox_area_entered(area):
 	if area.name == "EndOfBar":
-		delete()
+		# Force the cutter microgame to delete the beat and remove it from the beat queue.
+		# Requires beats to be stored no more than 2 children down the microgame tree
+		get_parent().get_parent().activeBeats.pop_front().delete()
 	elif area.name == "GoodArea":
 		beatType = "good"
 	elif area.name == "PerfectArea":

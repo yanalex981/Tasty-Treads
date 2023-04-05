@@ -3,6 +3,7 @@ extends Node2D
 @export var decor_scene: PackedScene
 @export var num_decorations: int = 12
 @onready var progress_label = $ProgressLabel
+@onready var tray = get_parent().get_child(2) # Points to tree location DecorationMicrogame/RobotTray
 
 const MAX_GRAVITY : float = 2
 const MIN_GRAVITY : float = 0.7
@@ -12,6 +13,8 @@ var num_caught : int = 0 : get = get_num_caught
 var num_left : int = num_decorations
 var lifetime : float = 2 # how long a sprinkle lives before destruction
 var delay : float = 0.3 # time between sprinkle spawns
+
+var bodies = [] # Used to track all added bodies
 
 func _ready():
 	screen_size = get_viewport_rect().size 
@@ -60,4 +63,11 @@ func _on_catch_box_body_entered(body):
 	if body is RigidBody2D:
 		increase_caught()
 		num_left -= 1
+		# Create a new decoration sprite
+		var decor = body.get_node("Sprite").duplicate()
+		tray.add_child(decor)
+		# Move the new sprite to the position of the body that was just caught
+		decor.global_position.x = body.global_position.x
+		decor.global_position.y = body.global_position.y
+		# Delete the old body
 		body.queue_free()

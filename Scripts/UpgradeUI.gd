@@ -1,7 +1,7 @@
 class_name UpgradeUI
 extends CanvasLayer
 
-signal upgrading_finished(receipt)
+signal upgrading_finished(receipt, cash)
 
 # ---------- TOGGLE BUTTON VARIABLES ---------- #
 @onready var whiskToggle = $UpgradeUI/CenterAlign/Buttons/WhiskButtons/WhiskToggle
@@ -256,4 +256,4 @@ func _toggle_droid_2():
 		droid2Label.text = "Chef Droid 2 inactive"
 
 func _on_next_day_pressed():
-	emit_signal("upgrading_finished", purchased_upgrades)
+	emit_signal("upgrading_finished", purchased_upgrades, money)

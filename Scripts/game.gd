@@ -12,11 +12,12 @@ func _clear_children():
 	for node in get_children():
 		node.queue_free()
 
-func _show_upgrade_screen(upgrades):
+func _show_upgrade_screen(upgrades, cash):
 	_clear_children()
 	var upgrade_screen = upgrade.instantiate() as UpgradeUI
 	upgrade_screen.purchased_upgrades = purchased_upgrades
-	upgrade_screen.upgrading_finished.connect(_show_kitchen_screen)
+	upgrade_screen.upgrading_finished.connect(_show_kitchen_screen, cash)
+	upgrade_screen.money = cash / 100
 	add_child(upgrade_screen)
 
 func _show_kitchen_screen(upgrades):

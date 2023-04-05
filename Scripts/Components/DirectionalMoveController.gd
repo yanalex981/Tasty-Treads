@@ -4,9 +4,12 @@ extends Node
 @export var speed : int = 400
 
 @onready var parent : CharacterBody2D = get_parent()
+
+signal direction_changed(dir : Vector2)
 var direction = Vector2.ZERO :
 	set(value):
 		direction = value
+		emit_signal("direction_changed", value)
 
 func _ready():
 	pass
